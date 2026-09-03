@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechAcademy | Explore 3000+ Training Courses</title>
+  <meta name="description" content="Best accredited training provider, trusted by 2M+ delegates. Choose from 3,000+ courses online, classroom or onsite. Book today!">
+  
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              purple: '#1e1b4b',
+              navy: '#0b142c',
+              dark: '#040814',
+              surface: '#0d1a38',
+              accent: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="bg-[#040814] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950">
+
+  <!-- Shared Responsive Navbar (TechAcademy Wordmark + Courses, About, Offers, Contact Us) -->
+  <header id="site-header" class="w-full z-50"></header>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow">
+    
+    <!-- 1. Main Hero Section (Balanced 2-Part Layout with Rich Training Purple & Floating Hero Visual) -->
+    <section class="relative min-h-[calc(100vh-4.5rem)] flex items-center py-14 sm:py-18 lg:py-20 overflow-hidden bg-gradient-to-r from-[#4B3294] via-[#52369E] to-[#5B3EA9]" aria-label="Hero">
+      
+      <!-- Subtle Atmospheric Lighting & Architectural Depth -->
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-400/15 blur-3xl rounded-full"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-900/25 blur-3xl rounded-full"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        
+        <!-- Desktop 2-Column Grid (Left ~54%, Right ~46%) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          
+          <!-- LEFT COLUMN: Content (Heading, Subtitle, Search, Topics on Desktop) -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            
+            <!-- Exact Heading (All White, Poppins 600, 2 Natural Lines) -->
+            <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-tight text-white leading-[1.14]">
+              Training the world’s<br class="hidden sm:inline" /> professionals
+            </h1>
+            
+            <!-- Exact Subtitle (Left Aligned, Muted White) -->
+            <p class="text-base sm:text-lg text-purple-100 font-normal leading-relaxed max-w-xl">
+              Transforming organisations and individuals across the world.
+            </p>
+
+            <!-- Primary Large WHITE Search Field (Mostly Rectangular, Small Radius, No Yellow Button) -->
+            <div class="pt-2 max-w-[580px] relative">
+              
+              <div id="search-input-wrapper" class="relative flex items-center bg-white rounded-md p-1.5 shadow-xl border border-slate-200 transition-all duration-200">
+                
+                <!-- Search Icon Left -->
+                <div class="pl-3 pr-2 text-slate-400 shrink-0" aria-hidden="true">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+
+                <!-- Search Input Field -->
+                <input 
+                  type="text" 
+                  id="hero-course-search" 
+                  autocomplete="off"
+                  placeholder="Search for a course or topic"
+                  class="w-full bg-transparent border-0 focus:outline-none focus:ring-0 text-slate-900 placeholder-slate-400 text-sm sm:text-base font-normal px-2 py-2"
+                  aria-label="Search for a course or topic"
+                >
+
+                <!-- Clear Query Button -->
+                <button 
+                  type="button" 
+                  id="search-clear-btn" 
+                  aria-label="Clear search text" 
+                  class="hidden p-2 text-slate-400 hover:text-slate-600 rounded transition-colors mr-1 shrink-0"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <!-- Functional Voice Search Button -->
+                <button 
+                  type="button" 
+                  id="search-voice-btn" 
+                  title="Voice Search" 
+                  aria-label="Search by voice" 
+                  class="p-2 text-slate-400 hover:text-[#4B3294] hover:bg-slate-100 rounded transition-all mr-1 shrink-0"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Autocomplete & Results Dropdown -->
+              <div id="search-results-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-md shadow-2xl overflow-hidden z-40 dropdown-enter max-h-96 overflow-y-auto" role="listbox">
+                
+                <!-- Result Items List -->
+                <ul id="search-results-list" class="divide-y divide-slate-100 py-1 text-slate-900"></ul>
+
+                <!-- Exact Reference "no-course-topic" fallback box -->
+                <div id="search-no-results" class="hidden p-6 text-center space-y-4">
+                  <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <p class="font-bold text-sm text-slate-900">
+                      Sorry! Looks like we are having trouble finding the course you’re looking for.
+                    </p>
+                    <p class="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+                      We may not have the course you’re looking for. If you <button onclick="window.openEnquireModal('Search Fallback Enquiry')" class="text-[#4B3294] underline font-semibold hover:text-amber-600">Enquire</button> or give us a call on <a href="tel:01344203999" class="text-[#4B3294] underline font-semibold hover:text-amber-600">01344203999</a> and speak to our training experts, we may still be able to help with your training requirements.
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2 pt-1">
+                    <button onclick="window.openEnquireModal('Search Fallback CTA')" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold rounded shadow-sm">
+                      Enquire now
+                    </button>
+                    <a href="#courses" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded border border-slate-200">
+                      See full course catalogue →
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Mobile Visual Placement (Order on mobile: Heading -> Subtitle -> Search -> Visual -> Topics) -->
+            <div class="hero-art-slot block lg:hidden my-6 w-full mx-auto"></div>
+
+            <!-- Popular Topics (Compact Rectangular Purple Topic Chips, Left-Aligned) -->
+            <div class="pt-2 space-y-3 text-left">
+              <p class="text-sm font-medium text-purple-100">
+                Or select from our popular topics
+              </p>
+
+              <div class="flex flex-wrap items-center gap-2">
+                
+                <button type="button" data-topic="PRINCE2®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  PRINCE2®
+                </button>
+
+                <button type="button" data-topic="Agile" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  Agile
+                </button>
+
+                <button type="button" data-topic="ITIL® Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  ITIL® Certification
+                </button>
+
+                <button type="button" data-topic="Lean Six Sigma Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  Lean Six Sigma Certification
+                </button>
+
+                <button type="button" data-topic="Scrum Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  Scrum Certification
+                </button>
+
+                <button type="button" data-topic="PMP®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  PMP®
+                </button>
+
+                <button type="button" data-topic="TOGAF®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  TOGAF®
+                </button>
+
+                <button type="button" data-topic="ISO 9001" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  ISO 9001
+                </button>
+
+                <button type="button" data-topic="Business Analysis Courses" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  Business Analysis Courses
+                </button>
+
+                <button type="button" data-topic="APM" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
+                  APM
+                </button>
+
+                <!-- Explore More Courses Link in Matching Purple Rectangular Style -->
+                <a href="#courses" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all group">
+                  <span>Explore more courses</span>
+                  <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Desktop Floating Transparent Learning Visual (~46%) -->
+          <div class="hero-art-slot hidden lg:flex lg:col-span-5 items-center justify-center relative"></div>
+
+        </div>
+
+      </div>
+
+      <template id="hero-art-template">
+        <div class="hero-art" aria-label="Two professionals building skills with digital learning tools">
+          <div class="hero-art__glow" aria-hidden="true"></div>
+
+          <div class="hero-float hero-float--code hero-float--behind" aria-hidden="true">
+            <span class="hero-float__icon hero-float__icon--violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/></svg>
+            </span>
+            <span><strong>SKILLS</strong><i class="hero-code-lines"><b></b><b></b><b></b></i></span>
+          </div>
+
+          <div class="hero-float hero-float--calendar hero-float--behind" aria-hidden="true">
+            <span class="hero-float__icon hero-float__icon--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13H4V6a1 1 0 0 1 1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
+            </span>
+            <span><strong>LEARNING</strong><small>Today</small></span>
+          </div>
+
+          <div class="hero-float hero-float--badge hero-float--behind" aria-hidden="true">
+            <span class="hero-badge-mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m8 13 2.5 2.5L16 10"/><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/></svg>
+            </span>
+          </div>
+
+          <img class="hero-art__people" src="./images/hero-learners-premium.png" alt="A professional woman learning on a laptop beside a professional man using a tablet" loading="eager" fetchpriority="high">
+
+          <div class="hero-float hero-float--certificate hero-float--side" aria-hidden="true">
+            <span class="hero-float__icon hero-float__icon--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="9" r="5"/><path d="m9 14-1 7 4-2 4 2-1-7M10 9l1.4 1.4L14.5 7"/></svg>
+            </span>
+            <span><strong>CERTIFIED</strong><small>Achievement</small></span>
+          </div>
+
+          <div class="hero-float hero-float--play hero-float--side" aria-hidden="true">
+            <span class="hero-play-mark">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m9 7 8 5-8 5V7Z"/></svg>
+            </span>
+            <span><strong>COURSES</strong><small>24 active</small></span>
+          </div>
+
+          <!-- 95% Progress Floating Badge -->
+          <div class="hero-float hero-float--progress hero-float--front" aria-hidden="true">
+            <span class="hero-progress-ring">
+              <span class="flex flex-col items-center justify-center -space-y-0.5">
+                <span class="text-xs font-black tracking-tight leading-none text-white">95</span>
+                <span class="text-[8px] font-bold text-white/90 leading-none">%</span>
+              </span>
+            </span>
+            <span class="hero-progress-copy">
+              <strong>PROGRESS</strong>
+              <i><b></b></i>
+            </span>
+          </div>
+
+          <div class="hero-float hero-float--award hero-float--front" aria-hidden="true">
+            <span class="hero-float__icon hero-float__icon--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 9.8 7.5 5 8.2l3.5 3.4-.8 4.8 4.3-2.3 4.3 2.3-.8-4.8L19 8.2l-4.8-.7L12 3Z"/><path d="M9 17.5 8 22l4-2 4 2-1-4.5"/></svg>
+            </span>
+            <span><strong>ACHIEVED</strong><small>Top skill</small></span>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <!-- 2. Clean Light "Professional training" & Contact Section (Visual Break from Hero) -->
+    <section class="relative py-16 sm:py-20 lg:py-24 bg-white text-slate-900 border-t border-slate-200" id="key-features" aria-label="Key Features & Contact">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Asymmetric 2-Column Content/Form Balance (~70/30) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 items-start">
+          
+          <!-- LEFT COLUMN: Heading, 2x2 Benefits & Lower Modern Workforce Panel (~70%) -->
+          <div class="lg:col-span-8 space-y-10 sm:space-y-12">
+            
+            <!-- Section Heading (Clean Dark Typography, No Yellow Highlight) -->
+            <div>
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                Professional training, the way it should be done.
+              </h2>
+            </div>
+
+            <!-- Spacious 2x2 Benefits Grid (Direct illustrated icons matching reference) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+              
+              <!-- Benefit 1: Largest global course portfolio (Yellow Folder Icon) -->
+              <div class="flex items-start gap-3.5">
+                <svg class="w-6 h-6 shrink-0 mt-0.5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 8C4 6.89543 4.89543 6 6 6H12.5858C13.1162 6 13.6249 6.21071 14 6.58579L16.4142 9H26C27.1046 9 28 9.89543 28 11V23C28 24.1046 27.1046 25 26 25H6C4.89543 25 4 24.1046 4 23V8Z" fill="#D97706"/>
+                  <rect x="7" y="9" width="18" height="11" rx="1.5" fill="#F8FAFC"/>
+                  <path d="M4 12C4 10.8954 4.89543 10 6 10H26C27.1046 10 28 10.8954 28 12V23C28 24.1046 27.1046 25 26 25H6C4.89543 25 4 24.1046 4 23V12Z" fill="url(#benefit_folder_grad)"/>
+                  <defs>
+                    <linearGradient id="benefit_folder_grad" x1="4" y1="10" x2="28" y2="25" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#FBBF24"/>
+                      <stop offset="1" stop-color="#F59E0B"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                    Largest global course portfolio
+                  </h3>
+                  <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                    You won’t find better value in the marketplace. If you do find a lower price, we will beat it.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Benefit 2: Best choice of dates for classroom courses (Flip Calendar Icon) -->
+              <div class="flex items-start gap-3.5">
+                <svg class="w-6 h-6 shrink-0 mt-0.5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="4" y="6" width="24" height="22" rx="3" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                  <path d="M4 9C4 7.34315 5.34315 6 7 6H25C26.6569 6 28 7.34315 28 9V12H4V9Z" fill="#EF4444"/>
+                  <circle cx="9" cy="5" r="1.5" fill="#94A3B8"/>
+                  <circle cx="16" cy="5" r="1.5" fill="#94A3B8"/>
+                  <circle cx="23" cy="5" r="1.5" fill="#94A3B8"/>
+                  <rect x="8" y="15" width="3.5" height="2.5" rx="0.5" fill="#CBD5E1"/>
+                  <rect x="14.25" y="15" width="3.5" height="2.5" rx="0.5" fill="#CBD5E1"/>
+                  <rect x="20.5" y="15" width="3.5" height="2.5" rx="0.5" fill="#CBD5E1"/>
+                  <rect x="8" y="20" width="3.5" height="2.5" rx="0.5" fill="#CBD5E1"/>
+                  <rect x="14.25" y="20" width="3.5" height="2.5" rx="0.5" fill="#EF4444"/>
+                  <rect x="20.5" y="20" width="3.5" height="2.5" rx="0.5" fill="#CBD5E1"/>
+                </svg>
+                <div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                    Best choice of dates for classroom courses
+                  </h3>
+                  <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                    A variety of delivery methods are available depending on your learning preference.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Benefit 3: Most venues globally (World Globe Icon) -->
+              <div class="flex items-start gap-3.5">
+                <svg class="w-6 h-6 shrink-0 mt-0.5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M16 26V29M11 29H21" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M26 14C26 19.5228 21.5228 24 16 24C11.5 24 7.6 20.8 6.4 16.5" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="16" cy="14" r="10" fill="url(#benefit_ocean_grad)"/>
+                  <path d="M12 7C13 8 14 7.5 15 9C15.5 10 14 12 15 13C16 14 19 13.5 19 15C19 16.5 17 18 16 19C15 20 14 22 13 23C10 22 7.5 18 8 14C8.5 10 10.5 8 12 7Z" fill="#10B981"/>
+                  <path d="M20 7.5C21.5 8.5 22.5 10.5 23 12.5C22 12.5 21 11.5 20.5 12C20 12.5 20.5 14 19.5 14.5C18.5 15 17.5 14 18 12C18.5 10 19 9 20 7.5Z" fill="#10B981"/>
+                  <defs>
+                    <linearGradient id="benefit_ocean_grad" x1="16" y1="4" x2="16" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#38BDF8"/>
+                      <stop offset="1" stop-color="#0284C7"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                    Most venues globally
+                  </h3>
+                  <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                    We have locations stretching the entire globe, allowing flexible training wherever you need it.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Benefit 4: Multichannel delivery (Cardboard Package Box Icon) -->
+              <div class="flex items-start gap-3.5">
+                <svg class="w-6 h-6 shrink-0 mt-0.5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M16 15.5L4 9.5V21.5L16 28V15.5Z" fill="#D97706" fill-opacity="0.85"/>
+                  <path d="M16 15.5L28 9.5V21.5L16 28V15.5Z" fill="#B45309"/>
+                  <path d="M16 3.5L28 9.5L16 15.5L4 9.5L16 3.5Z" fill="#F59E0B"/>
+                  <path d="M13 5L25 11L22 12.5L10 6.5L13 5Z" fill="#FEF08A" fill-opacity="0.85"/>
+                  <path d="M14.5 16.25L14.5 27.25L17.5 25.75L17.5 14.75L14.5 16.25Z" fill="#FEF08A" fill-opacity="0.85"/>
+                </svg>
+                <div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                    Multichannel delivery
+                  </h3>
+                  <p class="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                    We’re the only provider to have classroom, online instructor-led, online self-paced and in-house training methods globally.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Lower Soft-Light Panel: "Modern Workforce. Smarter Training." (Exact Source Content) -->
+            <div class="bg-[#f8f9fd] border border-indigo-100/90 rounded-2xl p-6 sm:p-7 shadow-sm">
+              <h3 class="text-lg sm:text-xl font-bold text-[#002353]">
+                Modern Workforce. Smarter Training.
+              </h3>
+              <p class="text-sm text-slate-600 mt-2 mb-5 leading-relaxed">
+                Get custom training that’s fast, flexible and focused on real results. Designed for how your teams work today.
+              </p>
+              
+              <!-- KPI Bullets (2 Columns on Tablet/Desktop, 1 Column on Mobile) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                
+                <div class="flex items-center gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                    <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                  <span class="text-xs sm:text-sm font-medium text-slate-700">Live sessions improve results by 60%</span>
+                </div>
+
+                <div class="flex items-center gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                    <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                  <span class="text-xs sm:text-sm font-medium text-slate-700">Measurable KPIs with 35% performance gains</span>
+                </div>
+
+                <div class="flex items-center gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                    <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                  <span class="text-xs sm:text-sm font-medium text-slate-700">On-site workshops with 40% higher engagement</span>
+                </div>
+
+                <div class="flex items-center gap-2.5">
+                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                    <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                  <span class="text-xs sm:text-sm font-medium text-slate-700">Instructor-led classes drive 3x more engagement</span>
+                </div>
+
+              </div>
+
+              <!-- Final 86% Statement in Purple (Exact Reference Copy) -->
+              <div class="mt-5 pt-4 border-t border-indigo-100 text-xs sm:text-sm font-semibold text-[#002353] flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#002353] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>86% of L&D or HR leaders prefer hybrid-friendly learning.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Light Elevated Contact Us Form Panel (~30%) -->
+          <div class="lg:col-span-4 w-full">
+            <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-7 shadow-xl shadow-slate-200/50" id="contact">
+              
+              <!-- Contact Us Heading -->
+              <h3 class="text-xl font-bold text-slate-900 mb-5">
+                Contact Us
+              </h3>
+
+              <!-- Active Form -->
+              <form id="home-contact-form" class="space-y-4" autocomplete="off">
+                
+                <!-- Funding Source Radio Selector (Exact Reference Content) -->
+                <div>
+                  <span class="block text-xs font-semibold tracking-wider text-slate-500 uppercase mb-2">
+                    WHO WILL BE FUNDING THE COURSE?
+                  </span>
+                  <div class="grid grid-cols-3 gap-2">
+                    <label class="flex items-center justify-center p-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs text-slate-700 transition-colors has-[:checked]:bg-[#002353] has-[:checked]:text-white has-[:checked]:border-[#002353] has-[:checked]:font-semibold font-medium text-center">
+                      <input type="radio" name="fundingType" value="employer" checked class="sr-only">
+                      <span>My employer</span>
+                    </label>
+                    <label class="flex items-center justify-center p-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs text-slate-700 transition-colors has-[:checked]:bg-[#002353] has-[:checked]:text-white has-[:checked]:border-[#002353] has-[:checked]:font-semibold font-medium text-center">
+                      <input type="radio" name="fundingType" value="self" class="sr-only">
+                      <span>I will</span>
+                    </label>
+                    <label class="flex items-center justify-center p-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs text-slate-700 transition-colors has-[:checked]:bg-[#002353] has-[:checked]:text-white has-[:checked]:border-[#002353] has-[:checked]:font-semibold font-medium text-center">
+                      <input type="radio" name="fundingType" value="not_sure" class="sr-only">
+                      <span>Not sure</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Name Input -->
+                <div>
+                  <label for="nameEnqPriceForm" class="sr-only">Name*</label>
+                  <input 
+                    type="text" 
+                    name="name" 
+                    id="nameEnqPriceForm" 
+                    required 
+                    placeholder="Name*" 
+                    class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all min-h-[44px]"
+                  >
+                </div>
+
+                <!-- Company Email Input -->
+                <div>
+                  <label for="emailEnqPriceForm" class="sr-only">Company Email*</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    id="emailEnqPriceForm" 
+                    required 
+                    placeholder="Company Email*" 
+                    class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all min-h-[44px]"
+                  >
+                </div>
+
+                <!-- Phone / Country Field with Custom Search-Enabled Flag Selector -->
+                <div>
+                  <label for="mobileEnqPriceForm" class="sr-only">Mobile*</label>
+                  <div class="flex relative rounded-xl border border-slate-300 focus-within:ring-2 focus-within:ring-amber-400 focus-within:border-amber-400 bg-white transition-all">
+                    
+                    <!-- Custom Country Selector Container -->
+                    <div id="home-country-selector" data-country-selector data-default="gb" data-input-name="countryCode" class="shrink-0 border-r border-slate-200"></div>
+
+                    <!-- Mobile Input -->
+                    <input 
+                      type="tel" 
+                      name="mobile" 
+                      id="mobileEnqPriceForm" 
+                      required 
+                      placeholder="Mobile Number*" 
+                      class="w-full px-3.5 py-2.5 bg-transparent border-0 focus:outline-none focus:ring-0 text-sm text-slate-900 placeholder-slate-400 min-h-[44px]"
+                    >
+                  </div>
+                </div>
+
+                <!-- Message (Optional) Textarea -->
+                <div>
+                  <label for="messageEnqPriceForm" class="sr-only">Message(Optional)</label>
+                  <textarea 
+                    name="message" 
+                    id="messageEnqPriceForm" 
+                    rows="3" 
+                    placeholder="Message(Optional)" 
+                    class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all resize-none"
+                  ></textarea>
+                </div>
+
+                <!-- Consent Text (Exact Reference Copy) -->
+                <p class="text-xs text-slate-500 leading-relaxed pt-1">
+                  By submitting your details you agree to be contacted in order to respond to your enquiry.
+                </p>
+
+                <!-- Submit Button (Yellow CTA Accent) -->
+                <button 
+                  type="submit" 
+                  class="w-full py-3.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold rounded-xl text-sm sm:text-base transition-colors shadow-md flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 min-h-[44px] cursor-pointer"
+                >
+                  <span>Submit</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+
+              </form>
+
+              <!-- Success Confirmation Message (Exact Reference Copy) -->
+              <div id="home-contact-thanks" class="hidden text-center py-8 space-y-4">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900">Enquiry Received</h4>
+                <p class="text-sm text-slate-600 max-w-xs mx-auto leading-relaxed">
+                  Thank you for your enquiry. Our Sales representative will contact you soon.
+                </p>
+                <button 
+                  type="button" 
+                  id="home-contact-reset-btn" 
+                  class="mt-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-lg text-xs transition-colors min-h-[44px]"
+                >
+                  Send another enquiry
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Expert Training Section (4 Tall Vertical Panels + Interactive Accordion) -->
+    <section class="relative py-16 sm:py-20 lg:py-24 bg-[#fbfcfe] text-slate-900 border-t border-slate-200" id="expert-training" aria-label="Expert Training Formats">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Heading (Exact Source Content) -->
+        <div class="mb-10 sm:mb-14">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            <span class="text-[#002353]">Expert training</span> in a classroom, online or from home!
+          </h2>
+        </div>
+
+        <!-- 4 Format Horizontal In-Place Expanding Accordion Container -->
+        <div id="expert-training-accordion" class="flex flex-col lg:flex-row items-stretch gap-4 sm:gap-5 lg:gap-5 xl:gap-6 min-h-[560px] lg:h-[620px]" role="tablist" aria-label="Training Delivery Formats">
+          
+          <!-- FORMAT 1: Online Instructor-led (POPULAR) -->
+          <div class="training-accordion-item w-full lg:flex-1 h-[480px] lg:h-full rounded-2xl overflow-hidden cursor-pointer relative group transition-all duration-500 shadow-md hover:shadow-2xl bg-slate-900 border border-slate-200/40" data-index="0">
+            
+            <!-- Collapsed Trigger View (Visible when collapsed) -->
+            <div class="collapsed-view w-full h-full relative min-h-[480px] lg:min-h-full rounded-2xl overflow-hidden training-accordion-trigger" role="tab" tabindex="0" aria-label="Expand Online Instructor-led details" onclick="toggleExpertFormat(0, event)">
+              <img src="./images/training-instructor.jpg" alt="Online Instructor-led" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 select-none" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:from-black/95 transition-colors duration-300"></div>
+              <span class="absolute top-5 left-5 px-3 py-1 bg-white/20 backdrop-blur-md text-white font-bold text-[10px] tracking-widest uppercase rounded border border-white/25 shadow-sm">POPULAR</span>
+              <div class="absolute bottom-7 left-6 right-6 flex flex-col items-start gap-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">Online<br />Instructor-<br class="hidden sm:inline" />led</h3>
+                <span class="text-white/80 group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m7-7H5"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Expanded Details View (Hidden when collapsed, flex when active) -->
+            <div class="expanded-view hidden flex-col md:flex-row items-stretch w-full h-full bg-white">
+              <!-- Left Photo Panel with Training Purple Tone -->
+              <div class="w-full md:w-56 lg:w-60 xl:w-64 shrink-0 relative min-h-[240px] md:min-h-full p-6 sm:p-7 flex flex-col justify-between overflow-hidden bg-[#45318A]">
+                <img src="./images/training-instructor.jpg" alt="Online Instructor-led" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-overlay opacity-40" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2c1d5e]/95 via-[#45318A]/85 to-[#5a42a8]/60"></div>
+                
+                <div class="relative z-10">
+                  <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white font-bold text-[10px] tracking-widest uppercase rounded border border-white/25 shadow-sm">POPULAR</span>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-start gap-3">
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">Online<br />Instructor-<br />led</h3>
+                  <button type="button" class="training-close-btn text-white/90 hover:text-white transition-colors cursor-pointer" aria-label="Collapse details" onclick="toggleExpertFormat(0, event)">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Content Details Pane (Evenly Spaced 4 Items Matching Reference) -->
+              <div class="flex-1 bg-white p-6 sm:p-8 lg:p-9 flex flex-col justify-around space-y-5 sm:space-y-6 overflow-y-auto">
+                
+                <!-- Feature 1: Live classes -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 text-red-500" viewBox="0 0 28 28" fill="none">
+                      <path d="M2 7V4C2 2.89543 2.89543 2 4 2H7M21 2H24C25.1046 2 26 2.89543 26 4V7M2 21V24C2 25.1046 2.89543 26 4 26H7M21 26H24C25.1046 26 26 25.1046 26 24V21" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+                      <text x="13" y="16.5" font-family="sans-serif" font-weight="900" font-size="6.5" fill="#EF4444" text-anchor="middle" letter-spacing="0.5">LIVE</text>
+                      <circle cx="21" cy="7" r="2" fill="#EF4444"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Live classes</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Join a scheduled class with a live instructor and other delegates</p>
+                </div>
+
+                <!-- Feature 2: Fully interactive -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 text-slate-800" viewBox="0 0 28 28" fill="none">
+                      <path d="M5 14C5 9.02944 9.02944 5 14 5C18.9706 5 23 9.02944 23 14V20C23 21.1046 22.1046 22 21 22H20C18.8954 22 18 21.1046 18 20V16C18 14.8954 18.8954 14 20 14H22" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round"/>
+                      <path d="M6 14H8C9.10457 14 10 14.8954 10 16V20C10 21.1046 9.10457 22 8 22H7C5.89543 22 5 21.1046 5 20V14Z" fill="#1E293B"/>
+                      <path d="M18 22C18 23.5 16.5 24.5 15 24.5H13" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Fully interactive</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Ask questions, share documents, interact with whiteboards, ask live questions and communicate with your trainer and peers.</p>
+                </div>
+
+                <!-- Feature 3: No travel or accommodation costs -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0" viewBox="0 0 32 22" fill="none">
+                      <rect width="32" height="22" rx="3" fill="#F59E0B"/>
+                      <rect x="2.5" y="2.5" width="19" height="17" rx="2" fill="#FEF3C7"/>
+                      <line x1="5.5" y1="6" x2="18.5" y2="6" stroke="#D97706" stroke-width="1.5"/>
+                      <line x1="5.5" y1="9.5" x2="15" y2="9.5" stroke="#D97706" stroke-width="1.2"/>
+                      <line x1="5.5" y1="13" x2="17" y2="13" stroke="#D97706" stroke-width="1.2"/>
+                      <line x1="23" y1="0" x2="23" y2="22" stroke="#D97706" stroke-width="1.5" stroke-dasharray="2 2"/>
+                      <rect x="25" y="4" width="5" height="14" rx="1" fill="#FEF3C7"/>
+                      <line x1="26.5" y1="7" x2="28.5" y2="7" stroke="#D97706" stroke-width="1"/>
+                      <line x1="26.5" y1="10.5" x2="28.5" y2="10.5" stroke="#D97706" stroke-width="1"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">No travel or accommodation costs</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">An affordable way to boost your career.</p>
+                </div>
+
+                <!-- Feature 4: Access the best pool of trainers -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none">
+                      <path d="M14 6L26 12L14 18L2 12L14 6Z" fill="#475569"/>
+                      <path d="M14 7.5L23.5 12L14 16.5L4.5 12L14 7.5Z" fill="#334155"/>
+                      <path d="M7.5 14.5V19C7.5 21.2 10.4 23 14 23C17.6 23 20.5 21.2 20.5 19V14.5L14 17.5L7.5 14.5Z" fill="#1E293B"/>
+                      <circle cx="14" cy="12" r="1.2" fill="#F59E0B"/>
+                      <path d="M14 12C15.5 13 17.5 15 18.5 17V21" stroke="#F59E0B" stroke-width="1.4" stroke-linecap="round"/>
+                      <circle cx="18.5" cy="21.5" r="1" fill="#D97706"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Access the best pool of trainers, wherever you are</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">We use the same pool of expert trainers for our Online Instructor-led courses, so no need to leave where you live or work.</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FORMAT 2: Online Self-paced (POPULAR) -->
+          <div class="training-accordion-item w-full lg:flex-1 h-[480px] lg:h-full rounded-2xl overflow-hidden cursor-pointer relative group transition-all duration-500 shadow-md hover:shadow-2xl bg-slate-900 border border-slate-200/40" data-index="1">
+            
+            <!-- Collapsed Trigger View -->
+            <div class="collapsed-view w-full h-full relative min-h-[480px] lg:min-h-full rounded-2xl overflow-hidden training-accordion-trigger" role="tab" tabindex="0" aria-label="Expand Online Self-paced details" onclick="toggleExpertFormat(1, event)">
+              <img src="./images/training-self-paced.jpg" alt="Online Self-paced" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 select-none" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:from-black/95 transition-colors duration-300"></div>
+              <span class="absolute top-5 left-5 px-3 py-1 bg-white/20 backdrop-blur-md text-white font-bold text-[10px] tracking-widest uppercase rounded border border-white/25 shadow-sm">POPULAR</span>
+              <div class="absolute bottom-7 left-6 right-6 flex flex-col items-start gap-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">Online<br />Self-paced</h3>
+                <span class="text-white/80 group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m7-7H5"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Expanded Details View -->
+            <div class="expanded-view hidden flex-col md:flex-row items-stretch w-full h-full bg-white">
+              <div class="w-full md:w-56 lg:w-60 xl:w-64 shrink-0 relative min-h-[240px] md:min-h-full p-6 sm:p-7 flex flex-col justify-between overflow-hidden bg-[#45318A]">
+                <img src="./images/training-self-paced.jpg" alt="Online Self-paced" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-overlay opacity-40" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2c1d5e]/95 via-[#45318A]/85 to-[#5a42a8]/60"></div>
+                <div class="relative z-10"><span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white font-bold text-[10px] tracking-widest uppercase rounded border border-white/25 shadow-sm">POPULAR</span></div>
+                <div class="relative z-10 flex flex-col items-start gap-3">
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">Online<br />Self-paced</h3>
+                  <button type="button" class="training-close-btn text-white/90 hover:text-white transition-colors cursor-pointer" aria-label="Collapse details" onclick="toggleExpertFormat(1, event)">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex-1 bg-white p-6 sm:p-8 lg:p-9 flex flex-col justify-around space-y-5 sm:space-y-6 overflow-y-auto">
+                
+                <!-- Feature 1: Tutor support 24/7 (Graduation Cap) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <path d="M16 6L30 13L16 20L2 13L16 6Z" fill="#64748B"/>
+                      <path d="M16 7.5L27.5 13L16 18.5L4.5 13L16 7.5Z" fill="#475569"/>
+                      <path d="M8.5 15.5V20.5C8.5 23 11.8 25 16 25C20.2 25 23.5 23 23.5 20.5V15.5L16 19.2L8.5 15.5Z" fill="#334155"/>
+                      <circle cx="16" cy="13" r="1.5" fill="#F59E0B"/>
+                      <path d="M16 13C18 14.5 20.5 16.5 21.5 19V24" stroke="#F59E0B" stroke-width="1.6" stroke-linecap="round"/>
+                      <circle cx="21.5" cy="24.5" r="1.2" fill="#D97706"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Tutor support 24/7</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Our expert trainers are on hand to help you with any questions which may arise.</p>
+                </div>
+
+                <!-- Feature 2: Immediate access for 90 days (Calendar 90) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <rect x="14.5" y="3" width="3" height="5" rx="1.5" fill="#94A3B8" stroke="#64748B" stroke-width="0.8"/>
+                      <rect x="6" y="7" width="20" height="21" rx="3" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+                      <line x1="6" y1="12" x2="26" y2="12" stroke="#CBD5E1" stroke-width="1"/>
+                      <text x="16" y="23.5" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="10" fill="#1E3A8A" text-anchor="middle" letter-spacing="-0.5">90</text>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Immediate access for 90 days</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">All of our courses come with a standard 90 days access which can be upgraded if need be.</p>
+                </div>
+
+                <!-- Feature 3: Personal performance reports (4 colored bars chart) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <rect x="7" y="14" width="3" height="13" rx="1.5" fill="#FBBF24"/>
+                      <rect x="12" y="10" width="3" height="17" rx="1.5" fill="#CBD5E1"/>
+                      <rect x="17" y="6" width="3" height="21" rx="1.5" fill="#10B981"/>
+                      <rect x="22" y="16" width="3" height="11" rx="1.5" fill="#EF4444"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Personal performance reports</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Keep track of your own progression throughout your course and ensure continuous improvement.</p>
+                </div>
+
+                <!-- Feature 4: Compatible on all devices (Monitor + Phone) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0" viewBox="0 0 32 32" fill="none">
+                      <rect x="10" y="8" width="18" height="13" rx="1.5" fill="#F1F5F9" stroke="#1E293B" stroke-width="1.8"/>
+                      <path d="M16 21V24M13 24H25" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round"/>
+                      <rect x="5" y="13" width="7" height="11" rx="1.2" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.8"/>
+                      <circle cx="8.5" cy="21.5" r="0.6" fill="#1E293B"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Compatible on all devices</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Whether you’re on the move or at home, our courses are available to you.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FORMAT 3: Classroom -->
+          <div class="training-accordion-item w-full lg:flex-1 h-[480px] lg:h-full rounded-2xl overflow-hidden cursor-pointer relative group transition-all duration-500 shadow-md hover:shadow-2xl bg-slate-900 border border-slate-200/40" data-index="2">
+            
+            <!-- Collapsed Trigger View -->
+            <div class="collapsed-view w-full h-full relative min-h-[480px] lg:min-h-full rounded-2xl overflow-hidden training-accordion-trigger" role="tab" tabindex="0" aria-label="Expand Classroom details" onclick="toggleExpertFormat(2, event)">
+              <img src="./images/training-classroom.jpg" alt="Classroom" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 select-none" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:from-black/95 transition-colors duration-300"></div>
+              <div class="absolute bottom-7 left-6 right-6 flex flex-col items-start gap-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">Classroom</h3>
+                <span class="text-white/80 group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m7-7H5"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Expanded Details View -->
+            <div class="expanded-view hidden flex-col md:flex-row items-stretch w-full h-full bg-white">
+              <div class="w-full md:w-56 lg:w-60 xl:w-64 shrink-0 relative min-h-[240px] md:min-h-full p-6 sm:p-7 flex flex-col justify-between overflow-hidden bg-[#45318A]">
+                <img src="./images/training-classroom.jpg" alt="Classroom" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-overlay opacity-40" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2c1d5e]/95 via-[#45318A]/85 to-[#5a42a8]/60"></div>
+                <div></div>
+                <div class="relative z-10 flex flex-col items-start gap-3">
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">Classroom</h3>
+                  <button type="button" class="training-close-btn text-white/90 hover:text-white transition-colors cursor-pointer" aria-label="Collapse details" onclick="toggleExpertFormat(2, event)">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex-1 bg-white p-6 sm:p-8 lg:p-9 flex flex-col justify-around space-y-5 sm:space-y-6 overflow-y-auto">
+                
+                <!-- Feature 1: Highly experienced trainers (Graduation Cap) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <path d="M16 6L30 13L16 20L2 13L16 6Z" fill="#64748B"/>
+                      <path d="M16 7.5L27.5 13L16 18.5L4.5 13L16 7.5Z" fill="#475569"/>
+                      <path d="M8.5 15.5V20.5C8.5 23 11.8 25 16 25C20.2 25 23.5 23 23.5 20.5V15.5L16 19.2L8.5 15.5Z" fill="#334155"/>
+                      <circle cx="16" cy="13" r="1.5" fill="#F59E0B"/>
+                      <path d="M16 13C18 14.5 20.5 16.5 21.5 19V24" stroke="#F59E0B" stroke-width="1.6" stroke-linecap="round"/>
+                      <circle cx="21.5" cy="24.5" r="1.2" fill="#D97706"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Highly experienced trainers</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">All of our trainers are highly qualified, having 10+ years of real-world experience.</p>
+                </div>
+
+                <!-- Feature 2: State of the art training venues (Rosette Seal) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <path d="M16 3L18.4 4.8L21.3 4.2L23.1 6.6L26 7.1L26.7 10L29.3 11.5L28.9 14.5L30.8 16.8L29.4 19.5L30.4 22.3L28.2 24.4L28.2 27.4L25.3 28.4L24.2 31.1L21.2 30.9L19.2 33.1L16.4 31.7L13.8 33.1L11.8 30.9L8.8 31.1L7.7 28.4L4.8 27.4L4.8 24.4L2.6 22.3L3.6 19.5L2.2 16.8L4.1 14.5L3.7 11.5L6.3 10L7 7.1L9.9 6.6L11.7 4.2L14.6 4.8L16 3Z" fill="#312E81"/>
+                      <circle cx="16.5" cy="17.5" r="7" fill="#FBBF24" stroke="#F59E0B" stroke-width="1.2"/>
+                      <circle cx="16.5" cy="17.5" r="5" fill="#F59E0B"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">State of the art training venues</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">We use the highest quality learning facilities to make sure your experience is as comfortable as possible.</p>
+                </div>
+
+                <!-- Feature 3: Small class sizes (Face Mask) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <path d="M6 16C3 16 3 20 6 20M26 16C29 16 29 20 26 20" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round"/>
+                      <rect x="5.5" y="13" width="21" height="10" rx="3.5" fill="#2DD4BF"/>
+                      <line x1="7.5" y1="15.5" x2="24.5" y2="15.5" stroke="#14B8A6" stroke-width="1.2"/>
+                      <line x1="7.5" y1="18" x2="24.5" y2="18" stroke="#14B8A6" stroke-width="1.2"/>
+                      <line x1="7.5" y1="20.5" x2="24.5" y2="20.5" stroke="#0D9488" stroke-width="1.2"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Small class sizes</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">We limit our class sizes to promote better discussion and ensure everyone has a personalized experience in a safe environment.</p>
+                </div>
+
+                <!-- Feature 4: Great value for money (Gold Coin Stack) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <ellipse cx="19" cy="12" rx="7" ry="2.8" fill="#F59E0B"/>
+                      <path d="M12 12V15C12 16.5 15.1 17.8 19 17.8C22.9 17.8 26 16.5 26 15V12" fill="#D97706"/>
+                      <ellipse cx="19" cy="15" rx="7" ry="2.8" fill="#FBBF24"/>
+                      <path d="M12 15V18C12 19.5 15.1 20.8 19 20.8C22.9 20.8 26 19.5 26 18V15" fill="#D97706"/>
+                      <ellipse cx="19" cy="18" rx="7" ry="2.8" fill="#FDE047"/>
+                      <ellipse cx="10" cy="21" rx="5.5" ry="5.5" fill="#FBBF24" stroke="#D97706" stroke-width="1.2"/>
+                      <ellipse cx="10" cy="21" rx="4" ry="4" stroke="#F59E0B" stroke-width="1" stroke-dasharray="1.5 1.5"/>
+                      <text x="10" y="23.5" font-family="sans-serif" font-weight="900" font-size="6" fill="#B45309" text-anchor="middle">£</text>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Great value for money</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Get more bang for your buck! If you find your chosen course cheaper elsewhere, we’ll match it!</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FORMAT 4: Onsite -->
+          <div class="training-accordion-item w-full lg:flex-1 h-[480px] lg:h-full rounded-2xl overflow-hidden cursor-pointer relative group transition-all duration-500 shadow-md hover:shadow-2xl bg-slate-900 border border-slate-200/40" data-index="3">
+            
+            <!-- Collapsed Trigger View -->
+            <div class="collapsed-view w-full h-full relative min-h-[480px] lg:min-h-full rounded-2xl overflow-hidden training-accordion-trigger" role="tab" tabindex="0" aria-label="Expand Onsite details" onclick="toggleExpertFormat(3, event)">
+              <img src="./images/training-onsite.jpg" alt="Onsite" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 select-none" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:from-black/95 transition-colors duration-300"></div>
+              <div class="absolute bottom-7 left-6 right-6 flex flex-col items-start gap-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">Onsite</h3>
+                <span class="text-white/80 group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m7-7H5"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Expanded Details View -->
+            <div class="expanded-view hidden flex-col md:flex-row items-stretch w-full h-full bg-white">
+              <div class="w-full md:w-56 lg:w-60 xl:w-64 shrink-0 relative min-h-[240px] md:min-h-full p-6 sm:p-7 flex flex-col justify-between overflow-hidden bg-[#45318A]">
+                <img src="./images/training-onsite.jpg" alt="Onsite" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-overlay opacity-40" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2c1d5e]/95 via-[#45318A]/85 to-[#5a42a8]/60"></div>
+                <div></div>
+                <div class="relative z-10 flex flex-col items-start gap-3">
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">Onsite</h3>
+                  <button type="button" class="training-close-btn text-white/90 hover:text-white transition-colors cursor-pointer" aria-label="Collapse details" onclick="toggleExpertFormat(3, event)">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex-1 bg-white p-6 sm:p-8 lg:p-9 flex flex-col justify-around space-y-5 sm:space-y-6 overflow-y-auto">
+                
+                <!-- Feature 1: Tailored learning experience (Yellow Ruler + Scissors) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <rect x="7" y="5" width="4.5" height="23" rx="1" fill="#FACC15" stroke="#CA8A04" stroke-width="0.8"/>
+                      <line x1="7.5" y1="8" x2="9.5" y2="8" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="11" x2="10.5" y2="11" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="14" x2="9.5" y2="14" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="17" x2="10.5" y2="17" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="20" x2="9.5" y2="20" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="23" x2="10.5" y2="23" stroke="#A16207" stroke-width="0.8"/>
+                      <line x1="7.5" y1="26" x2="9.5" y2="26" stroke="#A16207" stroke-width="0.8"/>
+                      <circle cx="16" cy="24" r="2.5" stroke="#4B5563" stroke-width="1.2"/>
+                      <circle cx="21" cy="24" r="2.5" stroke="#4B5563" stroke-width="1.2"/>
+                      <line x1="16.5" y1="22" x2="19" y2="10" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="20.5" y1="22" x2="17" y2="10" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+                      <circle cx="18" cy="16" r="1" fill="#4B5563"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Tailored learning experience</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Our courses can be adapted to meet your individual project or business requirements regardless of scope.</p>
+                </div>
+
+                <!-- Feature 2: Maximise your training budget (Calculator + Banknotes) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <rect x="14" y="10" width="14" height="16" rx="1.5" transform="rotate(18 14 10)" fill="#86EFAC" stroke="#16A34A" stroke-width="0.8"/>
+                      <circle cx="21" cy="18" r="2" fill="#22C55E" opacity="0.6"/>
+                      <rect x="15" y="8" width="14" height="16" rx="1.5" transform="rotate(8 15 8)" fill="#BBF7D0" stroke="#16A34A" stroke-width="0.8"/>
+                      <rect x="6" y="8" width="13" height="18" rx="2" fill="#334155" stroke="#1E293B" stroke-width="1"/>
+                      <rect x="8" y="10.5" width="9" height="3.5" rx="0.8" fill="#94A3B8"/>
+                      <rect x="8" y="16" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="11.5" y="16" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="15" y="16" width="2" height="1.8" rx="0.5" fill="#F59E0B"/>
+                      <rect x="8" y="19" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="11.5" y="19" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="15" y="19" width="2" height="1.8" rx="0.5" fill="#64748B"/>
+                      <rect x="8" y="22" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="11.5" y="22" width="2" height="1.8" rx="0.5" fill="#E2E8F0"/>
+                      <rect x="15" y="22" width="2" height="1.8" rx="0.5" fill="#64748B"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Maximise your training budget</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">Cut unnecessary costs and focus your entire budget on what really matters, the training.</p>
+                </div>
+
+                <!-- Feature 3: Team building opportunity (Multi-color Jigsaw Puzzle) -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-3">
+                    <svg class="w-7 h-7 shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                      <rect x="7" y="7" width="8" height="8" rx="1.5" fill="#FBBF24"/>
+                      <circle cx="11" cy="7" r="2" fill="#FBBF24"/>
+                      <rect x="15" y="7" width="8" height="8" rx="1.5" fill="#3B82F6"/>
+                      <circle cx="23" cy="11" r="2" fill="#3B82F6"/>
+                      <rect x="7" y="15" width="8" height="8" rx="1.5" fill="#EF4444"/>
+                      <circle cx="7" cy="19" r="2" fill="#EF4444"/>
+                      <rect x="15" y="15" width="8" height="8" rx="1.5" fill="#6366F1"/>
+                      <circle cx="19" cy="23" r="2" fill="#6366F1"/>
+                    </svg>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">Team building opportunity</h4>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-10">This gives your team a great opportunity to come together, bond, and discuss, which may be limited in a standard classroom setting.</p>
+                </div>
+
+                <!-- Bottom Link: Learn more about Onsite training -->
+                <div class="pt-3">
+                  <button type="button" onclick="window.openEnquireModal('Onsite Corporate Training')" class="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-[#4B3294] hover:text-[#321c6e] transition-colors cursor-pointer group/link">
+                    <span>Learn more about Onsite training</span>
+                    <svg class="w-5 h-5 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8l4 4-4 4M8 12h8" />
+                    </svg>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Client / Company Proof Section (Real Client Logos Floating Right to Left with Animation) -->
+    <section class="py-12 sm:py-16 bg-white border-t border-slate-200/80 overflow-hidden" aria-label="Client & Company Proof">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <!-- Supporting Subheading (Exact Copy) -->
+        <p class="text-xs sm:text-sm font-semibold tracking-wider text-slate-500 uppercase mb-8">
+          We’ve trained 300,000+ companies & over 2,000,000 delegates
+        </p>
+
+        <!-- Infinite Seamless Marquee Floating Right to Left -->
+        <div class="logo-marquee-container py-2" aria-label="Trusted client companies">
+          <div class="logo-marquee-track">
+            
+            <!-- TRACK 1 -->
+            <div class="flex items-center gap-12 sm:gap-16 shrink-0">
+              
+              <!-- 1. Google -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl font-semibold tracking-tight font-sans">
+                  <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
+                </span>
+              </div>
+
+              <!-- 2. BOSS / HUGO BOSS -->
+              <div class="flex flex-col items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl font-serif font-black tracking-widest text-slate-900 leading-none">BOSS</span>
+                <span class="text-[7px] font-sans font-bold tracking-[0.25em] text-slate-700 mt-0.5">HUGO BOSS</span>
+              </div>
+
+              <!-- 3. John Lewis -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-serif font-semibold tracking-tight text-[#004A36]">
+                  John Lewis
+                </span>
+              </div>
+
+              <!-- 4. Deloitte. -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 font-sans">
+                  Deloitte<span class="text-[#86BC25] font-black">.</span>
+                </span>
+              </div>
+
+              <!-- 5. itv -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="h-6 sm:h-7 w-auto" viewBox="0 0 76 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10C8.65685 10 10 8.65685 10 7C10 5.34315 8.65685 4 7 4C5.34315 4 4 5.34315 4 7C4 8.65685 5.34315 10 7 10Z" fill="#00AEEF"/>
+                  <path d="M4 13H10V28H4V13Z" fill="#00AEEF"/>
+                  <path d="M19 8V13H14V17H19V28H25V17H31V13H25V8H19Z" fill="#9ACA3C"/>
+                  <path d="M34 13L40 28H46L52 13H46L43 22L40 13H34Z" fill="#F58220"/>
+                  <path d="M54 13L59 28H65L72 13H66L62 23L59 13H54Z" fill="#E6007E"/>
+                </svg>
+              </div>
+
+              <!-- 6. Ford -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="h-7 sm:h-8 w-auto" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="50" cy="20" rx="46" ry="17" fill="#002C6C" stroke="#FFFFFF" stroke-width="2"/>
+                  <ellipse cx="50" cy="20" rx="48" ry="19" fill="none" stroke="#002C6C" stroke-width="1.5"/>
+                  <text x="50" y="26" font-family="'Brush Script MT', cursive, 'Segoe Script', sans-serif" font-size="22" font-style="italic" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ford</text>
+                </svg>
+              </div>
+
+              <!-- 7. Harrods -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl italic font-bold tracking-tight text-slate-900" style="font-family: Georgia, 'Playfair Display', serif;">
+                  Harrods
+                </span>
+              </div>
+
+              <!-- 8. JUST EAT -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-black italic tracking-wide text-[#F33842] uppercase">
+                  JUST EAT
+                </span>
+              </div>
+
+              <!-- 9. BARCLAYS -->
+              <div class="flex items-center gap-1.5 shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="w-5 h-5 text-[#00AEEF]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.5L18 8v8.5l-6 3.75-6-3.75V8l6-3.5z"/>
+                  <path d="M12 7l-4 3 1.5 5.5L12 14l2.5 1.5L16 10l-4-3z"/>
+                </svg>
+                <span class="text-lg sm:text-xl font-extrabold tracking-widest text-[#00AEEF] font-sans">
+                  BARCLAYS
+                </span>
+              </div>
+
+              <!-- 10. Confused.com -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-bold tracking-tight text-[#002C6C]">
+                  Confused<span class="text-[#00AEEF]">.com</span>
+                </span>
+              </div>
+
+            </div>
+
+            <!-- TRACK 2 (Exact Duplicate for Seamless Infinite Animation) -->
+            <div class="flex items-center gap-12 sm:gap-16 shrink-0" aria-hidden="true">
+              
+              <!-- 1. Google -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl font-semibold tracking-tight font-sans">
+                  <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
+                </span>
+              </div>
+
+              <!-- 2. BOSS / HUGO BOSS -->
+              <div class="flex flex-col items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl font-serif font-black tracking-widest text-slate-900 leading-none">BOSS</span>
+                <span class="text-[7px] font-sans font-bold tracking-[0.25em] text-slate-700 mt-0.5">HUGO BOSS</span>
+              </div>
+
+              <!-- 3. John Lewis -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-serif font-semibold tracking-tight text-[#004A36]">
+                  John Lewis
+                </span>
+              </div>
+
+              <!-- 4. Deloitte. -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 font-sans">
+                  Deloitte<span class="text-[#86BC25] font-black">.</span>
+                </span>
+              </div>
+
+              <!-- 5. itv -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="h-6 sm:h-7 w-auto" viewBox="0 0 76 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10C8.65685 10 10 8.65685 10 7C10 5.34315 8.65685 4 7 4C5.34315 4 4 5.34315 4 7C4 8.65685 5.34315 10 7 10Z" fill="#00AEEF"/>
+                  <path d="M4 13H10V28H4V13Z" fill="#00AEEF"/>
+                  <path d="M19 8V13H14V17H19V28H25V17H31V13H25V8H19Z" fill="#9ACA3C"/>
+                  <path d="M34 13L40 28H46L52 13H46L43 22L40 13H34Z" fill="#F58220"/>
+                  <path d="M54 13L59 28H65L72 13H66L62 23L59 13H54Z" fill="#E6007E"/>
+                </svg>
+              </div>
+
+              <!-- 6. Ford -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="h-7 sm:h-8 w-auto" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="50" cy="20" rx="46" ry="17" fill="#002C6C" stroke="#FFFFFF" stroke-width="2"/>
+                  <ellipse cx="50" cy="20" rx="48" ry="19" fill="none" stroke="#002C6C" stroke-width="1.5"/>
+                  <text x="50" y="26" font-family="'Brush Script MT', cursive, 'Segoe Script', sans-serif" font-size="22" font-style="italic" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ford</text>
+                </svg>
+              </div>
+
+              <!-- 7. Harrods -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-xl sm:text-2xl italic font-bold tracking-tight text-slate-900" style="font-family: Georgia, 'Playfair Display', serif;">
+                  Harrods
+                </span>
+              </div>
+
+              <!-- 8. JUST EAT -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-black italic tracking-wide text-[#F33842] uppercase">
+                  JUST EAT
+                </span>
+              </div>
+
+              <!-- 9. BARCLAYS -->
+              <div class="flex items-center gap-1.5 shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <svg class="w-5 h-5 text-[#00AEEF]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.5L18 8v8.5l-6 3.75-6-3.75V8l6-3.5z"/>
+                  <path d="M12 7l-4 3 1.5 5.5L12 14l2.5 1.5L16 10l-4-3z"/>
+                </svg>
+                <span class="text-lg sm:text-xl font-extrabold tracking-widest text-[#00AEEF] font-sans">
+                  BARCLAYS
+                </span>
+              </div>
+
+              <!-- 10. Confused.com -->
+              <div class="flex items-center shrink-0 px-2 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+                <span class="text-lg sm:text-xl font-bold tracking-tight text-[#002C6C]">
+                  Confused<span class="text-[#00AEEF]">.com</span>
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Bespoke Training Services Section (Clean, Open, 4-Column Benefit Layout) -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-[#fbfcfe] text-slate-900 border-t border-slate-200" id="bespoke-training" aria-label="Bespoke Training Services">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Centered Editorial Heading (Exact Source Copy) -->
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Bespoke training services to help your business reach the level it <span class="text-[#002353]">deserves to be.</span>
+          </h2>
+        </div>
+
+        <!-- Four Equal Benefit Columns (Desktop: 4 cols, Tablet: 2x2, Mobile: 1 col) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 text-center">
+          
+          <!-- Benefit 1: Maximum budget efficiency (Calculator & Cash Icon) -->
+          <div class="space-y-3 px-2">
+            <svg class="w-7 h-7 mx-auto mb-3" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Green Cash / Note Behind -->
+              <rect x="13" y="5" width="15" height="21" rx="2" transform="rotate(12 13 5)" fill="#10B981"/>
+              <circle cx="21" cy="15" r="3" fill="#059669" fill-opacity="0.6"/>
+              <!-- Calculator Front -->
+              <rect x="4" y="6" width="18" height="23" rx="3" fill="#334155" stroke="#1E293B" stroke-width="1.2"/>
+              <rect x="6.5" y="9" width="13" height="4.5" rx="1" fill="#A7F3D0"/>
+              <text x="17.5" y="12.7" font-family="monospace" font-size="3.5" font-weight="bold" fill="#064E3B" text-anchor="end">88.90</text>
+              <!-- Calculator Keypad -->
+              <rect x="6.5" y="15.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="11.5" y="15.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="16.5" y="15.5" width="3" height="2.2" rx="0.5" fill="#F59E0B"/>
+              <rect x="6.5" y="19.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="11.5" y="19.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="16.5" y="19.5" width="3" height="2.2" rx="0.5" fill="#F59E0B"/>
+              <rect x="6.5" y="23.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="11.5" y="23.5" width="3" height="2.2" rx="0.5" fill="#64748B"/>
+              <rect x="16.5" y="23.5" width="3" height="2.2" rx="0.5" fill="#38BDF8"/>
+            </svg>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug">
+              Maximum budget efficiency
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
+              Our training pass services allow you to take full control of your budget and get the most for your money.
+            </p>
+          </div>
+
+          <!-- Benefit 2: Save time & avoid hassle (Stopwatch Icon) -->
+          <div class="space-y-3 px-2">
+            <svg class="w-7 h-7 mx-auto mb-3" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Top Crown / Pushers -->
+              <rect x="14" y="3" width="4" height="3" rx="0.5" fill="#94A3B8"/>
+              <rect x="13" y="1.5" width="6" height="2" rx="1" fill="#64748B"/>
+              <rect x="23.5" y="6" width="3" height="2" rx="0.5" transform="rotate(45 23.5 6)" fill="#64748B"/>
+              <!-- Stopwatch Body -->
+              <circle cx="16" cy="18" r="11" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+              <circle cx="16" cy="18" r="9.5" fill="#F8FAFC"/>
+              <!-- Dial Marks -->
+              <line x1="16" y1="10" x2="16" y2="12" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="16" y1="24" x2="16" y2="26" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="8" y1="18" x2="10" y2="18" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="22" y1="18" x2="24" y2="18" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Hand -->
+              <line x1="16" y1="18" x2="20" y2="13" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="16" cy="18" r="1.5" fill="#EF4444"/>
+            </svg>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug">
+              Save time & avoid hassle
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
+              Once we have your training requirements, we do all the hard work from start to finish.
+            </p>
+          </div>
+
+          <!-- Benefit 3: Dedicated account manager (Handshake Icon) -->
+          <div class="space-y-3 px-2">
+            <svg class="w-7 h-7 mx-auto mb-3" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Left Hand & Suit Sleeve -->
+              <path d="M4 14L8 11L12 14L8 18L4 14Z" fill="#3B82F6"/>
+              <path d="M7 12L13 16L18 16L16 13L11 11L7 12Z" fill="#FDBA74"/>
+              <!-- Right Hand & Suit Sleeve -->
+              <path d="M28 14L24 11L20 14L24 18L28 14Z" fill="#1E293B"/>
+              <path d="M25 12L19 16L14 16L16 19L21 19L25 12Z" fill="#D97706"/>
+              <!-- Clasp Details -->
+              <path d="M13 14C14 14 15 15 16 16C15 17 14 17.5 13 16.5L12 15L13 14Z" fill="#FDBA74"/>
+              <path d="M16 15C17 15.5 18 16.5 17 17.5C16 18 15 18 14 17.5L16 15Z" fill="#EA580C"/>
+            </svg>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug">
+              Dedicated account manager
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
+              Your on hand account manager is committed to delivering the best possible service.
+            </p>
+          </div>
+
+          <!-- Benefit 4: Highest calibre of trainers (Graduation Cap Icon) -->
+          <div class="space-y-3 px-2">
+            <svg class="w-7 h-7 mx-auto mb-3" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Cap Skull/Under-cap -->
+              <path d="M9 16.5V21C9 23 12 25 16 25C20 23 23 21 23 16.5V16.5L16 19.5L9 16.5Z" fill="#334155"/>
+              <!-- Diamond Cap Top -->
+              <path d="M16 8L30 14L16 20L2 14L16 8Z" fill="#475569"/>
+              <path d="M16 9.5L27 14L16 18.5L5 14L16 9.5Z" fill="#1E293B"/>
+              <!-- Center Button & Golden Tassel -->
+              <circle cx="16" cy="14" r="1.5" fill="#F59E0B"/>
+              <path d="M16 14C17.5 15 20 17 21 19V24" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="21" cy="24.5" r="1" fill="#D97706"/>
+            </svg>
+            <h3 class="text-lg font-bold text-slate-900 leading-snug">
+              Highest calibre of trainers
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-xs mx-auto">
+              We only source the best quality trainers from around the globe to ensure your training runs like clockwork
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Centered "Enquire now" CTA Button -->
+        <div class="text-center mt-12 sm:mt-14">
+          <button 
+            type="button" 
+            onclick="window.openEnquireModal('Bespoke Training Services')" 
+            class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold rounded-xl shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2 group min-h-[44px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-sm sm:text-base"
+          >
+            <span>Enquire now</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. The Knowledge Centre Section (Asymmetric Editorial Layout) -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white text-slate-900 border-t border-slate-200" id="knowledge-centre" aria-label="The Knowledge Centre">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Centered Section Heading (Exact Source Content) -->
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+            The Knowledge Centre
+          </h2>
+        </div>
+
+        <!-- Asymmetric Editorial Grid (Left: Large Featured Article, Right: 3 Recent Posts) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          
+          <!-- LEFT: Large Featured Article (Clean Grey Background with Light Purple Theme Accent on Click/Hover) -->
+          <div class="lg:col-span-7 xl:col-span-7">
+            <div 
+              id="featured-career-guide-card"
+              class="relative rounded-2xl overflow-hidden min-h-[380px] sm:min-h-[440px] h-full flex flex-col justify-between p-7 sm:p-10 bg-[#f8f9fa] hover:bg-[#f3f0fb] active:bg-[#ede9f8] border border-slate-200/90 hover:border-purple-300/80 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer" 
+              onclick="toggleKnowledgeFeatured(this, 'Salesforce Developer Salary Guide')"
+              role="article"
+              tabindex="0"
+            >
+              <!-- Top Header & Badge (Exact Source Copy) -->
+              <div class="space-y-4">
+                <div>
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100/80 text-[#4B3294] border border-purple-200/70">
+                    Featured Career Guide
+                  </span>
+                </div>
+                
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-snug group-hover:text-[#4B3294] transition-colors">
+                  Salesforce Developer Salary: A Complete Guide...
+                </h3>
+                
+                <p class="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+                  Explore Salesforce Developer Salary ranges across the UK, USA and India, along with the key factors that influence pay. Learn how skills, experience, location and certifications can shape your earning potential....
+                </p>
+              </div>
+
+              <!-- Bottom Meta & Action -->
+              <div class="pt-6 mt-6 border-t border-slate-200/70 flex items-center justify-between text-xs sm:text-sm text-slate-500 font-medium">
+                <span>03 Sep 2026</span>
+                <span class="text-[#4B3294] font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1.5">
+                  Read Article
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: 3 Recent Post Rows + "View older posts" CTA -->
+          <div class="lg:col-span-5 xl:col-span-5 flex flex-col justify-between h-full space-y-4">
+            
+            <div class="space-y-3.5">
+              <!-- Recent Post 1 (Exact Source Copy) -->
+              <div 
+                class="block p-5 sm:p-6 rounded-2xl bg-slate-50 hover:bg-purple-50/50 border border-slate-200/80 hover:border-purple-200 transition-all group shadow-sm cursor-pointer"
+                onclick="window.openEnquireModal('Entry Level Project Management Jobs')"
+                role="article"
+              >
+                <h4 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#002353] transition-colors leading-snug">
+                  Entry Level Project Management Jobs: A Complete Career Guide
+                </h4>
+                <div class="mt-3 flex items-center justify-between text-xs text-slate-500 font-medium">
+                  <span>03 Sep 2026</span>
+                  <span class="text-[#002353] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Read <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Recent Post 2 (Exact Source Copy) -->
+              <div 
+                class="block p-5 sm:p-6 rounded-2xl bg-slate-50 hover:bg-purple-50/50 border border-slate-200/80 hover:border-purple-200 transition-all group shadow-sm cursor-pointer"
+                onclick="window.openEnquireModal('Benefits of ISO 9001')"
+                role="article"
+              >
+                <h4 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#002353] transition-colors leading-snug">
+                  Benefits of ISO 9001 for Consumers and Businesses
+                </h4>
+                <div class="mt-3 flex items-center justify-between text-xs text-slate-500 font-medium">
+                  <span>03 Sep 2026</span>
+                  <span class="text-[#002353] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Read <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Recent Post 3 (Exact Source Copy) -->
+              <div 
+                class="block p-5 sm:p-6 rounded-2xl bg-slate-50 hover:bg-purple-50/50 border border-slate-200/80 hover:border-purple-200 transition-all group shadow-sm cursor-pointer"
+                onclick="window.openEnquireModal('Top Salesforce Roles')"
+                role="article"
+              >
+                <h4 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#002353] transition-colors leading-snug">
+                  Top Salesforce Roles: A Complete Guide
+                </h4>
+                <div class="mt-3 flex items-center justify-between text-xs text-slate-500 font-medium">
+                  <span>03 Sep 2026</span>
+                  <span class="text-[#002353] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Read <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- "View older posts" Secondary CTA -->
+            <div class="pt-2">
+              <button 
+                type="button" 
+                onclick="window.openEnquireModal('Knowledge Centre Resources Archive')" 
+                class="w-full sm:w-auto px-6 py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 font-bold rounded-xl text-sm transition-colors inline-flex items-center justify-center gap-2 group cursor-pointer min-h-[44px]"
+              >
+                <span>View older posts</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+    <!-- 7. Transforming People and Organisations Section (Typography-Led Stats Split Layout) -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-[#fbfcfe] text-slate-900 border-t border-slate-200" id="global-impact" aria-label="Global Impact & Stats">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Large Split Layout (Left ~58%, Right ~42%) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          
+          <!-- LEFT COLUMN: Heading, 4 Typography Stats, CTAs -->
+          <div class="lg:col-span-7 xl:col-span-7 space-y-10 sm:space-y-12">
+            
+            <!-- Exact Source Heading -->
+            <div>
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                Transforming people and organisations around the globe
+              </h2>
+            </div>
+
+            <!-- Typography-Led Statistics Grid (Exact Source Metrics) -->
+            <div class="grid grid-cols-2 gap-6 sm:gap-8">
+              
+              <!-- Stat 1: Delegates Trained -->
+              <div class="space-y-1">
+                <p class="text-xs uppercase tracking-wider font-semibold text-slate-500">
+                  DELEGATES TRAINED
+                </p>
+                <p class="text-2xl sm:text-4xl font-extrabold text-[#002353] tracking-tight">
+                  2,000,000+
+                </p>
+              </div>
+
+              <!-- Stat 2: Teams Developed -->
+              <div class="space-y-1">
+                <p class="text-xs uppercase tracking-wider font-semibold text-slate-500">
+                  TEAMS DEVELOPED
+                </p>
+                <p class="text-2xl sm:text-4xl font-extrabold text-[#002353] tracking-tight">
+                  90,000+
+                </p>
+              </div>
+
+              <!-- Stat 3: Organisations Transformed -->
+              <div class="space-y-1">
+                <p class="text-xs uppercase tracking-wider font-semibold text-slate-500">
+                  ORGANISATIONS TRANSFORMED
+                </p>
+                <p class="text-2xl sm:text-4xl font-extrabold text-[#002353] tracking-tight">
+                  15,000+
+                </p>
+              </div>
+
+              <!-- Stat 4: Worldwide Locations -->
+              <div class="space-y-1">
+                <p class="text-xs uppercase tracking-wider font-semibold text-slate-500">
+                  WORLDWIDE LOCATIONS
+                </p>
+                <p class="text-2xl sm:text-4xl font-extrabold text-[#002353] tracking-tight">
+                  490+
+                </p>
+              </div>
+
+            </div>
+
+            <!-- CTA Actions (Exact Source Actions) -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a 
+                href="#courses" 
+                class="px-7 py-3.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold rounded-xl shadow-md transition-all text-center text-sm sm:text-base min-h-[44px] flex items-center justify-center"
+              >
+                See full course catalogue
+              </a>
+              
+              <button 
+                type="button" 
+                onclick="window.openEnquireModal('Transforming Organisations Goal')" 
+                class="px-7 py-3.5 bg-[#002353] hover:bg-[#001738] text-white font-bold rounded-xl shadow-md transition-all text-center text-sm sm:text-base inline-flex items-center justify-center gap-2 group min-h-[44px] cursor-pointer"
+              >
+                <span>Enquire now</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Editorial Training Impact Panel with Photography Background (~42%) -->
+          <div class="lg:col-span-5 xl:col-span-5 w-full">
+            <div class="relative rounded-3xl overflow-hidden min-h-[340px] sm:min-h-[420px] bg-slate-900 border border-slate-200/80 shadow-xl p-8 sm:p-10 flex flex-col justify-between group">
+              
+              <!-- Real Photography Background Image -->
+              <img 
+                src="./images/transforming-global-team.jpg" 
+                alt="Corporate enterprise team training" 
+                class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 select-none"
+                loading="lazy"
+              />
+
+              <!-- Dark Vignette Overlay for High Readability & Contrast -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#040915]/95 via-[#071329]/70 to-[#0c1f44]/40" aria-hidden="true"></div>
+
+              <!-- Top Content Badge -->
+              <div class="relative z-10">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/20 text-xs font-semibold text-white backdrop-blur-md">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Global Enterprise Reach
+                </span>
+              </div>
+
+              <!-- Bottom Content Card Highlight -->
+              <div class="relative z-10 space-y-3 pt-12">
+                <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">
+                  Empowering professionals in over 490+ cities worldwide
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  Delivering accredited classroom, virtual, and onsite corporate training solutions built for modern global workforces.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Clean In-Page Section Anchors -->
+    <div id="courses"></div>
+    <div id="about"></div>
+    <div id="offers"></div>
+  </main>
+
+  <!-- Shared Responsive Footer -->
+  <footer id="site-footer" class="w-full"></footer>
+
+  <!-- Application Scripts (Modular Vanilla JS) -->
+  <script src="./js/data/courses.js"></script>
+  <script src="./js/components/country-selector.js"></script>
+  <script src="./js/components/header.js"></script>
+  <script src="./js/components/footer.js"></script>
+  <script src="./js/components/enquire-modal.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
