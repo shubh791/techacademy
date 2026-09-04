@@ -1,11 +1,34 @@
-/**
- * TechAcademy - Shared Responsive Footer Component
- * Deep TechAcademy purple footer with brand identity, contact info, and clean route navigation
- */
+function getFooterRootPrefix() {
+  if (typeof window !== "undefined" && window.TECHACADEMY_ROOT_PATH !== undefined) {
+    return window.TECHACADEMY_ROOT_PATH;
+  }
+  if (typeof window !== "undefined") {
+    const loc = window.location.pathname || "";
+    if (loc.includes("/courses/")) {
+      return "../../";
+    }
+  }
+  return "./";
+}
+
+function resolveFooterSectionUrl(hash) {
+  const root = getFooterRootPrefix();
+  if (typeof window !== "undefined") {
+    const loc = window.location.pathname || "";
+    if (loc.includes("/courses/")) {
+      return (window.location.protocol === "file:" ? root + "index.html" : root) + hash;
+    }
+  }
+  return hash;
+}
 
 function renderFooter(containerId = "site-footer") {
   const container = document.getElementById(containerId);
   if (!container) return;
+
+  const rootPrefix = getFooterRootPrefix();
+  const homeUrl = (typeof window !== "undefined" && window.location.protocol === "file:") ? (rootPrefix + "index.html") : (rootPrefix === "./" ? "./" : rootPrefix);
+  const logoSrc = rootPrefix + "favicon.svg";
 
   container.innerHTML = `
     <footer class="bg-[#071329] text-slate-300 border-t border-white/10" aria-label="Site Footer">
@@ -18,9 +41,9 @@ function renderFooter(containerId = "site-footer") {
           <div class="lg:col-span-6 space-y-6">
             
             <!-- TechAcademy Wordmark & Logo Badge -->
-            <a href="/" class="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 w-fit group" aria-label="TechAcademy Home">
+            <a href="${homeUrl}" class="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg py-1 w-fit group" aria-label="TechAcademy Home">
               <div class="w-11 h-11 rounded-xl overflow-hidden shadow-md shadow-amber-500/10 group-hover:scale-105 transition-transform duration-200 shrink-0">
-                <img src="./favicon.svg" alt="TechAcademy Logo" class="w-full h-full object-contain" width="44" height="44" />
+                <img src="${logoSrc}" alt="TechAcademy Logo" class="w-full h-full object-contain" width="44" height="44" />
               </div>
               <div class="flex flex-col">
                 <span class="font-extrabold text-2xl tracking-tight text-white group-hover:text-slate-100 transition-colors">
@@ -88,22 +111,22 @@ function renderFooter(containerId = "site-footer") {
               </h4>
               <ul class="space-y-2.5 text-sm">
                 <li>
-                  <a href="#courses" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#courses')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Browse Courses
                   </a>
                 </li>
                 <li>
-                  <a href="#expert-training" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#expert-training')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Online Instructor-led
                   </a>
                 </li>
                 <li>
-                  <a href="#expert-training" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#expert-training')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Online Self-paced
                   </a>
                 </li>
                 <li>
-                  <a href="#expert-training" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#expert-training')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Classroom & Onsite
                   </a>
                 </li>
@@ -117,22 +140,22 @@ function renderFooter(containerId = "site-footer") {
               </h4>
               <ul class="space-y-2.5 text-sm">
                 <li>
-                  <a href="#about" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#about')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#bespoke-training" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#bespoke-training')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Bespoke Training
                   </a>
                 </li>
                 <li>
-                  <a href="#offers" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#offers')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Offers & Discounts
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
+                  <a href="${resolveFooterSectionUrl('#contact')}" class="text-slate-300 hover:text-amber-400 transition-colors inline-block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded">
                     Contact Us
                   </a>
                 </li>

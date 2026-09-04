@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads Mastery with AI Training Course | TechAcademy</title>
+  <meta name="description" content="Master Google Ads with AI, Smart Bidding, Performance Max, YouTube Ads, conversion tracking, and Google certification with TechAcademy. 40 hours, 100% job guarantee. Enquire today!">
+  
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              purple: '#1e1b4b',
+              navy: '#0b142c',
+              dark: '#040814',
+              surface: '#0d1a38',
+              accent: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 font-sans">
+
+  <!-- Shared Responsive Header with Courses Mega Menu -->
+  <header id="site-header" class="w-full z-50 sticky top-0"></header>
+
+  <!-- Dynamic Course Page Container -->
+  <main id="course-page-root" class="flex-grow">
+    <!-- Populated by course-page.js -->
+  </main>
+
+  <!-- Shared Responsive Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Global Modal for Enquire / Callback -->
+  <div id="global-enquire-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative border border-slate-200">
+      <button type="button" onclick="closeGlobalEnquireModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <div class="mb-4">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-50 text-[#45318A] border border-purple-200/60 mb-2">
+          Course Advisory
+        </span>
+        <h3 id="modal-title" class="text-xl font-bold text-slate-900">Request Course Information</h3>
+        <p class="text-xs text-slate-500 mt-1">Speak to a certified education advisor about syllabus, schedules, fees, and job guarantee.</p>
+      </div>
+      <form id="modal-enquire-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
+          <input type="text" required placeholder="Enter your full name" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+          <input type="email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Mobile Phone *</label>
+          <input type="tel" required placeholder="+44 7123 456789" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Message (Optional)</label>
+          <textarea rows="2" placeholder="Tell us about your learning goals or batch timing preferences..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A] resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 px-6 bg-[#45318A] hover:bg-[#341F69] text-white font-bold rounded-lg shadow-md transition-all">
+          Submit Enquiry
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="../../js/data/courses.js"></script>
+  <script src="../../js/components/country-selector.js"></script>
+  <script src="../../js/components/header.js"></script>
+  <script src="../../js/components/footer.js"></script>
+  <script src="../../js/data/courses/google-ads.js"></script>
+  <script src="../../js/components/course-page.js"></script>
+
+  <!-- Initializer -->
+  <script>
+    function openGlobalEnquireModal(context = "Course Enquiry") {
+      const modal = document.getElementById("global-enquire-modal");
+      const title = document.getElementById("modal-title");
+      if (modal) {
+        if (title) title.textContent = "Enquire: " + context;
+        modal.classList.remove("hidden");
+      }
+    }
+
+    function closeGlobalEnquireModal() {
+      const modal = document.getElementById("global-enquire-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    window.openEnquireModal = openGlobalEnquireModal;
+    window.closeEnquireModal = closeGlobalEnquireModal;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Render Header
+      if (typeof renderHeader === "function") {
+        renderHeader("site-header");
+      }
+
+      // 2. Render Course Page Content
+      if (typeof renderCoursePage === "function" && typeof COURSE_DATA_GOOGLE_ADS !== "undefined") {
+        renderCoursePage(COURSE_DATA_GOOGLE_ADS, "course-page-root");
+      }
+
+      // 3. Render Footer
+      if (typeof renderFooter === "function") {
+        renderFooter("site-footer");
+      }
+
+      // Modal form submit
+      const modalForm = document.getElementById("modal-enquire-form");
+      if (modalForm) {
+        modalForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          alert("Thank you! A TechAcademy learning consultant will contact you shortly.");
+          closeGlobalEnquireModal();
+          modalForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

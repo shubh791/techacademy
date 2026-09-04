@@ -431,3 +431,56 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.7);
 }
+
+/* ==========================================================================
+   Course Hero Visual Animation System
+   ========================================================================== */
+@keyframes heroSubtleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
+@keyframes heroOrbitRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-hero-subtle-float {
+  animation: heroSubtleFloat 6s ease-in-out infinite;
+}
+
+.animate-hero-orbit {
+  transform-origin: center;
+  animation: heroOrbitRotate 50s linear infinite;
+}
+
+.animate-hero-glow {
+  animation: heroGlowPulse 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-subtle-float,
+  .animate-hero-orbit,
+  .animate-hero-glow {
+    animation: none !important;
+  }
+}
