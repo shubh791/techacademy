@@ -4,81 +4,10 @@
  * pagination/load-more, and modal enquiry integration.
  */
 
-// Course-specific icon helper for offer cards
-function getOfferCourseIconSvg(course) {
-  const cid = (course.id || "").toLowerCase();
-  const ccat = (course.category || "").toLowerCase();
-
-  if (cid.includes("python") || cid.includes("code") || cid.includes("programming")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="16 18 22 12 16 6"></polyline>
-        <polyline points="8 6 2 12 8 18"></polyline>
-      </svg>
-    `;
-  }
-
-  if (ccat.includes("artificial-intelligence") || ccat.includes("intelligence") || cid.includes("ai") || cid.includes("machine-learning") || cid.includes("deep-learning")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="3"></circle>
-        <circle cx="4" cy="6" r="2"></circle>
-        <circle cx="20" cy="6" r="2"></circle>
-        <circle cx="4" cy="18" r="2"></circle>
-        <circle cx="20" cy="18" r="2"></circle>
-        <line x1="6" y1="7" x2="9.5" y2="10.5"></line>
-        <line x1="18" y1="7" x2="14.5" y2="10.5"></line>
-        <line x1="6" y1="17" x2="9.5" y2="13.5"></line>
-        <line x1="18" y1="17" x2="14.5" y2="13.5"></line>
-      </svg>
-    `;
-  }
-
-  if (ccat.includes("cloud") || cid.includes("aws") || cid.includes("azure") || cid.includes("gcp") || cid.includes("kubernetes")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-      </svg>
-    `;
-  }
-
-  if (ccat.includes("cyber") || cid.includes("hacker") || cid.includes("security") || cid.includes("cissp") || cid.includes("cisa")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <polyline points="9 12 11 14 15 10"></polyline>
-      </svg>
-    `;
-  }
-
-  if (ccat.includes("network") || cid.includes("firewall") || cid.includes("cisco") || cid.includes("paloalto") || cid.includes("checkpoint")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-      </svg>
-    `;
-  }
-
-  if (ccat.includes("digital") || ccat.includes("marketing") || cid.includes("seo") || cid.includes("ads") || cid.includes("analytics")) {
-    return `
-      <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-      </svg>
-    `;
-  }
-
-  // Fallback graduation cap
-  return `
-    <svg class="w-5 h-5 text-[#45318A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-    </svg>
-  `;
+// Resolve the same centralized course PNG used by the courses catalogue.
+function getOfferCourseIconSrc(course) {
+  const root = window.location.pathname.includes("/offers/") ? "../" : "./";
+  return `${root}assets/${course.id}/course-icon.png`;
 }
 
 // Course short summary helper
@@ -110,7 +39,7 @@ function getOfferCourseSummary(course) {
 
 // Generate single Offer Card HTML
 function createOfferCardHtml(course, isFeatured = false) {
-  const iconSvg = getOfferCourseIconSvg(course);
+  const iconSrc = getOfferCourseIconSrc(course);
   const summary = getOfferCourseSummary(course);
 
   return `
@@ -126,7 +55,14 @@ function createOfferCardHtml(course, isFeatured = false) {
             ${course.category}
           </span>
           <div class="w-10 h-10 rounded-xl bg-slate-50 group-hover:bg-purple-50 border border-slate-100 group-hover:border-purple-200 flex items-center justify-center shrink-0 transition-colors shadow-xs">
-            ${iconSvg}
+            <img
+              src="${iconSrc}"
+              alt="${course.name} course icon"
+              class="w-7 h-7 object-contain"
+              width="28"
+              height="28"
+              loading="lazy"
+            />
           </div>
         </div>
 

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <linearGradient id="csShieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#312E81"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+
+    <linearGradient id="csBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <linearGradient id="csCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <linearGradient id="csAmberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <filter id="csGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#38BDF8" flood-opacity="0.35"/>
+    </filter>
+    <filter id="csShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <g id="cyber-expert-icon">
+    <!-- Outer Orbital Perimeter Rings (Threat Radar) -->
+    <circle cx="256" cy="256" r="200" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="8 12" opacity="0.35"/>
+    <circle cx="256" cy="256" r="165" stroke="#38BDF8" stroke-width="2" opacity="0.25"/>
+
+    <!-- Radar Sweep Nodes -->
+    <circle cx="256" cy="56" r="6" fill="#FBBF24"/>
+    <circle cx="421" cy="256" r="6" fill="#38BDF8"/>
+    <circle cx="256" cy="456" r="6" fill="#818CF8"/>
+    <circle cx="91" cy="256" r="6" fill="#34D399"/>
+
+    <!-- Master Outer Defense Shield -->
+    <path d="M256 80 L380 135 C380 270 325 365 256 415 C187 365 132 270 132 135 Z" fill="url(#csShieldGrad)" stroke="url(#csBorderGrad)" stroke-width="8" stroke-linejoin="round" filter="url(#csShadow)"/>
+
+    <!-- Inner Shield Inset Layer -->
+    <path d="M256 112 L352 155 C352 260 308 335 256 376 C204 335 160 260 160 155 Z" fill="#0F172A" fill-opacity="0.65" stroke="#4338CA" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- Cyber Circuit Traces -->
+    <path d="M200 170 L200 220 L230 250" stroke="#06B6D4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <circle cx="200" cy="170" r="5" fill="#38BDF8"/>
+
+    <path d="M312 170 L312 220 L282 250" stroke="#06B6D4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <circle cx="312" cy="170" r="5" fill="#38BDF8"/>
+
+    <path d="M256 345 L256 310" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="256" cy="345" r="5" fill="#FDE047"/>
+
+    <!-- Central Cyber Lock Shackle -->
+    <path d="M228 235 V205 C228 189 240 177 256 177 C272 177 284 189 284 205 V235" fill="none" stroke="url(#csAmberGrad)" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Central Cyber Lock Core -->
+    <rect x="214" y="230" width="84" height="68" rx="14" fill="url(#csCoreGrad)" stroke="#FFFFFF" stroke-width="4" filter="url(#csGlow)"/>
+
+    <!-- Keyhole / Digital Core -->
+    <circle cx="256" cy="256" r="9" fill="#0F172A"/>
+    <polygon points="252,256 260,256 263,278 249,278" fill="#0F172A"/>
+
+    <!-- Strategic Spark Stars -->
+    <path d="M375 95 L378 105 L388 108 L378 111 L375 121 L372 111 L362 108 L372 105 Z" fill="#FBBF24" opacity="0.9"/>
+    <path d="M135 345 L137 353 L145 355 L137 357 L135 365 L133 357 L125 355 L133 353 Z" fill="#38BDF8" opacity="0.8"/>
+  </g>
+</svg>

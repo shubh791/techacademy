@@ -870,9 +870,11 @@ function renderCourseHeroVisual(courseData) {
   const title = courseData.title || "";
   const visualType = getCourseVisualType(courseId, categorySlug, title);
   const vectorContent = getCourseVectorPaths(visualType);
+  const root = window.location.pathname.includes("/courses/") ? "../../" : "./";
+  const imageSrc = `${root}assets/${courseId}/course-icon.png`;
 
   return `
-    <div class="course-hero-visual-wrapper relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] aspect-square flex items-center justify-center pointer-events-none select-none">
+    <div class="course-hero-visual-wrapper relative w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[420px] aspect-square flex items-center justify-center pointer-events-none select-none">
       
       <!-- Ambient Radial Backlight Glow -->
       <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
@@ -892,9 +894,21 @@ function renderCourseHeroVisual(courseData) {
         <circle cx="50" cy="180" r="2.5" fill="#F59E0B" opacity="0.75" />
       </svg>
 
-      <!-- Main Course-Specific Floating Emblem -->
+      <!-- Main Course-Specific Floating PNG -->
       <div class="relative z-10 w-full h-full flex items-center justify-center animate-hero-subtle-float">
-        <svg class="w-full h-full max-w-[320px] max-h-[320px]" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${title} Visual Identity">
+        <img
+          src="${imageSrc}"
+          alt="${title} course visual"
+          class="relative z-10 w-full h-full max-w-[220px] max-h-[220px] sm:max-w-[270px] sm:max-h-[270px] lg:max-w-[340px] lg:max-h-[340px] object-contain"
+          width="340"
+          height="340"
+          loading="eager"
+          decoding="async"
+          onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden')"
+        />
+
+        <!-- Existing course vector is retained only as a missing-asset fallback. -->
+        <svg class="hidden absolute inset-0 m-auto w-full h-full max-w-[220px] max-h-[220px] sm:max-w-[270px] sm:max-h-[270px] lg:max-w-[320px] lg:max-h-[320px]" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${title} fallback visual">
           <defs>
             <!-- Core White-to-Lavender Gradient -->
             <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1033,7 +1047,7 @@ function renderCourseHero(data) {
           </div>
 
           <!-- Right Column: Course-Specific Premium Visual (~32-30% / 4 cols) -->
-          <div class="hidden lg:flex lg:col-span-4 items-center justify-center relative select-none pointer-events-none" aria-hidden="true">
+          <div class="flex lg:col-span-4 items-center justify-center relative select-none pointer-events-none" aria-hidden="true">
             ${renderCourseHeroVisual(data)}
           </div>
 
@@ -1186,6 +1200,238 @@ function renderCourseEnquiryForm(data, options = {}) {
 }
 
 /**
+ * Contextual SVG Icon for Course Benefit Cards
+ */
+function getBenefitIconSvg(title, desc, index) {
+  const combined = ((title || "") + " " + (desc || "")).toLowerCase();
+
+  // 1. Roles / Career / Leadership / Opportunities
+  if (
+    combined.includes("role") ||
+    combined.includes("career") ||
+    combined.includes("job") ||
+    combined.includes("engineer") ||
+    combined.includes("developer") ||
+    combined.includes("specialist") ||
+    combined.includes("consultant") ||
+    combined.includes("lead")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    `;
+  }
+
+  // 2. Salary / High Demand / Compensation / ROI / Value
+  if (
+    combined.includes("salary") ||
+    combined.includes("compensation") ||
+    combined.includes("package") ||
+    combined.includes("earning") ||
+    combined.includes("growth") ||
+    combined.includes("lpa") ||
+    combined.includes("$") ||
+    combined.includes("roi") ||
+    combined.includes("demand")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+      </svg>
+    `;
+  }
+
+  // 3. Global Opportunities / Worldwide / Industry
+  if (
+    combined.includes("global") ||
+    combined.includes("international") ||
+    combined.includes("worldwide") ||
+    combined.includes("enterprise") ||
+    combined.includes("abroad") ||
+    combined.includes("network")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke-width="1.8"></circle>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>
+      </svg>
+    `;
+  }
+
+  // 4. Security / Cloud / Governance / Compliance
+  if (
+    combined.includes("security") ||
+    combined.includes("defense") ||
+    combined.includes("cloud") ||
+    combined.includes("protect") ||
+    combined.includes("govern") ||
+    combined.includes("compliance") ||
+    combined.includes("safe") ||
+    combined.includes("threat")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+      </svg>
+    `;
+  }
+
+  // 5. Practical Skills / Hands-on / Projects / Code / Lab / Tools
+  if (
+    combined.includes("practical") ||
+    combined.includes("hands-on") ||
+    combined.includes("code") ||
+    combined.includes("project") ||
+    combined.includes("portfolio") ||
+    combined.includes("tool") ||
+    combined.includes("lab") ||
+    combined.includes("build")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="16 18 22 12 16 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+        <polyline points="8 6 2 12 8 18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+      </svg>
+    `;
+  }
+
+  // 6. Analytics / Marketing / Campaign / Optimization / Performance
+  if (
+    combined.includes("analytic") ||
+    combined.includes("marketing") ||
+    combined.includes("target") ||
+    combined.includes("metric") ||
+    combined.includes("campaign") ||
+    combined.includes("optimiz") ||
+    combined.includes("performance")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+      </svg>
+    `;
+  }
+
+  // 7. Certification / Credentials / Validation
+  if (
+    combined.includes("certif") ||
+    combined.includes("credential") ||
+    combined.includes("validate") ||
+    combined.includes("accredit") ||
+    combined.includes("badge")
+  ) {
+    return `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+      </svg>
+    `;
+  }
+
+  // 8. Foundations / Mastery / Knowledge Fallback based on index
+  const fallbackIcons = [
+    `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>`,
+    `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>`,
+    `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7"></path></svg>`
+  ];
+
+  return fallbackIcons[index % fallbackIcons.length];
+}
+
+/**
+ * Normalizes raw benefit strings or objects into { title, description }
+ */
+function formatBenefitItem(rawItem, courseTitle, index) {
+  if (!rawItem) return null;
+
+  if (typeof rawItem === "object" && rawItem.title && (rawItem.description || rawItem.desc)) {
+    return {
+      title: rawItem.title,
+      description: rawItem.description || rawItem.desc,
+      icon: rawItem.icon
+    };
+  }
+
+  const str = typeof rawItem === "string" ? rawItem.trim() : String(rawItem);
+  if (!str) return null;
+
+  if (str.includes(":")) {
+    const parts = str.split(":");
+    const candidateTitle = parts[0].trim();
+    const candidateDesc = parts.slice(1).join(":").trim();
+    if (candidateTitle.length < 50 && candidateDesc.length > 5) {
+      return {
+        title: candidateTitle,
+        description: candidateDesc
+      };
+    }
+  }
+
+  if (str.includes(" – ") || str.includes(" - ")) {
+    const delimiter = str.includes(" – ") ? " – " : " - ";
+    const parts = str.split(delimiter);
+    const candidateTitle = parts[0].trim();
+    const candidateDesc = parts.slice(1).join(delimiter).trim();
+    if (candidateTitle.length < 45 && candidateDesc.length > 5) {
+      return {
+        title: candidateTitle,
+        description: candidateDesc
+      };
+    }
+  }
+
+  let title = "Career Advancement";
+  const lower = str.toLowerCase();
+  if (lower.includes("role") || lower.includes("job") || lower.includes("intern") || lower.includes("specialist") || lower.includes("engineer") || lower.includes("developer") || lower.includes("analyst")) {
+    title = "In-Demand Career Roles";
+  } else if (lower.includes("salary") || lower.includes("lpa") || lower.includes("$") || lower.includes("₹") || lower.includes("package") || lower.includes("compensation") || lower.includes("earning")) {
+    title = "Competitive Compensation";
+  } else if (lower.includes("global") || lower.includes("international") || lower.includes("worldwide") || lower.includes("abroad")) {
+    title = "Global Opportunities";
+  } else if (lower.includes("firm") || lower.includes("startup") || lower.includes("company") || lower.includes("enterprise") || lower.includes("industr") || lower.includes("organization")) {
+    title = "Enterprise & Industry Demand";
+  } else if (lower.includes("practical") || lower.includes("hands-on") || lower.includes("project") || lower.includes("portfolio") || lower.includes("code") || lower.includes("tools") || lower.includes("lab")) {
+    title = "Hands-On Practical Skills";
+  } else if (lower.includes("foundation") || lower.includes("start") || lower.includes("kickstart") || lower.includes("step into") || lower.includes("enter") || lower.includes("begin")) {
+    title = "Strong Domain Foundations";
+  } else if (lower.includes("future-proof") || lower.includes("advance") || lower.includes("grow") || lower.includes("leadership") || lower.includes("future")) {
+    title = "Future-Proof Career Growth";
+  } else if (lower.includes("freelanc") || lower.includes("consult") || lower.includes("flexible")) {
+    title = "Flexible & Freelance Paths";
+  } else if (lower.includes("certif") || lower.includes("credential") || lower.includes("validate") || lower.includes("accredit")) {
+    title = "Professional Certification";
+  } else {
+    const fallbacks = [
+      "Skill Mastery",
+      "Career Pathways",
+      "Industry Applications",
+      "Professional Growth",
+      "Practical Confidence",
+      "Certification Readiness"
+    ];
+    title = fallbacks[index % fallbacks.length];
+  }
+
+  return {
+    title: title,
+    description: str
+  };
+}
+
+/**
+ * Fallback benefits generator if course data lacks an overview.benefits item
+ */
+function deriveFallbackBenefits(data) {
+  const t = data.title || "this course";
+  return [
+    `Career Opportunities: Qualify for high-demand industry roles and unlock new career progression in ${t}.`,
+    `Practical Hands-On Competency: Gain real-world execution skills and industry-standard best practices.`,
+    `Globally Recognized Credential: Validate your expertise with accredited certifications valued worldwide.`,
+    `Enterprise Ready: Master the frameworks, methodologies, and tools actively deployed across leading teams.`
+  ];
+}
+
+/**
  * 2. COURSE OVERVIEW + SIDEBAR SECTION
  */
 function renderCourseOverview(data) {
@@ -1222,7 +1468,43 @@ function renderCourseOverview(data) {
       const isHidden = idx !== 0;
       let contentHtml = "";
 
-      if (tab.id === "syllabus") {
+      if (tab.id === "benefits" || tab.type === "benefits") {
+        let rawItems = (tab.items && tab.items.length > 0) ? tab.items : (data.benefits || []);
+        if (!rawItems || rawItems.length === 0) {
+          rawItems = deriveFallbackBenefits(data);
+        }
+        const formattedBenefits = rawItems.slice(0, 6).map((item, i) => formatBenefitItem(item, data.title, i)).filter(Boolean);
+        const cardsHtml = formattedBenefits.map((b, i) => {
+          const iconSvg = getBenefitIconSvg(b.title, b.description, i);
+          return `
+            <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs hover:border-[#45318A]/30 transition-all flex items-start gap-3.5 group">
+              <div class="w-10 h-10 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center text-[#45318A] shrink-0 mt-0.5 group-hover:bg-[#45318A] group-hover:text-amber-300 transition-colors">
+                ${iconSvg}
+              </div>
+              <div class="space-y-1 min-w-0 flex-1">
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug group-hover:text-[#45318A] transition-colors">
+                  ${b.title}
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
+                  ${b.description}
+                </p>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        contentHtml = `
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1.5">${tab.title || "How You’ll Benefit"}</h3>
+              ${tab.intro ? `<p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${tab.intro}</p>` : ""}
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-4.5 pt-1">
+              ${cardsHtml}
+            </div>
+          </div>
+        `;
+      } else if (tab.id === "syllabus") {
         const visibleCount = tab.initialVisibleCount || 6;
         const totalItems = tab.items.length;
         const hasMore = totalItems > visibleCount;
@@ -1315,6 +1597,30 @@ function renderCourseOverview(data) {
         contentHtml = `
           <div class="space-y-3">
             <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${tab.title}</h3>
+            <ul class="space-y-2.5">
+              ${itemsHtml}
+            </ul>
+          </div>
+        `;
+      } else if (tab.type === "list") {
+        const itemsHtml = (tab.items || [])
+          .map((item) => {
+            const text = typeof item === "object" ? ((item.title ? `${item.title}: ` : "") + (item.description || item.desc || "")) : String(item);
+            return `
+              <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
+                <svg class="w-4 h-4 text-[#45318A] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="leading-relaxed">${text}</span>
+              </li>
+            `;
+          })
+          .join("");
+
+        contentHtml = `
+          <div class="space-y-3">
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${tab.title || "Key Details"}</h3>
+            ${tab.intro ? `<p class="text-xs sm:text-sm sm:text-base text-slate-700 leading-relaxed mb-3">${tab.intro}</p>` : ""}
             <ul class="space-y-2.5">
               ${itemsHtml}
             </ul>
@@ -1969,4 +2275,3 @@ if (typeof window !== "undefined") {
   window.renderCoursePage = renderCoursePage;
   window.renderCourseEnquiryForm = renderCourseEnquiryForm;
 }
-
