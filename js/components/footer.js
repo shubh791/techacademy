@@ -4,8 +4,13 @@ function getFooterRootPrefix() {
   }
   if (typeof window !== "undefined") {
     const loc = window.location.pathname || "";
-    if (loc.includes("/courses/")) {
+    // If inside a specific course subdirectory e.g. /courses/machine-learning/
+    const courseSubMatch = loc.match(/\/courses\/([^\/]+)/);
+    if (courseSubMatch && courseSubMatch[1] && !courseSubMatch[1].endsWith(".html") && courseSubMatch[1] !== "index.html" && courseSubMatch[1] !== "courses") {
       return "../../";
+    }
+    if (loc.includes("/courses/") || loc.includes("/offers/") || loc.includes("/online-training/") || loc.includes("/job-placements/") || loc.includes("/contact/")) {
+      return "../";
     }
   }
   return "./";

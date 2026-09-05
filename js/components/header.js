@@ -9,8 +9,13 @@ function getRootPrefix() {
   }
   if (typeof window !== "undefined") {
     const loc = window.location.pathname || "";
-    if (loc.includes("/courses/")) {
+    // If inside a specific course subdirectory e.g. /courses/machine-learning/
+    const courseSubMatch = loc.match(/\/courses\/([^\/]+)/);
+    if (courseSubMatch && courseSubMatch[1] && !courseSubMatch[1].endsWith(".html") && courseSubMatch[1] !== "index.html" && courseSubMatch[1] !== "courses") {
       return "../../";
+    }
+    if (loc.includes("/courses/") || loc.includes("/offers/") || loc.includes("/online-training/") || loc.includes("/job-placements/") || loc.includes("/contact/")) {
+      return "../";
     }
   }
   return "./";
@@ -188,6 +193,22 @@ function buildDesktopMegaMenuHtml() {
             </div>
             <ul class="space-y-1" id="mega-menu-categories-list">
               ${categoryButtonsHtml}
+              <li class="pt-2 mt-2 border-t border-slate-100">
+                <a 
+                  href="${resolveCourseUrl('courses.html')}" 
+                  class="w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-semibold text-[#45318A] hover:bg-purple-50 transition-all duration-150 flex items-center justify-between group cursor-pointer"
+                >
+                  <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                    </svg>
+                    <span>Explore all categories</span>
+                  </span>
+                  <svg class="w-4 h-4 text-[#45318A] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -213,7 +234,7 @@ function buildDesktopMegaMenuHtml() {
 function buildMobileCoursesAccordionHtml() {
   const categories = getCourseCategoriesData();
 
-  return categories
+  const categoriesHtml = categories
     .map((category) => {
       let groupsHtml = "";
       category.groups.forEach((group) => {
@@ -265,11 +286,29 @@ function buildMobileCoursesAccordionHtml() {
       `;
     })
     .join("");
+
+  return `
+    ${categoriesHtml}
+    <div class="pt-2">
+      <a 
+        href="${resolveCourseUrl('courses.html')}" 
+        class="block py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-white bg-white/10 rounded-lg text-center transition-colors"
+      >
+        Explore all categories &rarr;
+      </a>
+    </div>
+  `;
 }
 
 function renderHeader(containerId = "site-header") {
   const container = document.getElementById(containerId);
   if (!container) return;
+
+  // Make shared header sticky globally
+  container.classList.add("sticky", "top-0", "z-50");
+  container.style.position = "sticky";
+  container.style.top = "0";
+  container.style.zIndex = "50";
 
   const rootPrefix = getRootPrefix();
   const homeUrl = (typeof window !== "undefined" && window.location.protocol === "file:") ? (rootPrefix + "index.html") : (rootPrefix === "./" ? "./" : rootPrefix);
@@ -279,7 +318,7 @@ function renderHeader(containerId = "site-header") {
   const mobileAccordionHtml = buildMobileCoursesAccordionHtml();
 
   container.innerHTML = `
-    <nav class="bg-[#3E267D] border-b border-white/15 shadow-sm relative" id="main-nav" aria-label="Main Navigation">
+    <nav class="bg-[#3E267D] border-b border-white/15 shadow-sm relative transition-shadow duration-200" id="main-nav" aria-label="Main Navigation">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 sm:h-18">
           
@@ -296,7 +335,7 @@ function renderHeader(containerId = "site-header") {
           </div>
 
           <!-- Desktop Navigation Links -->
-          <div class="hidden md:flex items-center gap-8">
+          <div class="hidden md:flex items-center gap-6 lg:gap-8">
             
             <!-- Courses Mega Menu Button -->
             <button 
@@ -314,17 +353,21 @@ function renderHeader(containerId = "site-header") {
               <span class="courses-indicator absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
             </button>
 
-            <a href="${resolveSectionUrl('#about')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
-              About
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
+            <a href="${resolveCourseUrl('online-training.html')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
+              Online Training
+              <span class="courses-indicator absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
             </a>
-            <a href="${resolveSectionUrl('#offers')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
+            <a href="${resolveCourseUrl('offers.html')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
               Offers
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
+              <span class="courses-indicator absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
             </a>
-            <a href="${resolveSectionUrl('#contact')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
+            <a href="${resolveCourseUrl('job-placements.html')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
+              Job Placements
+              <span class="courses-indicator absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
+            </a>
+            <a href="${resolveCourseUrl('contact-us.html')}" class="text-sm font-medium text-white/95 hover:text-white transition-colors py-2 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md px-1">
               Contact Us
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
+              <span class="courses-indicator absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-200 group-hover:w-full"></span>
             </a>
           </div>
 
@@ -380,13 +423,16 @@ function renderHeader(containerId = "site-header") {
             </div>
           </div>
 
-          <a href="${resolveSectionUrl('#about')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
-            About
+          <a href="${resolveCourseUrl('online-training.html')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
+            Online Training
           </a>
-          <a href="${resolveSectionUrl('#offers')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
+          <a href="${resolveCourseUrl('offers.html')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
             Offers
           </a>
-          <a href="${resolveSectionUrl('#contact')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
+          <a href="${resolveCourseUrl('job-placements.html')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
+            Job Placements
+          </a>
+          <a href="${resolveCourseUrl('contact-us.html')}" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:text-amber-400 hover:bg-white/10 transition-colors">
             Contact Us
           </a>
         </div>
@@ -397,6 +443,23 @@ function renderHeader(containerId = "site-header") {
   // Attach interactive behavior
   setupCoursesMegaMenu();
   setupMobileDrawer();
+
+  // Attach sticky scroll state listener (subtle shadow & border)
+  if (!window.__techacademy_scroll_listener_attached) {
+    window.__techacademy_scroll_listener_attached = true;
+    const updateNavScroll = () => {
+      const navEl = document.getElementById("main-nav");
+      if (navEl) {
+        if (window.scrollY > 8) {
+          navEl.classList.add("shadow-lg", "border-purple-950/50");
+        } else {
+          navEl.classList.remove("shadow-lg", "border-purple-950/50");
+        }
+      }
+    };
+    window.addEventListener("scroll", updateNavScroll, { passive: true });
+    updateNavScroll();
+  }
 }
 
 /**

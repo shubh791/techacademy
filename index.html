@@ -51,7 +51,7 @@
   <main class="flex-grow">
     
     <!-- 1. Main Hero Section (Balanced 2-Part Layout with Rich Training Purple & Floating Hero Visual) -->
-    <section class="relative min-h-[calc(100vh-4.5rem)] flex items-center py-14 sm:py-18 lg:py-20 overflow-hidden bg-gradient-to-r from-[#4B3294] via-[#52369E] to-[#5B3EA9]" aria-label="Hero">
+    <section class="relative min-h-[calc(100vh-4.5rem)] flex items-center py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-r from-[#4B3294] via-[#52369E] to-[#5B3EA9]" aria-label="Hero">
       
       <!-- Subtle Atmospheric Lighting & Architectural Depth -->
       <div class="absolute inset-0 z-0 pointer-events-none">
@@ -63,13 +63,13 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         <!-- Desktop 2-Column Grid (Left ~54%, Right ~46%) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 xl:gap-14 items-center">
           
           <!-- LEFT COLUMN: Content (Heading, Subtitle, Search, Topics on Desktop) -->
-          <div class="lg:col-span-7 space-y-6 text-left">
+          <div class="lg:col-span-7 space-y-6 sm:space-y-7 text-left">
             
             <!-- Exact Heading (All White, Poppins 600, 2 Natural Lines) -->
-            <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-tight text-white leading-[1.14]">
+            <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-tight text-white leading-[1.15]">
               Training the world’s<br class="hidden sm:inline" /> professionals
             </h1>
             
@@ -79,7 +79,7 @@
             </p>
 
             <!-- Primary Large WHITE Search Field (Mostly Rectangular, Small Radius, No Yellow Button) -->
-            <div class="pt-2 max-w-[580px] relative">
+            <div class="pt-1 sm:pt-2 max-w-[580px] relative">
               
               <div id="search-input-wrapper" class="relative flex items-center bg-white rounded-md p-1.5 shadow-xl border border-slate-200 transition-all duration-200">
                 
@@ -130,7 +130,7 @@
                 <!-- Result Items List -->
                 <ul id="search-results-list" class="divide-y divide-slate-100 py-1 text-slate-900"></ul>
 
-                <!-- Exact Reference "no-course-topic" fallback box -->
+                <!-- Search Result Fallback Box CTA -->
                 <div id="search-no-results" class="hidden p-6 text-center space-y-4">
                   <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
@@ -149,7 +149,7 @@
                     <button onclick="window.openEnquireModal('Search Fallback CTA')" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold rounded shadow-sm">
                       Enquire now
                     </button>
-                    <a href="#courses" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded border border-slate-200">
+                    <a href="./courses.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded border border-slate-200">
                       See full course catalogue →
                     </a>
                   </div>
@@ -162,55 +162,55 @@
             <div class="hero-art-slot block lg:hidden my-6 w-full mx-auto"></div>
 
             <!-- Popular Topics (Compact Rectangular Purple Topic Chips, Left-Aligned) -->
-            <div class="pt-2 space-y-3 text-left">
+            <div class="pt-2 sm:pt-3 space-y-3.5 text-left">
               <p class="text-sm font-medium text-purple-100">
-                Or select from our popular topics
+                Or select from our popular courses
               </p>
 
-              <div class="flex flex-wrap items-center gap-2">
+              <div class="flex flex-wrap items-center gap-x-2.5 gap-y-2.5 sm:gap-y-3">
                 
-                <button type="button" data-topic="PRINCE2®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  PRINCE2®
-                </button>
+                <a href="./courses/introduction-to-artificial-intelligence/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Introduction to Artificial Intelligence
+                </a>
 
-                <button type="button" data-topic="Agile" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  Agile
-                </button>
+                <a href="./courses/python-programming-for-ai/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Python Programming for AI
+                </a>
 
-                <button type="button" data-topic="ITIL® Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  ITIL® Certification
-                </button>
+                <a href="./courses/machine-learning/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Machine Learning
+                </a>
 
-                <button type="button" data-topic="Lean Six Sigma Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  Lean Six Sigma Certification
-                </button>
+                <a href="./courses/data-science-with-python/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Data Science with Python
+                </a>
 
-                <button type="button" data-topic="Scrum Certification" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  Scrum Certification
-                </button>
+                <a href="./courses/aws-certified-cloud-practitioner/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  AWS Certified Cloud Practitioner
+                </a>
 
-                <button type="button" data-topic="PMP®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  PMP®
-                </button>
+                <a href="./courses/certified-ethical-hacker-ceh/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Certified Ethical Hacker (CEH)
+                </a>
 
-                <button type="button" data-topic="TOGAF®" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  TOGAF®
-                </button>
+                <a href="./courses/search-engine-optimization/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Search Engine Optimization
+                </a>
 
-                <button type="button" data-topic="ISO 9001" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  ISO 9001
-                </button>
+                <a href="./courses/digital-marketing-expert/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  Digital Marketing Expert
+                </a>
 
-                <button type="button" data-topic="Business Analysis Courses" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  Business Analysis Courses
-                </button>
+                <a href="./courses/ccna-security/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  CCNA Security
+                </a>
 
-                <button type="button" data-topic="APM" class="popular-topic-chip px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer">
-                  APM
-                </button>
+                <a href="./courses/certified-information-systems-security-professional-cissp/" class="popular-topic-chip px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all cursor-pointer inline-block leading-normal">
+                  CISSP
+                </a>
 
                 <!-- Explore More Courses Link in Matching Purple Rectangular Style -->
-                <a href="#courses" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all group">
+                <a href="./courses.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-white/20 hover:bg-white/30 border border-white/25 text-white font-medium text-xs sm:text-sm transition-all group leading-normal">
                   <span>Explore more courses</span>
                   <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
@@ -1453,6 +1453,9 @@
           </div>
 
         </div>
+
+      </div>
+    </section>
 
     <!-- 7. Transforming People and Organisations Section (Typography-Led Stats Split Layout) -->
     <section class="py-16 sm:py-24 lg:py-28 bg-[#fbfcfe] text-slate-900 border-t border-slate-200" id="global-impact" aria-label="Global Impact & Stats">

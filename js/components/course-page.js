@@ -1014,12 +1014,13 @@ function renderCourseHero(data) {
 
             <!-- Action Buttons -->
             <div class="flex flex-wrap items-center gap-4 pt-4">
-              <a 
-                href="${h.primaryCtaHref || "#enquire-sidebar"}" 
+              <button 
+                type="button" 
+                data-course-modal-trigger
                 class="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all cursor-pointer"
               >
                 ${h.primaryCtaText || "Enquire Now"}
-              </a>
+              </button>
               
               <a 
                 href="${h.secondaryCtaHref || "#course-overview"}" 
@@ -1044,13 +1045,155 @@ function renderCourseHero(data) {
 }
 
 /**
- * 2. Course Overview & Sticky Sidebar Section
+ * Reusable Course Enquiry Form Component
+ * Used in both sidebar placement and modal placement
+ */
+function renderCourseEnquiryForm(data, options = {}) {
+  const isModal = !!options.isModal;
+  const prefix = options.idPrefix || (isModal ? "modal" : "sidebar");
+  const title = (data && data.title) || "Course";
+  const category = (data && data.category) || "";
+  const slug = (data && (data.id || data.slug)) || "";
+
+  return `
+    <div class="${isModal ? "" : "bg-white rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200/90"}">
+      
+      <div class="mb-5 pb-3 border-b border-slate-100 ${isModal ? "pr-8" : ""}">
+        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-purple-50 text-[#45318A] border border-purple-200/60 mb-1.5">
+          Direct Admissions
+        </span>
+        <h3 id="${prefix}-enquiry-heading" class="text-xl font-extrabold text-slate-900 leading-snug">
+          ${isModal ? "Enquire: " + title : "Contact Us"}
+        </h3>
+        <p class="text-xs text-slate-500 mt-0.5">Enquire for fees, upcoming batch dates & written job guarantee.</p>
+      </div>
+
+      <form id="${prefix}-course-enquiry-form" class="course-enquiry-form space-y-4" data-placement="${prefix}">
+        
+        <!-- Hidden Course Context Fields -->
+        <input type="hidden" name="courseTitle" value="${title}">
+        <input type="hidden" name="courseSlug" value="${slug}">
+        <input type="hidden" name="courseCategory" value="${category}">
+        <input type="hidden" name="enquirySource" value="${prefix}">
+
+        <!-- Who Will Be Funding The Course? -->
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-700 tracking-wider uppercase">
+            WHO WILL BE FUNDING THE COURSE?
+          </label>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="cursor-pointer">
+              <input type="radio" name="funding_${prefix}" value="employer" checked class="peer sr-only">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+                My employer
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="funding_${prefix}" value="self" class="peer sr-only">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+                I will
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="funding_${prefix}" value="not_sure" class="peer sr-only">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+                Not sure
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Name* -->
+        <div>
+          <label for="${prefix}-enquiry-name" class="block text-xs font-semibold text-slate-700 mb-1">Name*</label>
+          <input 
+            type="text" 
+            id="${prefix}-enquiry-name" 
+            name="name"
+            required 
+            placeholder="Enter your name" 
+            class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white"
+          />
+        </div>
+
+        <!-- Company Email* -->
+        <div>
+          <label for="${prefix}-enquiry-email" class="block text-xs font-semibold text-slate-700 mb-1">Company Email*</label>
+          <input 
+            type="email" 
+            id="${prefix}-enquiry-email" 
+            name="email"
+            required 
+            placeholder="name@company.com" 
+            class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white"
+          />
+        </div>
+
+        <!-- Mobile* with Country Code & Flag Selector -->
+        <div class="relative z-20">
+          <label for="${prefix}-enquiry-phone" class="block text-xs font-semibold text-slate-700 mb-1">Mobile*</label>
+          <div class="flex items-stretch rounded-lg border border-slate-300 focus-within:ring-2 focus-within:ring-[#45318A] focus-within:border-transparent overflow-visible bg-white relative">
+            <!-- Embedded Country Selector Component -->
+            <div id="${prefix}-country-selector" data-country-selector data-default="in" data-input-name="countryCode" class="shrink-0"></div>
+            <div class="w-px h-5 bg-slate-200 shrink-0 self-center"></div>
+            <input 
+              type="tel" 
+              id="${prefix}-enquiry-phone" 
+              name="phone"
+              required 
+              placeholder="Mobile Number*" 
+              class="w-full px-3 py-2.5 border-0 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-0 rounded-r-lg bg-transparent"
+            />
+          </div>
+        </div>
+
+        <!-- Message (Optional) -->
+        <div>
+          <label for="${prefix}-enquiry-message" class="block text-xs font-semibold text-slate-700 mb-1">Message (Optional)</label>
+          <textarea 
+            id="${prefix}-enquiry-message" 
+            name="message"
+            rows="2" 
+            placeholder="Tell us about your learning goals or batch timing..." 
+            class="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Disclaimer Text -->
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          By submitting your details you agree to be contacted by TechAcademy regarding course information and promotions.
+        </p>
+
+        <!-- Submit CTA Button -->
+        <div>
+          <button 
+            type="submit" 
+            id="${prefix}-enquiry-submit-btn"
+            class="w-full py-3 px-4 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer text-center flex items-center justify-center gap-2"
+          >
+            <span>Enquire Now</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+
+        <!-- Feedback confirmation banner -->
+        <div id="${prefix}-enquiry-success-msg" class="hidden p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-xs font-medium text-center">
+          ✓ Thank you! An admissions consultant will get in touch with you shortly.
+        </div>
+      </form>
+    </div>
+  `;
+}
+
+/**
+ * 2. COURSE OVERVIEW + SIDEBAR SECTION
  */
 function renderCourseOverview(data) {
   const o = data.overview || {};
   const tabs = o.tabs || [];
-  const schedule = o.schedule || {};
+  const schedule = data.schedule || o.schedule || {};
 
+  // 1. Tab buttons
   const tabButtonsHtml = tabs
     .map((tab, idx) => {
       const isActive = idx === 0;
@@ -1073,6 +1216,7 @@ function renderCourseOverview(data) {
     })
     .join("");
 
+  // 2. Tab panels
   const tabPanelsHtml = tabs
     .map((tab, idx) => {
       const isHidden = idx !== 0;
@@ -1148,22 +1292,20 @@ function renderCourseOverview(data) {
           .join("");
 
         contentHtml = `
-          <div class="space-y-4">
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1">${tab.title}</h3>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${tab.intro}</p>
-            <ul class="space-y-2.5 pt-1">
+          <div class="space-y-3">
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${tab.title}</h3>
+            ${tab.intro ? `<p class="text-xs sm:text-sm sm:text-base text-slate-700 leading-relaxed mb-3">${tab.intro}</p>` : ""}
+            <ul class="space-y-2.5">
               ${itemsHtml}
             </ul>
           </div>
         `;
-      } else if (tab.type === "list") {
+      } else if (tab.type === "bullets") {
         const itemsHtml = tab.items
           .map((item) => {
             return `
               <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                <svg class="w-4 h-4 text-[#45318A] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+                <div class="w-1.5 h-1.5 rounded-full bg-[#45318A] shrink-0 mt-2"></div>
                 <span class="leading-relaxed">${item}</span>
               </li>
             `;
@@ -1172,7 +1314,7 @@ function renderCourseOverview(data) {
 
         contentHtml = `
           <div class="space-y-3">
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">${tab.title}</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${tab.title}</h3>
             <ul class="space-y-2.5">
               ${itemsHtml}
             </ul>
@@ -1185,7 +1327,7 @@ function renderCourseOverview(data) {
           id="panel-${tab.id}" 
           class="course-tab-panel ${isHidden ? "hidden" : ""}" 
           role="tabpanel" 
-          aria-labelledby="tab-${tab.id}"
+          aria-labelledby="${tab.id}"
         >
           ${contentHtml}
         </div>
@@ -1194,8 +1336,8 @@ function renderCourseOverview(data) {
     .join("");
 
   return `
-    <!-- 2. COURSE OVERVIEW & SIDEBAR SECTION -->
-    <section class="py-12 sm:py-16 bg-white border-b border-slate-200/80" id="course-overview" aria-label="Course Overview">
+    <!-- 2. COURSE OVERVIEW + SIDEBAR SECTION -->
+    <section class="py-12 sm:py-16 bg-white border-b border-slate-100" id="course-overview" aria-label="Course Overview and Admissions">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Main Overview Heading -->
@@ -1219,14 +1361,17 @@ function renderCourseOverview(data) {
               ${tabPanelsHtml}
             </div>
 
+            <!-- Standalone Yellow "Enquire now" CTA (Opens Reusable Modal) -->
             <div class="pt-2">
-              <a 
-                href="#enquire-sidebar" 
+              <button 
+                type="button" 
+                id="overview-enquire-now-btn"
+                data-course-modal-trigger
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md transition-colors cursor-pointer"
               >
                 <span>Enquire now</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </a>
+              </button>
             </div>
 
           </div>
@@ -1234,120 +1379,8 @@ function renderCourseOverview(data) {
           <!-- RIGHT SIDEBAR: Enquiry Card & Batch Schedule (~32%) -->
           <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-24" id="enquire-sidebar">
             
-            <!-- Card 1: Enquiry Form with Funding Selector & Country Flags -->
-            <div class="bg-white rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200/90">
-              
-              <div class="mb-5 pb-3 border-b border-slate-100">
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-purple-50 text-[#45318A] border border-purple-200/60 mb-1.5">
-                  Direct Admissions
-                </span>
-                <h3 class="text-xl font-extrabold text-slate-900 leading-snug">Contact Us</h3>
-                <p class="text-xs text-slate-500 mt-0.5">Enquire for fees, upcoming batch dates & written job guarantee.</p>
-              </div>
-
-              <form id="course-enquiry-form" class="space-y-4">
-                
-                <!-- Who Will Be Funding The Course? -->
-                <div class="space-y-2">
-                  <label class="block text-xs font-bold text-slate-700 tracking-wider uppercase">
-                    WHO WILL BE FUNDING THE COURSE?
-                  </label>
-                  <div class="grid grid-cols-3 gap-2">
-                    <label class="cursor-pointer">
-                      <input type="radio" name="funding" value="employer" checked class="peer sr-only">
-                      <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
-                        My employer
-                      </div>
-                    </label>
-                    <label class="cursor-pointer">
-                      <input type="radio" name="funding" value="self" class="peer sr-only">
-                      <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
-                        I will
-                      </div>
-                    </label>
-                    <label class="cursor-pointer">
-                      <input type="radio" name="funding" value="not_sure" class="peer sr-only">
-                      <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
-                        Not sure
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Name* -->
-                <div>
-                  <label for="enquiry-name" class="block text-xs font-semibold text-slate-700 mb-1">Name*</label>
-                  <input 
-                    type="text" 
-                    id="enquiry-name" 
-                    required 
-                    placeholder="Enter your name" 
-                    class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white"
-                  />
-                </div>
-
-                <!-- Company Email* -->
-                <div>
-                  <label for="enquiry-email" class="block text-xs font-semibold text-slate-700 mb-1">Company Email*</label>
-                  <input 
-                    type="email" 
-                    id="enquiry-email" 
-                    required 
-                    placeholder="name@company.com" 
-                    class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white"
-                  />
-                </div>
-
-                <!-- Mobile* with Country Code & Flag Selector -->
-                <div>
-                  <label for="enquiry-phone" class="block text-xs font-semibold text-slate-700 mb-1">Mobile*</label>
-                  <div class="flex items-stretch rounded-lg border border-slate-300 focus-within:ring-2 focus-within:ring-[#45318A] focus-within:border-transparent overflow-visible bg-white relative">
-                    <!-- Embedded Country Selector Component -->
-                    <div id="course-country-selector" data-country-selector data-default="gb" data-input-name="countryCode" class="shrink-0"></div>
-                    
-                    <input 
-                      type="tel" 
-                      id="enquiry-phone" 
-                      required 
-                      placeholder="Mobile Number*" 
-                      class="w-full px-3 py-2.5 border-0 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-0 rounded-r-lg bg-transparent"
-                    />
-                  </div>
-                </div>
-
-                <!-- Message (Optional) -->
-                <div>
-                  <label for="enquiry-message" class="block text-xs font-semibold text-slate-700 mb-1">Message (Optional)</label>
-                  <textarea 
-                    id="enquiry-message" 
-                    rows="2" 
-                    placeholder="Tell us about your learning goals or batch timing..." 
-                    class="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all bg-white resize-none"
-                  ></textarea>
-                </div>
-
-                <!-- Disclaimer Text -->
-                <p class="text-[11px] text-slate-500 leading-relaxed">
-                  By submitting your details you agree to be contacted by TechAcademy regarding course information and promotions.
-                </p>
-
-                <!-- Submit CTA Button -->
-                <div>
-                  <button 
-                    type="submit" 
-                    class="w-full py-3 px-4 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer text-center flex items-center justify-center gap-2"
-                  >
-                    <span>Enquire Now</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                  </button>
-                </div>
-
-                <!-- Feedback confirmation banner -->
-                <div id="enquiry-success-msg" class="hidden p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-xs font-medium text-center">
-                  ✓ Thank you! An admissions consultant will get in touch with you shortly.
-                </div>
-              </form>
-            </div>
+            <!-- Card 1: Reusable Enquiry Form (Sidebar Placement) -->
+            ${renderCourseEnquiryForm(data, { isModal: false, idPrefix: "sidebar" })}
 
             <!-- Card 2: Real Course Duration & Batch Schedule from HTML -->
             <div class="bg-gradient-to-br from-slate-900 to-[#1e1b4b] rounded-2xl p-6 text-white shadow-lg border border-white/10 space-y-4">
@@ -1390,11 +1423,6 @@ function renderCourseOverview(data) {
 
 /**
  * 3. PURPLE COURSE CTA (Job Guarantee Banner)
- * Refined to match the reference composition:
- * - Centered max-w container
- * - TechAcademy rich purple (#45318A) with clean rectangular bounds
- * - Left ~70-75% content with compact hierarchy
- * - Right ~25-30% subtle 3D isometric cube/grid line art
  */
 function renderCourseCTA(data) {
   const cta = data.cta || data.jobGuarantee || {};
@@ -1402,7 +1430,6 @@ function renderCourseCTA(data) {
   const title = cta.title || "100% JOB GUARANTEE";
   const description = cta.description || "";
   const buttonLabel = cta.buttonLabel || cta.ctaText || "Enquire for Placement Support";
-  const buttonHref = cta.buttonHref || cta.ctaHref || "#enquire-sidebar";
 
   return `
     <!-- 3. PURPLE COURSE CTA -->
@@ -1417,19 +1444,15 @@ function renderCourseCTA(data) {
           <!-- Subtle 3D Isometric Geometric Line Art on Right (~25-30%) -->
           <div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-25 pointer-events-none hidden md:block overflow-hidden" aria-hidden="true">
             <svg class="w-full h-full object-cover" viewBox="0 0 260 200" fill="none" stroke="currentColor" stroke-width="1.2">
-              <!-- Isometric Cube Grid in Soft Lavender Lines -->
               <path d="M180,20 L220,43 L180,66 L140,43 Z" stroke="#E9D5FF" />
               <path d="M140,43 L140,89 L180,112 L180,66 Z" stroke="#E9D5FF" />
               <path d="M180,66 L180,112 L220,89 L220,43 Z" stroke="#E9D5FF" />
-
               <path d="M220,89 L260,112 L220,135 L180,112 Z" stroke="#E9D5FF" />
               <path d="M180,112 L180,158 L220,181 L220,135 Z" stroke="#E9D5FF" />
               <path d="M220,135 L220,181 L260,158 L260,112 Z" stroke="#E9D5FF" />
-
               <path d="M140,89 L180,112 L140,135 L100,112 Z" stroke="#E9D5FF" />
               <path d="M100,112 L100,158 L140,181 L140,135 Z" stroke="#E9D5FF" />
               <path d="M140,135 L140,181 L180,158 L180,112 Z" stroke="#E9D5FF" />
-
               <path d="M220,43 L260,20 L300,43 L260,66 Z" stroke="#E9D5FF" />
               <path d="M260,66 L260,112" stroke="#E9D5FF" />
               <path d="M140,43 L100,20 L140,-3 L180,20" stroke="#E9D5FF" />
@@ -1459,13 +1482,14 @@ function renderCourseCTA(data) {
             </p>
 
             <div class="pt-2">
-              <a 
-                href="${buttonHref}" 
+              <button 
+                type="button" 
+                data-course-modal-trigger
                 class="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold text-sm sm:text-base px-6 py-3 rounded-[3px] shadow-sm hover:shadow transition-all cursor-pointer group"
               >
                 <span>${buttonLabel}</span>
                 <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-              </a>
+              </button>
             </div>
 
           </div>
@@ -1479,13 +1503,6 @@ function renderCourseCTA(data) {
 
 /**
  * 4. WAYS TO TAKE SECTION
- * Refined to match the reference:
- * - Completely data-driven supporting variable number of delivery methods
- * - Open, clean layout: NO large enclosing card, NO card around individual features
- * - Compact rectangular tabs (active: TechAcademy purple, inactive: light neutral gray)
- * - Full-width left-aligned description below tabs
- * - 3-column feature grid with lightweight purple line icon + heading + thin purple divider line + description
- * - Compact yellow Enquire now CTA
  */
 function renderCourseDelivery(data) {
   const d = data.delivery || {};
@@ -1494,7 +1511,7 @@ function renderCourseDelivery(data) {
 
   if (!methods || methods.length === 0) return "";
 
-  // 1. Tab buttons (compact, rectangular, very small radius)
+  // 1. Tab buttons
   const tabButtonsHtml = methods
     .map((m, idx) => {
       const isActive = idx === 0;
@@ -1517,7 +1534,7 @@ function renderCourseDelivery(data) {
     })
     .join("");
 
-  // 2. Tab panels (Open layout with no enclosing card)
+  // 2. Tab panels
   const tabPanelsHtml = methods
     .map((m, idx) => {
       const isHidden = idx !== 0;
@@ -1581,15 +1598,16 @@ function renderCourseDelivery(data) {
           ${tabPanelsHtml}
         </div>
 
-        <!-- Yellow Enquire CTA -->
+        <!-- Yellow Enquire CTA (Opens Reusable Modal) -->
         <div class="pt-4">
-          <a 
-            href="#enquire-sidebar" 
+          <button 
+            type="button" 
+            data-course-modal-trigger
             class="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-[3px] bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm sm:text-base shadow-xs hover:shadow transition-all cursor-pointer group"
           >
             <span>Enquire now</span>
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
+          </button>
         </div>
 
       </div>
@@ -1667,6 +1685,40 @@ function renderCourseWhyChoose(data) {
 }
 
 /**
+ * Shared Course Enquiry Modal Component
+ */
+function renderCourseModal(data) {
+  return `
+    <!-- Reusable Course Enquiry Modal -->
+    <div 
+      id="course-enquiry-modal" 
+      class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3.5 sm:p-6 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-enquiry-heading"
+    >
+      <div class="bg-white rounded-2xl shadow-2xl max-w-lg sm:max-w-xl w-full p-6 sm:p-8 relative border border-slate-200/90 max-h-[90vh] flex flex-col justify-between overflow-y-auto my-auto animate-dropdownFade">
+        
+        <!-- Accessible Top-Right Close Button -->
+        <button 
+          type="button" 
+          id="course-modal-close-btn"
+          onclick="closeCourseEnquiryModal()" 
+          class="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#45318A] cursor-pointer"
+          aria-label="Close modal"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        ${renderCourseEnquiryForm(data, { isModal: true, idPrefix: "modal" })}
+      </div>
+    </div>
+  `;
+}
+
+/**
  * Master Course Page Renderer
  * Renders sections in the strict specified order:
  * 1. Course Hero
@@ -1674,32 +1726,126 @@ function renderCourseWhyChoose(data) {
  * 3. Purple Course CTA
  * 4. Ways to Take Course
  * 5. Why Choose TechAcademy
+ * 6. Course Enquiry Modal
  */
 function renderCoursePage(data, containerId = "course-page-root") {
   const container = document.getElementById(containerId);
   if (!container || !data) return;
 
-  container.innerHTML = `
-    ${renderCourseHero(data)}
-    ${renderCourseOverview(data)}
-    ${renderCourseCTA(data)}
-    ${renderCourseDelivery(data)}
-    ${renderCourseWhyChoose(data)}
-  `;
+  try {
+    container.innerHTML = `
+      ${renderCourseHero(data)}
+      ${renderCourseOverview(data)}
+      ${renderCourseCTA(data)}
+      ${renderCourseDelivery(data)}
+      ${renderCourseWhyChoose(data)}
+      ${renderCourseModal(data)}
+    `;
+  } catch (renderErr) {
+    console.error("Error rendering course page HTML:", renderErr);
+  }
 
-  setupCoursePageInteractions();
+  try {
+    setupCoursePageInteractions(data);
+  } catch (interactionErr) {
+    console.error("Error setting up course page interactions:", interactionErr);
+  }
 }
 
 /**
  * Interactive controller for tabs, syllabus toggle, delivery methods, and enquiry form
  */
-function setupCoursePageInteractions() {
-  // 1. Initialize Country Dial Code Selector
+function setupCoursePageInteractions(data) {
+  let lastActiveEnquireTrigger = null;
+
+  // 1. Initialize Country Dial Code Selectors (both sidebar & modal)
   if (typeof initCountrySelectors === "function") {
     initCountrySelectors();
   }
 
-  // 2. Overview Tabs Switcher
+  // 2. Modal open/close functions
+  function openCourseEnquiryModal(triggerElement) {
+    const modal = document.getElementById("course-enquiry-modal");
+    if (!modal) return;
+
+    lastActiveEnquireTrigger = triggerElement || document.activeElement;
+
+    // Reset modal notification and submit button
+    const successMsg = document.getElementById("modal-enquiry-success-msg");
+    if (successMsg) successMsg.classList.add("hidden");
+
+    const submitBtn = document.getElementById("modal-enquiry-submit-btn");
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span>Enquire Now</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>';
+      submitBtn.classList.remove("bg-emerald-500", "text-white");
+      submitBtn.classList.add("bg-amber-400", "text-slate-950");
+    }
+
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    // Focus first input in modal
+    setTimeout(() => {
+      const firstInput = document.getElementById("modal-enquiry-name");
+      if (firstInput) firstInput.focus();
+    }, 60);
+  }
+
+  function closeCourseEnquiryModal() {
+    const modal = document.getElementById("course-enquiry-modal");
+    if (modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+
+      // Close any active country dropdown in modal
+      const dropdowns = modal.querySelectorAll(".country-dropdown");
+      dropdowns.forEach((d) => d.classList.add("hidden"));
+      const countryBtns = modal.querySelectorAll(".country-btn");
+      countryBtns.forEach((b) => b.setAttribute("aria-expanded", "false"));
+
+      // Restore focus to original triggering CTA
+      if (lastActiveEnquireTrigger && typeof lastActiveEnquireTrigger.focus === "function") {
+        lastActiveEnquireTrigger.focus();
+      }
+    }
+  }
+
+  window.openCourseEnquiryModal = openCourseEnquiryModal;
+  window.closeCourseEnquiryModal = closeCourseEnquiryModal;
+  window.openGlobalEnquireModal = openCourseEnquiryModal;
+  window.closeGlobalEnquireModal = closeCourseEnquiryModal;
+
+  // 3. Bind Standalone Yellow CTA Buttons (Event Delegation)
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-course-modal-trigger]");
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      openCourseEnquiryModal(trigger);
+    }
+  });
+
+  // 4. Modal Backdrop click & Escape key listeners
+  const modal = document.getElementById("course-enquiry-modal");
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeCourseEnquiryModal();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const isModalOpen = modal && !modal.classList.contains("hidden");
+      if (isModalOpen) {
+        closeCourseEnquiryModal();
+      }
+    }
+  });
+
+  // 5. Overview Tabs Switcher
   const tabBtns = document.querySelectorAll(".course-tab-btn");
   const tabPanels = document.querySelectorAll(".course-tab-panel");
 
@@ -1729,7 +1875,7 @@ function setupCoursePageInteractions() {
     });
   });
 
-  // 3. Syllabus Show More / Show Less Toggle
+  // 6. Syllabus Show More / Show Less Toggle
   const syllabusToggleBtn = document.getElementById("syllabus-toggle-btn");
   const extraItems = document.querySelectorAll(".syllabus-extra-item");
   const toggleText = document.getElementById("syllabus-toggle-text");
@@ -1753,7 +1899,7 @@ function setupCoursePageInteractions() {
     });
   }
 
-  // 4. Delivery Methods Switcher (Compact rectangular tabs & open layout)
+  // 7. Delivery Methods Switcher
   const deliveryBtns = document.querySelectorAll(".delivery-tab-btn");
   const deliveryPanels = document.querySelectorAll(".delivery-panel");
 
@@ -1781,27 +1927,46 @@ function setupCoursePageInteractions() {
     });
   });
 
-  // 5. Sidebar Enquiry Form Submission
-  const enquiryForm = document.getElementById("course-enquiry-form");
-  const successMsg = document.getElementById("enquiry-success-msg");
-
-  if (enquiryForm) {
-    enquiryForm.addEventListener("submit", (e) => {
+  // 8. Form Submissions Handling (Both Sidebar & Modal)
+  const forms = document.querySelectorAll(".course-enquiry-form");
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const submitBtn = enquiryForm.querySelector("button[type='submit']");
+      const prefix = form.getAttribute("data-placement") || (form.id.includes("modal") ? "modal" : "sidebar");
+      const submitBtn = form.querySelector("button[type='submit']");
+      const successMsg = document.getElementById(`${prefix}-enquiry-success-msg`);
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = "Submitted ✓";
-        submitBtn.classList.add("bg-emerald-500", "text-white");
         submitBtn.classList.remove("bg-amber-400", "text-slate-950");
+        submitBtn.classList.add("bg-emerald-500", "text-white");
       }
+
       if (successMsg) {
         successMsg.classList.remove("hidden");
       }
+
+      // If modal submission, gracefully close and reset after 2.4s
+      if (prefix === "modal") {
+        setTimeout(() => {
+          closeCourseEnquiryModal();
+          form.reset();
+          if (successMsg) successMsg.classList.add("hidden");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Enquire Now</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>';
+            submitBtn.classList.remove("bg-emerald-500", "text-white");
+            submitBtn.classList.add("bg-amber-400", "text-slate-950");
+          }
+        }, 2400);
+      }
     });
-  }
+  });
 }
 
 if (typeof window !== "undefined") {
   window.renderCoursePage = renderCoursePage;
+  window.renderCourseEnquiryForm = renderCourseEnquiryForm;
 }
+
