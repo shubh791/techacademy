@@ -1,0 +1,688 @@
+/* ==========================================================================
+   TechAcademy Global Theme System
+   Semantic CSS Variables & Dynamic Theme Definitions
+   Theme 1: TechAcademy (Classic Purple & Gold)
+   Theme 2: Aivora X (Dark Blue Buttons + Dark Blue/Sky Blue Navbar & Hero)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. THEME 1: TECHACADEMY (DEFAULT)
+   -------------------------------------------------------------------------- */
+:root,
+html[data-theme="techacademy"] {
+  --theme-id: "techacademy";
+  --theme-display-name: "TechAcademy";
+
+  /* Primary Brand Purples */
+  --brand-primary: #1e1b4b;
+  --brand-primary-hover: #2d1b69;
+  --brand-primary-light: #45318a;
+  --brand-primary-subtle: #f5f3ff;
+  --brand-primary-border: #ddd6fe;
+  --brand-primary-text: #45318a;
+
+  /* Secondary & Accent Ambers / Golds */
+  --brand-secondary: #f59e0b;
+  --brand-secondary-hover: #d97706;
+  --brand-secondary-light: #fbbf24;
+  --brand-secondary-subtle: #fffbeb;
+  --brand-secondary-border: #fde68a;
+  --brand-secondary-text: #b45309;
+  --brand-accent: #f59e0b;
+  --brand-accent-hover: #d97706;
+  --brand-accent-glow: rgba(245, 158, 11, 0.35);
+
+  /* Primary Action / CTA Tokens (Amber / Gold) */
+  --cta-primary: #f59e0b;
+  --cta-primary-hover: #d97706;
+  --cta-primary-text: #040814;
+  --cta-primary-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.35);
+
+  /* Segmented Form Controls */
+  --segmented-active-bg: #45318a;
+  --segmented-active-text: #ffffff;
+  --segmented-active-border: #45318a;
+
+  /* Page Surfaces & Backgrounds */
+  --page-bg: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-subtle: #f8fafc;
+  --surface-muted: #f1f5f9;
+  --surface-dark: #040814;
+  --surface-navy: #0b142c;
+
+  /* Typography */
+  --text-heading: #0b142c;
+  --text-body: #475569;
+  --text-muted: #64748b;
+  --text-light: #ffffff;
+
+  /* Borders & Dividers */
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #45318a;
+
+  /* Shared Navbar */
+  --navbar-bg: #3E267D;
+  --navbar-border: rgba(255, 255, 255, 0.15);
+  --navbar-link-color: rgba(255, 255, 255, 0.95);
+  --navbar-link-hover: #ffffff;
+  --navbar-indicator: #f59e0b;
+  --navbar-mobile-bg: #341F69;
+  --navbar-logo-accent: #f59e0b;
+
+  /* Hero & Feature Gradients */
+  --hero-bg-gradient: linear-gradient(135deg, #0c0a27 0%, #1a1145 50%, #2d1b69 100%);
+  --hero-glow-1: rgba(147, 51, 234, 0.2);
+  --hero-glow-2: rgba(245, 158, 11, 0.15);
+  --hero-accent-text: #fbbf24;
+  --hero-accent-gradient: linear-gradient(to right, #fde68a, #fbbf24, #f59e0b);
+
+  /* CTA Strip Gradient */
+  --cta-bg-gradient: linear-gradient(135deg, #18113c 0%, #2a175e 50%, #45318a 100%);
+  --cta-btn-bg: linear-gradient(to right, #f59e0b, #d97706);
+  --cta-btn-text: #040814;
+  --cta-btn-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.35);
+
+  /* Switcher Floating Button Colors */
+  --switcher-btn-bg: rgba(30, 27, 75, 0.85);
+  --switcher-btn-border: rgba(245, 158, 11, 0.45);
+  --switcher-btn-color: #fbbf24;
+  --switcher-btn-glow: 0 0 25px -3px rgba(245, 158, 11, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   2. THEME 2: AIVORA X (DARK BLUE BUTTONS + SKY BLUE HIGHLIGHTS)
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] {
+  --theme-id: "aivora";
+  --theme-display-name: "Aivora X";
+
+  /* Primary Action / CTA Tokens (DARK NAVY / DEEP BLUE - Main Action Color) */
+  --cta-primary: #0c234c;
+  --cta-primary-hover: #163f7d;
+  --cta-primary-text: #ffffff;
+  --cta-primary-shadow: 0 10px 25px -5px rgba(12, 35, 76, 0.45), 0 0 0 1px rgba(71, 193, 232, 0.3);
+
+  /* Secondary Action Token (Sky Blue / Cyan) */
+  --cta-secondary: #47c1e8;
+  --cta-secondary-hover: #32aed6;
+  --cta-secondary-text: #071530;
+
+  /* Brand Blues Hierarchy */
+  --brand-primary: #0c234c;             /* Primary Dark Blue */
+  --brand-primary-hover: #163f7d;       /* Dark Blue Hover */
+  --brand-primary-light: #2558f2;       /* Royal Blue */
+  --brand-primary-subtle: #ecf0ff;      /* Icy Blue Tint */
+  --brand-primary-border: #c7d8fe;      /* Soft Blue Border */
+  --brand-primary-text: #0c234c;
+
+  --brand-secondary: #47c1e8;           /* Sky Blue / Cyan */
+  --brand-secondary-hover: #32aed6;
+  --brand-secondary-light: #70d3f0;
+  --brand-secondary-subtle: #f0f9ff;
+  --brand-secondary-border: #bae6fd;
+  --brand-secondary-text: #0284c7;
+
+  --brand-accent: #47c1e8;
+  --brand-accent-hover: #32aed6;
+  --brand-accent-glow: rgba(71, 193, 232, 0.45);
+
+  /* Segmented Form Controls (DARK NAVY when checked) */
+  --segmented-active-bg: #0b1e3b;
+  --segmented-active-text: #ffffff;
+  --segmented-active-border: #0b1e3b;
+
+  /* Page Surfaces & Backgrounds */
+  --page-bg: #ffffff;
+  --surface-card: #ffffff;
+  --surface-subtle: #f0f5ff;
+  --surface-muted: #ecf0ff;
+  --surface-dark: #071530;
+  --surface-navy: #0c1e3d;
+
+  /* Typography (Dark Charcoal & Navy) */
+  --text-heading: #111827;
+  --text-body: #556176;
+  --text-muted: #64748b;
+  --text-light: #ffffff;
+
+  /* Borders & Dividers */
+  --border-subtle: #dce3f2;
+  --border-medium: #cbd5e1;
+  --border-focus: #47c1e8;
+
+  /* Shared Navbar (Dark Navy to Dark Royal Blue with Sky Blue Edge Glow) */
+  --navbar-bg: linear-gradient(90deg, #061226 0%, #0c234c 40%, #153974 75%, #1b498c 100%);
+  --navbar-border: rgba(71, 193, 232, 0.35);
+  --navbar-link-color: #f0f9ff;
+  --navbar-link-hover: #47c1e8;
+  --navbar-indicator: #47c1e8;
+  --navbar-mobile-bg: #061126;
+  --navbar-logo-accent: #47c1e8;
+
+  /* Hero & Feature Gradients (Deep Navy Left -> Dark Blue Center -> Sky Blue Glow Right) */
+  --hero-bg-gradient: radial-gradient(ellipse at 85% 40%, rgba(71, 193, 232, 0.28) 0%, transparent 60%), linear-gradient(135deg, #061226 0%, #0a1e3f 30%, #123368 65%, #18488e 100%);
+  --hero-glow-1: rgba(37, 88, 242, 0.3);
+  --hero-glow-2: rgba(71, 193, 232, 0.25);
+  --hero-accent-text: #47c1e8;
+  --hero-accent-gradient: linear-gradient(to right, #70d3f0, #47c1e8, #38bdf8);
+
+  /* CTA Strip Gradient */
+  --cta-bg-gradient: linear-gradient(135deg, #061226 0%, #0c234c 50%, #163f7d 100%);
+  --cta-btn-bg: linear-gradient(135deg, #0c234c, #163f7d);
+  --cta-btn-text: #ffffff;
+  --cta-btn-shadow: 0 10px 25px -5px rgba(12, 35, 76, 0.45);
+
+  /* Switcher Floating Button Colors */
+  --switcher-btn-bg: rgba(7, 21, 48, 0.92);
+  --switcher-btn-border: rgba(71, 193, 232, 0.55);
+  --switcher-btn-color: #47c1e8;
+  --switcher-btn-glow: 0 0 25px -3px rgba(71, 193, 232, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   3. SELECTIVE TRANSITIONS
+   -------------------------------------------------------------------------- */
+body,
+header,
+footer,
+button,
+a,
+input,
+select,
+textarea,
+.theme-transition {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. SHARED NAVBAR & MEGA MENU THEME OVERRIDES (AIVORA MODE)
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] #main-nav {
+  background: linear-gradient(90deg, #061226 0%, #0c234c 40%, #153974 75%, #1b498c 100%) !important;
+  border-bottom: 1.5px solid rgba(71, 193, 232, 0.35) !important;
+  box-shadow: 0 4px 25px -2px rgba(7, 21, 48, 0.5), 0 1px 0 0 rgba(71, 193, 232, 0.25) !important;
+}
+
+html[data-theme="aivora"] #mobile-menu {
+  background-color: #061126 !important;
+  border-top: 1.5px solid rgba(71, 193, 232, 0.3) !important;
+}
+
+html[data-theme="aivora"] .courses-indicator {
+  background-color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] #courses-chevron-icon,
+html[data-theme="aivora"] #mobile-courses-chevron {
+  color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] #site-header .text-amber-400 {
+  color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] #site-header a:hover,
+html[data-theme="aivora"] .courses-nav-btn:hover {
+  color: #47c1e8 !important;
+}
+
+/* Mega Menu Dropdown in Aivora */
+html[data-theme="aivora"] #courses-mega-menu {
+  border-color: #dce6f5 !important;
+  box-shadow: 0 25px 50px -12px rgba(7, 21, 48, 0.3) !important;
+}
+
+html[data-theme="aivora"] .mega-menu-cat-btn.bg-slate-100 {
+  background-color: #ecf0ff !important;
+  color: #0b1e3b !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="aivora"] .mega-menu-cat-btn svg {
+  color: #2558f2 !important;
+}
+
+html[data-theme="aivora"] .course-menu-link:hover {
+  background-color: #f0f7ff !important;
+  color: #2558f2 !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. AIVORA X BUTTONS & ACTIONS (DARK BLUE BUTTONS)
+   -------------------------------------------------------------------------- */
+
+/* Primary CTA / Submit / Enquire / Join Buttons -> DARK BLUE */
+html[data-theme="aivora"] button[type="submit"],
+html[data-theme="aivora"] .bg-amber-400,
+html[data-theme="aivora"] .bg-amber-500,
+html[data-theme="aivora"] .bg-amber-300,
+html[data-theme="aivora"] .bg-yellow-400,
+html[data-theme="aivora"] [data-enquire-trigger],
+html[data-theme="aivora"] #modal-submit-btn,
+html[data-theme="aivora"] #hero-enrol-btn,
+html[data-theme="aivora"] .form-submit-btn {
+  background-color: #0c234c !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(71, 193, 232, 0.3) !important;
+  box-shadow: 0 4px 18px rgba(12, 35, 76, 0.4), 0 0 0 1px rgba(71, 193, 232, 0.25) !important;
+}
+
+html[data-theme="aivora"] button[type="submit"]:hover,
+html[data-theme="aivora"] .bg-amber-400:hover,
+html[data-theme="aivora"] .hover\:bg-amber-300:hover,
+html[data-theme="aivora"] .hover\:bg-amber-400:hover,
+html[data-theme="aivora"] .hover\:bg-amber-500:hover,
+html[data-theme="aivora"] [data-enquire-trigger]:hover,
+html[data-theme="aivora"] #modal-submit-btn:hover {
+  background-color: #163f7d !important;
+  color: #ffffff !important;
+  border-color: #47c1e8 !important;
+  box-shadow: 0 6px 22px rgba(71, 193, 232, 0.35), 0 0 12px rgba(71, 193, 232, 0.3) !important;
+}
+
+/* Button SVGs (Arrows / Icons inside CTAs) */
+html[data-theme="aivora"] button[type="submit"] svg,
+html[data-theme="aivora"] [data-enquire-trigger] svg,
+html[data-theme="aivora"] .bg-amber-400 svg {
+  color: #47c1e8 !important;
+}
+
+/* Segmented Options ("My employer", "I will", "Not sure") -> Dark Navy when checked */
+html[data-theme="aivora"] .peer-checked\:bg-\[\#45318A\],
+html[data-theme="aivora"] .peer-checked\:bg-purple-700,
+html[data-theme="aivora"] .peer-checked\:bg-\[\#1E1B4B\] {
+  background-color: #0b1e3b !important;
+  color: #ffffff !important;
+  border-color: #0b1e3b !important;
+}
+
+/* Contact Us Area of Interest Pills */
+html[data-theme="aivora"] [data-interest-pill].active,
+html[data-theme="aivora"] .contact-step-pill.active {
+  background-color: #0b1e3b !important;
+  color: #ffffff !important;
+  border-color: #47c1e8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. AIVORA X SKY BLUE ACCENTS & BORDERS
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] .text-amber-400,
+html[data-theme="aivora"] .text-amber-300,
+html[data-theme="aivora"] .text-amber-500,
+html[data-theme="aivora"] .text-yellow-200,
+html[data-theme="aivora"] .text-yellow-300,
+html[data-theme="aivora"] .text-yellow-400 {
+  color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] .text-amber-600,
+html[data-theme="aivora"] .text-amber-700,
+html[data-theme="aivora"] .text-amber-800,
+html[data-theme="aivora"] .text-amber-900 {
+  color: #0284c7 !important;
+}
+
+html[data-theme="aivora"] .border-amber-400,
+html[data-theme="aivora"] .border-amber-300,
+html[data-theme="aivora"] .border-amber-500,
+html[data-theme="aivora"] .border-amber-200 {
+  border-color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] .bg-amber-50,
+html[data-theme="aivora"] .bg-amber-100 {
+  background-color: #f0f9ff !important;
+}
+
+html[data-theme="aivora"] .border-amber-200\/80,
+html[data-theme="aivora"] .border-amber-200\/60,
+html[data-theme="aivora"] .border-amber-200 {
+  border-color: #bae6fd !important;
+}
+
+html[data-theme="aivora"] .ring-amber-400 {
+  --tw-ring-color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] .focus\:ring-amber-400:focus,
+html[data-theme="aivora"] .focus-visible\:ring-amber-400:focus-visible,
+html[data-theme="aivora"] .focus\:border-amber-400:focus,
+html[data-theme="aivora"] .focus\:ring-\[\#45318A\]:focus,
+html[data-theme="aivora"] .focus-within\:ring-\[\#45318A\] {
+  --tw-ring-color: #47c1e8 !important;
+  border-color: #47c1e8 !important;
+}
+
+/* Gradients with amber/purple */
+html[data-theme="aivora"] .from-amber-400,
+html[data-theme="aivora"] .from-amber-300 {
+  --tw-gradient-from: #47c1e8 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(71, 193, 232, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+html[data-theme="aivora"] .via-amber-400 {
+  --tw-gradient-to: rgba(71, 193, 232, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #47c1e8 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+html[data-theme="aivora"] .to-amber-500,
+html[data-theme="aivora"] .to-amber-400,
+html[data-theme="aivora"] .to-yellow-200 {
+  --tw-gradient-to: #32aed6 var(--tw-gradient-to-position) !important;
+}
+
+/* Eliminate All Purples -> Deep Navy or Royal Blue */
+html[data-theme="aivora"] .text-\[\#45318A\],
+html[data-theme="aivora"] .text-\[\#45318a\],
+html[data-theme="aivora"] .text-\[\#2D1B69\],
+html[data-theme="aivora"] .text-\[\#1E1B4B\],
+html[data-theme="aivora"] .text-\[\#4B3294\],
+html[data-theme="aivora"] .text-purple-700,
+html[data-theme="aivora"] .text-purple-600,
+html[data-theme="aivora"] .text-purple-800,
+html[data-theme="aivora"] .text-indigo-600,
+html[data-theme="aivora"] .text-indigo-700 {
+  color: #2558f2 !important;
+}
+
+html[data-theme="aivora"] .bg-\[\#1E1B4B\],
+html[data-theme="aivora"] .bg-\[\#1e1b4b\],
+html[data-theme="aivora"] .bg-\[\#45318A\],
+html[data-theme="aivora"] .bg-\[\#45318a\],
+html[data-theme="aivora"] .bg-\[\#2D1B69\],
+html[data-theme="aivora"] .bg-\[\#2d1b69\],
+html[data-theme="aivora"] .bg-\[\#341F69\],
+html[data-theme="aivora"] .bg-\[\#341f69\],
+html[data-theme="aivora"] .bg-\[\#3E267D\],
+html[data-theme="aivora"] .bg-purple-900,
+html[data-theme="aivora"] .bg-purple-800,
+html[data-theme="aivora"] .bg-indigo-900,
+html[data-theme="aivora"] .bg-indigo-950 {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="aivora"] .hover\:bg-\[\#2D1B69\]:hover,
+html[data-theme="aivora"] .hover\:bg-\[\#2d1b69\]:hover,
+html[data-theme="aivora"] .hover\:bg-\[\#1E1B4B\]:hover,
+html[data-theme="aivora"] .hover\:bg-purple-800:hover,
+html[data-theme="aivora"] .hover\:bg-purple-900:hover {
+  background-color: #163f7d !important;
+}
+
+html[data-theme="aivora"] .bg-purple-50,
+html[data-theme="aivora"] .bg-purple-100,
+html[data-theme="aivora"] .bg-\[\#ede9f8\],
+html[data-theme="aivora"] .bg-\[\#f3f0fb\] {
+  background-color: #ecf0ff !important;
+}
+
+html[data-theme="aivora"] .border-purple-200,
+html[data-theme="aivora"] .border-purple-300,
+html[data-theme="aivora"] .border-purple-100,
+html[data-theme="aivora"] .border-purple-200\/80,
+html[data-theme="aivora"] .border-purple-200\/60 {
+  border-color: #c7d8fe !important;
+}
+
+html[data-theme="aivora"] .border-\[\#45318A\],
+html[data-theme="aivora"] .border-\[\#45318a\] {
+  border-color: #2558f2 !important;
+}
+
+html[data-theme="aivora"] .text-purple-100,
+html[data-theme="aivora"] .text-purple-200,
+html[data-theme="aivora"] .text-purple-300 {
+  color: #dbeafe !important;
+}
+
+html[data-theme="aivora"] .bg-purple-500\/20,
+html[data-theme="aivora"] .bg-purple-500\/25,
+html[data-theme="aivora"] .bg-purple-500\/10,
+html[data-theme="aivora"] .bg-purple-400\/20,
+html[data-theme="aivora"] .bg-purple-400\/15 {
+  background-color: rgba(37, 88, 242, 0.22) !important;
+}
+
+html[data-theme="aivora"] .bg-amber-400\/15,
+html[data-theme="aivora"] .bg-amber-400\/20,
+html[data-theme="aivora"] .bg-amber-400\/10 {
+  background-color: rgba(71, 193, 232, 0.2) !important;
+}
+
+/* Hero Background Gradients in Aivora (Deep Navy Left -> Dark Blue Center -> Sky Blue Glow Right) */
+html[data-theme="aivora"] section[aria-label*="Hero"],
+html[data-theme="aivora"] .hero-art-slot,
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#4B3294]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0c0a27]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0e0a25]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#1b1442]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#120e2e]"] {
+  background: radial-gradient(ellipse at 85% 40%, rgba(71, 193, 232, 0.28) 0%, transparent 60%), linear-gradient(135deg, #061226 0%, #0a1e3f 30%, #123368 65%, #18488e 100%) !important;
+}
+
+html[data-theme="aivora"] section[aria-label*="Final Enrolment"],
+html[data-theme="aivora"] section[aria-label*="Bottom"],
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#18113c]"] {
+  background-image: linear-gradient(135deg, #061226 0%, #0c234c 50%, #163f7d 100%) !important;
+}
+
+/* Popular Course Chips in Aivora Mode */
+html[data-theme="aivora"] .popular-topic-chip {
+  background: rgba(12, 35, 76, 0.65) !important;
+  border: 1px solid rgba(71, 193, 232, 0.35) !important;
+  color: #f0f9ff !important;
+}
+
+html[data-theme="aivora"] .popular-topic-chip:hover {
+  background: rgba(22, 63, 125, 0.85) !important;
+  border-color: #47c1e8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(71, 193, 232, 0.35) !important;
+}
+
+/* Hero Art Floats & Animations */
+html[data-theme="aivora"] .hero-art__glow {
+  background: radial-gradient(ellipse at 52% 48%, rgba(71, 193, 232, 0.35), rgba(37, 88, 242, 0.15) 48%, transparent 72%) !important;
+}
+
+html[data-theme="aivora"] .hero-float {
+  background: linear-gradient(135deg, rgba(7, 21, 48, 0.88), rgba(12, 35, 76, 0.78)) !important;
+  border: 1px solid rgba(71, 193, 232, 0.45) !important;
+  box-shadow: 0 14px 34px rgba(7, 21, 48, 0.5), inset 0 1px rgba(255, 255, 255, 0.25) !important;
+}
+
+html[data-theme="aivora"] .hero-float__icon--violet {
+  background: rgba(199, 216, 254, 0.25) !important;
+  color: #bae6fd !important;
+}
+
+html[data-theme="aivora"] .hero-float__icon--gold {
+  background: rgba(71, 193, 232, 0.25) !important;
+  color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] .hero-code-lines b:nth-child(2) {
+  background: rgba(71, 193, 232, 0.9) !important;
+}
+
+html[data-theme="aivora"] .hero-badge-mark,
+html[data-theme="aivora"] .hero-play-mark {
+  background: rgba(71, 193, 232, 0.22) !important;
+  color: #47c1e8 !important;
+}
+
+html[data-theme="aivora"] .hero-progress-ring {
+  background: radial-gradient(circle closest-side, rgba(12, 35, 76, 0.95) 73%, transparent 75% 99%), conic-gradient(#47c1e8 95%, rgba(255, 255, 255, 0.18) 0) !important;
+}
+
+html[data-theme="aivora"] .hero-progress-copy i b {
+  background: linear-gradient(90deg, #70d3f0, #47c1e8) !important;
+}
+
+/* Headings in Aivora */
+html[data-theme="aivora"] .text-\[\#0b142c\] {
+  color: #111827 !important;
+}
+
+/* Footer in Aivora Mode */
+html[data-theme="aivora"] footer,
+html[data-theme="aivora"] .bg-\[\#071329\] {
+  background-color: #050e1f !important;
+  border-top-color: rgba(71, 193, 232, 0.25) !important;
+}
+
+html[data-theme="aivora"] footer a:hover {
+  color: #47c1e8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. STRICT EXCLUSIONS (OFFICIAL LOGOS & STATUS INDICATORS NEVER THEMED)
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] img,
+html[data-theme="aivora"] picture,
+html[data-theme="aivora"] svg.official-logo,
+html[data-theme="aivora"] [data-official-logo],
+html[data-theme="aivora"] .logo-marquee-track img,
+html[data-theme="aivora"] .course-icon {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Preserve Success & Error Status Colors */
+html[data-theme="aivora"] .bg-emerald-100 { background-color: #d1fae5 !important; }
+html[data-theme="aivora"] .bg-emerald-500 { background-color: #10b981 !important; }
+html[data-theme="aivora"] .bg-emerald-600 { background-color: #059669 !important; }
+html[data-theme="aivora"] .text-emerald-500 { color: #10b981 !important; }
+html[data-theme="aivora"] .text-emerald-600 { color: #059669 !important; }
+html[data-theme="aivora"] .text-emerald-700 { color: #047857 !important; }
+html[data-theme="aivora"] .bg-green-500 { background-color: #22c55e !important; }
+html[data-theme="aivora"] .text-green-500 { color: #22c55e !important; }
+html[data-theme="aivora"] .bg-red-500 { background-color: #ef4444 !important; }
+html[data-theme="aivora"] .text-red-500 { color: #ef4444 !important; }
+html[data-theme="aivora"] .mic-active { background-color: #ef4444 !important; color: white !important; }
+
+/* --------------------------------------------------------------------------
+   8. FLOATING THEME SWITCHER COMPONENT STYLES
+   -------------------------------------------------------------------------- */
+#techacademy-theme-switcher {
+  position: fixed;
+  top: 92px;
+  right: 20px;
+  z-index: 45;
+}
+
+@media (max-width: 640px) {
+  #techacademy-theme-switcher {
+    top: 76px;
+    right: 14px;
+  }
+}
+
+.theme-switcher-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--switcher-btn-bg);
+  border: 1.5px solid var(--switcher-btn-border);
+  color: var(--switcher-btn-color);
+  box-shadow: var(--switcher-btn-glow), 0 4px 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .theme-switcher-toggle-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.theme-switcher-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: var(--switcher-btn-glow), 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.theme-switcher-toggle-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.theme-switcher-toggle-btn:focus-visible {
+  ring: 2px solid var(--brand-secondary);
+}
+
+.theme-popover-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 260px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 0.85rem;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  animation: themePopoverEnter 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 50;
+}
+
+@keyframes themePopoverEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #e2e8f0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+}
+
+.theme-option-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.theme-option-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.theme-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}

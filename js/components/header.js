@@ -443,6 +443,7 @@ function renderHeader(containerId = "site-header") {
   // Attach interactive behavior
   setupCoursesMegaMenu();
   setupMobileDrawer();
+  setupThemeSwitcher();
 
   // Attach sticky scroll state listener (subtle shadow & border)
   if (!window.__techacademy_scroll_listener_attached) {
@@ -656,3 +657,189 @@ if (typeof window !== "undefined") {
   window.renderHeader = renderHeader;
 }
 
+
+
+/**
+ * Global Floating Theme Switcher Component
+ * Injects floating toggle button and accessible popover for instant theme switching
+ */
+function setupThemeSwitcher() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('techacademy-theme-switcher')) return;
+
+  const currentTheme = (document.documentElement.dataset && document.documentElement.dataset.theme) || 'techacademy';
+
+  const switcherContainer = document.createElement('div');
+  switcherContainer.id = 'techacademy-theme-switcher';
+  switcherContainer.setAttribute('aria-label', 'Website Theme Switcher');
+
+  switcherContainer.innerHTML = `
+    <!-- Floating Trigger Button -->
+    <button 
+      type="button" 
+      id="theme-switcher-toggle"
+      class="theme-switcher-toggle-btn group relative"
+      aria-label="Change website theme"
+      aria-expanded="false"
+      aria-controls="theme-popover-menu"
+      title="Switch theme"
+    >
+      <!-- Paint Palette / Theme Icon -->
+      <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+      </svg>
+      
+      <!-- Tooltip on hover -->
+      <span class="pointer-events-none absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-md bg-slate-900/90 text-white text-[11px] font-medium tracking-wide whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md border border-white/10 hidden sm:block">
+        Switch theme
+      </span>
+    </button>
+
+    <!-- Compact Popover Panel -->
+    <div 
+      id="theme-popover-menu" 
+      class="theme-popover-panel hidden"
+      role="region"
+      aria-label="Theme Selection"
+    >
+      <div class="px-2 py-1.5 mb-1.5 border-b border-white/10 flex items-center justify-between">
+        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Select Theme</span>
+        <span class="text-[9px] text-slate-500 font-mono">2 THEMES</span>
+      </div>
+
+      <div class="space-y-1">
+        <!-- Option 1: TechAcademy -->
+        <button 
+          type="button"
+          class="theme-option-btn ${currentTheme === 'techacademy' ? 'active' : ''}"
+          data-set-theme="techacademy"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="flex items-center -space-x-1">
+              <span class="theme-color-dot" style="background-color: #45318A;"></span>
+              <span class="theme-color-dot" style="background-color: #F59E0B;"></span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-white">TechAcademy</div>
+              <div class="text-[10px] text-slate-400 font-normal">Classic Purple & Gold</div>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-amber-400 ${currentTheme === 'techacademy' ? 'opacity-100' : 'opacity-0'} transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </button>
+
+        <!-- Option 2: Aivora X -->
+        <button 
+          type="button"
+          class="theme-option-btn ${currentTheme === 'aivora' ? 'active' : ''}"
+          data-set-theme="aivora"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="flex items-center -space-x-1">
+              <span class="theme-color-dot" style="background-color: #0C234C;"></span>
+              <span class="theme-color-dot" style="background-color: #47C1E8;"></span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-white">Aivora X</div>
+              <div class="text-[10px] text-slate-400 font-normal">Royal Blue & Cyan</div>
+            </div>
+          </div>
+          <svg class="w-4 h-4 text-[#47c1e8] ${currentTheme === 'aivora' ? 'opacity-100' : 'opacity-0'} transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(switcherContainer);
+
+  // Behavior
+  const toggleBtn = switcherContainer.querySelector('#theme-switcher-toggle');
+  const popover = switcherContainer.querySelector('#theme-popover-menu');
+  const optionBtns = switcherContainer.querySelectorAll('.theme-option-btn');
+
+  if (!toggleBtn || !popover) return;
+
+  function openPopover() {
+    popover.classList.remove('hidden');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closePopover() {
+    popover.classList.add('hidden');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isClosed = popover.classList.contains('hidden');
+    if (isClosed) openPopover();
+    else closePopover();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!switcherContainer.contains(e.target)) {
+      closePopover();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popover.classList.contains('hidden')) {
+      closePopover();
+      toggleBtn.focus();
+    }
+  });
+
+  function applyTheme(themeName) {
+    document.documentElement.dataset.theme = themeName;
+    try {
+      localStorage.setItem('techacademy-theme', themeName);
+    } catch (e) {}
+
+    // Update checkmark & active state
+    optionBtns.forEach((btn) => {
+      const isTarget = btn.getAttribute('data-set-theme') === themeName;
+      const checkIcon = btn.querySelector('svg');
+      if (isTarget) {
+        btn.classList.add('active');
+        if (checkIcon) {
+          checkIcon.classList.remove('opacity-0');
+          checkIcon.classList.add('opacity-100');
+        }
+      } else {
+        btn.classList.remove('active');
+        if (checkIcon) {
+          checkIcon.classList.add('opacity-0');
+          checkIcon.classList.remove('opacity-100');
+        }
+      }
+    });
+
+    window.dispatchEvent(new CustomEvent('techacademy-theme-changed', { detail: { theme: themeName } }));
+  }
+
+  optionBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const chosenTheme = btn.getAttribute('data-set-theme');
+      if (chosenTheme) {
+        applyTheme(chosenTheme);
+        closePopover();
+      }
+    });
+  });
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupThemeSwitcher);
+  } else {
+    setupThemeSwitcher();
+  }
+}
