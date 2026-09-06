@@ -741,8 +741,7 @@ function setupThemeSwitcher() {
         >
           <div class="flex items-center gap-2.5">
             <div class="flex items-center -space-x-1">
-              <span class="theme-color-dot" style="background-color: #0C234C;"></span>
-              <span class="theme-color-dot" style="background-color: #47C1E8;"></span>
+              <span class="theme-color-dot" style="background-color: #1D4ED8;"></span>\n              <span class="theme-color-dot" style="background-color: #38BDF8;"></span>
             </div>
             <div>
               <div class="font-bold text-xs text-white">Aivora X</div>

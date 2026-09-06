@@ -2,7 +2,7 @@
    TechAcademy Global Theme System
    Semantic CSS Variables & Dynamic Theme Definitions
    Theme 1: TechAcademy (Classic Purple & Gold)
-   Theme 2: Aivora X (Dark Blue Buttons + Dark Blue/Sky Blue Navbar & Hero)
+   Theme 2: Aivora X (Airy Royal Blue, Azure & Sky Blue + Dark Blue Buttons)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -51,11 +51,17 @@ html[data-theme="techacademy"] {
   --surface-dark: #040814;
   --surface-navy: #0b142c;
 
-  /* Typography */
+  /* Semantic Typography Tokens */
   --text-heading: #0b142c;
   --text-body: #475569;
   --text-muted: #64748b;
   --text-light: #ffffff;
+  --text-on-dark-heading: #ffffff;
+  --text-on-dark-accent: #fbbf24;
+  --text-on-dark-body: rgba(245, 243, 255, 0.9);
+  --text-on-light-heading: #0b142c;
+  --text-on-light-body: #475569;
+  --text-on-light-accent: #45318a;
 
   /* Borders & Dividers */
   --border-subtle: #e2e8f0;
@@ -92,93 +98,106 @@ html[data-theme="techacademy"] {
 }
 
 /* --------------------------------------------------------------------------
-   2. THEME 2: AIVORA X (DARK BLUE BUTTONS + SKY BLUE HIGHLIGHTS)
+   2. THEME 2: AIVORA X (AIRY ROYAL BLUE + AZURE + SKY BLUE WITH DARK BLUE BUTTONS)
    -------------------------------------------------------------------------- */
 html[data-theme="aivora"] {
   --theme-id: "aivora";
   --theme-display-name: "Aivora X";
 
-  /* Primary Action / CTA Tokens (DARK NAVY / DEEP BLUE - Main Action Color) */
+  /* Primary Action / CTA Tokens (DARK BLUE - Stays Solid & Authoritative) */
   --cta-primary: #0c234c;
   --cta-primary-hover: #163f7d;
   --cta-primary-text: #ffffff;
-  --cta-primary-shadow: 0 10px 25px -5px rgba(12, 35, 76, 0.45), 0 0 0 1px rgba(71, 193, 232, 0.3);
+  --cta-primary-shadow: 0 10px 25px -5px rgba(12, 35, 76, 0.45), 0 0 0 1px rgba(56, 189, 248, 0.35);
 
-  /* Secondary Action Token (Sky Blue / Cyan) */
-  --cta-secondary: #47c1e8;
-  --cta-secondary-hover: #32aed6;
-  --cta-secondary-text: #071530;
+  /* Secondary Action Token (Sky Blue) */
+  --cta-secondary: #38bdf8;
+  --cta-secondary-hover: #0284c7;
+  --cta-secondary-text: #0c234c;
 
-  /* Brand Blues Hierarchy */
-  --brand-primary: #0c234c;             /* Primary Dark Blue */
-  --brand-primary-hover: #163f7d;       /* Dark Blue Hover */
-  --brand-primary-light: #2558f2;       /* Royal Blue */
-  --brand-primary-subtle: #ecf0ff;      /* Icy Blue Tint */
-  --brand-primary-border: #c7d8fe;      /* Soft Blue Border */
-  --brand-primary-text: #0c234c;
+  /* Brand Palette (Luminous Royal Blue & Sky Blue) */
+  --brand-navy: #0c234c;
+  --brand-deep-blue: #1e3a8a;
+  --brand-blue: #1d4ed8;
+  --brand-azure: #2563eb;
+  --brand-sky: #38bdf8;
+  --brand-light-blue: #7dd3fc;
 
-  --brand-secondary: #47c1e8;           /* Sky Blue / Cyan */
-  --brand-secondary-hover: #32aed6;
-  --brand-secondary-light: #70d3f0;
+  --brand-primary: #1d4ed8;
+  --brand-primary-hover: #1e40af;
+  --brand-primary-light: #2563eb;
+  --brand-primary-subtle: #f0f7ff;
+  --brand-primary-border: #bfdbfe;
+  --brand-primary-text: #1d4ed8;
+
+  --brand-secondary: #38bdf8;
+  --brand-secondary-hover: #0284c7;
+  --brand-secondary-light: #7dd3fc;
   --brand-secondary-subtle: #f0f9ff;
   --brand-secondary-border: #bae6fd;
   --brand-secondary-text: #0284c7;
 
-  --brand-accent: #47c1e8;
-  --brand-accent-hover: #32aed6;
-  --brand-accent-glow: rgba(71, 193, 232, 0.45);
+  --brand-accent: #38bdf8;
+  --brand-accent-hover: #0284c7;
+  --brand-accent-glow: rgba(56, 189, 248, 0.45);
 
   /* Segmented Form Controls (DARK NAVY when checked) */
   --segmented-active-bg: #0b1e3b;
   --segmented-active-text: #ffffff;
   --segmented-active-border: #0b1e3b;
 
-  /* Page Surfaces & Backgrounds */
+  /* Page Surfaces & Backgrounds (Clean White & Icy Blue) */
   --page-bg: #ffffff;
   --surface-card: #ffffff;
-  --surface-subtle: #f0f5ff;
-  --surface-muted: #ecf0ff;
-  --surface-dark: #071530;
-  --surface-navy: #0c1e3d;
+  --surface-subtle: #f0f7ff;
+  --surface-muted: #e0f2fe;
+  --surface-dark: #0c234c;
+  --surface-navy: #0f2b5c;
 
-  /* Typography (Dark Charcoal & Navy) */
-  --text-heading: #111827;
-  --text-body: #556176;
+  /* Semantic Typography Tokens (Surface-Aware & Maximum Contrast) */
+  --text-heading: #0f172a;
+  --text-body: #475569;
   --text-muted: #64748b;
   --text-light: #ffffff;
+  --text-on-dark-heading: #ffffff;
+  --text-on-dark-accent: #d6f4ff; /* Pale Ice Blue with maximum luminance on royal/dark blue */
+  --text-on-dark-body: rgba(255, 255, 255, 0.92);
+  --text-on-light-heading: #0f172a;
+  --text-on-light-body: #475569;
+  --text-on-light-accent: #1d4ed8; /* Strong Royal Blue on light surfaces */
 
   /* Borders & Dividers */
-  --border-subtle: #dce3f2;
+  --border-subtle: #e2e8f0;
   --border-medium: #cbd5e1;
-  --border-focus: #47c1e8;
+  --border-focus: #38bdf8;
 
-  /* Shared Navbar (Dark Navy to Dark Royal Blue with Sky Blue Edge Glow) */
-  --navbar-bg: linear-gradient(90deg, #061226 0%, #0c234c 40%, #153974 75%, #1b498c 100%);
-  --navbar-border: rgba(71, 193, 232, 0.35);
-  --navbar-link-color: #f0f9ff;
-  --navbar-link-hover: #47c1e8;
-  --navbar-indicator: #47c1e8;
-  --navbar-mobile-bg: #061126;
-  --navbar-logo-accent: #47c1e8;
+  /* Shared Navbar (Vibrant Royal Blue Gradient with Sky Blue Underline) */
+  --navbar-bg: linear-gradient(90deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 80%, #0284c7 100%);
+  --navbar-border: rgba(56, 189, 248, 0.45);
+  --navbar-link-color: #ffffff;
+  --navbar-link-hover: #7dd3fc;
+  --navbar-indicator: #38bdf8;
+  --navbar-mobile-bg: #1e3a8a;
+  --navbar-logo-accent: #38bdf8;
 
-  /* Hero & Feature Gradients (Deep Navy Left -> Dark Blue Center -> Sky Blue Glow Right) */
-  --hero-bg-gradient: radial-gradient(ellipse at 85% 40%, rgba(71, 193, 232, 0.28) 0%, transparent 60%), linear-gradient(135deg, #061226 0%, #0a1e3f 30%, #123368 65%, #18488e 100%);
-  --hero-glow-1: rgba(37, 88, 242, 0.3);
-  --hero-glow-2: rgba(71, 193, 232, 0.25);
-  --hero-accent-text: #47c1e8;
-  --hero-accent-gradient: linear-gradient(to right, #70d3f0, #47c1e8, #38bdf8);
+  /* Hero Gradient (Rich Royal Blue -> Bright Azure -> Sky Blue Illumination) */
+  --hero-bg-gradient: radial-gradient(ellipse at 82% 42%, rgba(56, 189, 248, 0.35) 0%, transparent 65%), linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 35%, #2563eb 65%, #0284c7 85%, #0ea5e9 100%);
+  --hero-glow-1: rgba(56, 189, 248, 0.35);
+  --hero-glow-2: rgba(37, 99, 235, 0.25);
+  --hero-accent-text: #d6f4ff;
+  --hero-accent-gradient: linear-gradient(90deg, #ffffff 0%, #e0f7fe 45%, #d6f4ff 75%, #bae6fd 100%);
 
   /* CTA Strip Gradient */
-  --cta-bg-gradient: linear-gradient(135deg, #061226 0%, #0c234c 50%, #163f7d 100%);
-  --cta-btn-bg: linear-gradient(135deg, #0c234c, #163f7d);
+  --cta-bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 75%, #0284c7 100%);
+  --cta-btn-bg: #0c234c;
   --cta-btn-text: #ffffff;
   --cta-btn-shadow: 0 10px 25px -5px rgba(12, 35, 76, 0.45);
 
   /* Switcher Floating Button Colors */
-  --switcher-btn-bg: rgba(7, 21, 48, 0.92);
-  --switcher-btn-border: rgba(71, 193, 232, 0.55);
-  --switcher-btn-color: #47c1e8;
-  --switcher-btn-glow: 0 0 25px -3px rgba(71, 193, 232, 0.45);
+  --switcher-btn-bg: rgba(30, 58, 138, 0.9);
+  --switcher-btn-border: rgba(56, 189, 248, 0.6);
+  --switcher-btn-color: #7dd3fc;
+  --switcher-btn-glow: 0 0 25px -3px rgba(56, 189, 248, 0.5);
 }
 
 /* --------------------------------------------------------------------------
@@ -197,63 +216,70 @@ textarea,
 }
 
 /* --------------------------------------------------------------------------
-   4. SHARED NAVBAR & MEGA MENU THEME OVERRIDES (AIVORA MODE)
+   4. AIVORA X BODY & LIGHT PAGE BASE
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] body {
+  background-color: #f8fbff !important;
+  color: #1e293b !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. SHARED NAVBAR & MEGA MENU (VIBRANT ROYAL BLUE + SKY BLUE ACCENTS)
    -------------------------------------------------------------------------- */
 html[data-theme="aivora"] #main-nav {
-  background: linear-gradient(90deg, #061226 0%, #0c234c 40%, #153974 75%, #1b498c 100%) !important;
-  border-bottom: 1.5px solid rgba(71, 193, 232, 0.35) !important;
-  box-shadow: 0 4px 25px -2px rgba(7, 21, 48, 0.5), 0 1px 0 0 rgba(71, 193, 232, 0.25) !important;
+  background: linear-gradient(90deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 80%, #0284c7 100%) !important;
+  border-bottom: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 4px 25px -2px rgba(30, 58, 138, 0.35), 0 1px 0 0 rgba(56, 189, 248, 0.3) !important;
 }
 
 html[data-theme="aivora"] #mobile-menu {
-  background-color: #061126 !important;
-  border-top: 1.5px solid rgba(71, 193, 232, 0.3) !important;
+  background-color: #1e3a8a !important;
+  border-top: 1.5px solid rgba(56, 189, 248, 0.4) !important;
 }
 
 html[data-theme="aivora"] .courses-indicator {
-  background-color: #47c1e8 !important;
+  background-color: #38bdf8 !important;
 }
 
 html[data-theme="aivora"] #courses-chevron-icon,
 html[data-theme="aivora"] #mobile-courses-chevron {
-  color: #47c1e8 !important;
+  color: #7dd3fc !important;
 }
 
 html[data-theme="aivora"] #site-header .text-amber-400 {
-  color: #47c1e8 !important;
+  color: #7dd3fc !important;
 }
 
 html[data-theme="aivora"] #site-header a:hover,
 html[data-theme="aivora"] .courses-nav-btn:hover {
-  color: #47c1e8 !important;
+  color: #7dd3fc !important;
 }
 
 /* Mega Menu Dropdown in Aivora */
 html[data-theme="aivora"] #courses-mega-menu {
-  border-color: #dce6f5 !important;
-  box-shadow: 0 25px 50px -12px rgba(7, 21, 48, 0.3) !important;
+  background: #ffffff !important;
+  border-color: #bfdbfe !important;
+  box-shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.25) !important;
 }
 
 html[data-theme="aivora"] .mega-menu-cat-btn.bg-slate-100 {
-  background-color: #ecf0ff !important;
-  color: #0b1e3b !important;
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
   font-weight: 700 !important;
 }
 
 html[data-theme="aivora"] .mega-menu-cat-btn svg {
-  color: #2558f2 !important;
+  color: #2563eb !important;
 }
 
 html[data-theme="aivora"] .course-menu-link:hover {
-  background-color: #f0f7ff !important;
-  color: #2558f2 !important;
+  background-color: #f0f9ff !important;
+  color: #1d4ed8 !important;
 }
 
 /* --------------------------------------------------------------------------
-   5. AIVORA X BUTTONS & ACTIONS (DARK BLUE BUTTONS)
+   6. PRIMARY BUTTONS (DARK BLUE SOLID ACTION WITH CRISP WHITE TEXT)
    -------------------------------------------------------------------------- */
-
-/* Primary CTA / Submit / Enquire / Join Buttons -> DARK BLUE */
 html[data-theme="aivora"] button[type="submit"],
 html[data-theme="aivora"] .bg-amber-400,
 html[data-theme="aivora"] .bg-amber-500,
@@ -262,13 +288,14 @@ html[data-theme="aivora"] .bg-yellow-400,
 html[data-theme="aivora"] [data-enquire-trigger],
 html[data-theme="aivora"] #modal-submit-btn,
 html[data-theme="aivora"] #hero-enrol-btn,
-html[data-theme="aivora"] .form-submit-btn {
+html[data-theme="aivora"] .form-submit-btn,
+html[data-theme="aivora"] [data-course-modal-trigger] {
   background-color: #0c234c !important;
   background-image: none !important;
   color: #ffffff !important;
   font-weight: 700 !important;
-  border: 1px solid rgba(71, 193, 232, 0.3) !important;
-  box-shadow: 0 4px 18px rgba(12, 35, 76, 0.4), 0 0 0 1px rgba(71, 193, 232, 0.25) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 4px 18px rgba(12, 35, 76, 0.4), 0 0 0 1px rgba(56, 189, 248, 0.25) !important;
 }
 
 html[data-theme="aivora"] button[type="submit"]:hover,
@@ -277,107 +304,719 @@ html[data-theme="aivora"] .hover\:bg-amber-300:hover,
 html[data-theme="aivora"] .hover\:bg-amber-400:hover,
 html[data-theme="aivora"] .hover\:bg-amber-500:hover,
 html[data-theme="aivora"] [data-enquire-trigger]:hover,
-html[data-theme="aivora"] #modal-submit-btn:hover {
+html[data-theme="aivora"] #modal-submit-btn:hover,
+html[data-theme="aivora"] #hero-enrol-btn:hover,
+html[data-theme="aivora"] [data-course-modal-trigger]:hover {
   background-color: #163f7d !important;
   color: #ffffff !important;
-  border-color: #47c1e8 !important;
-  box-shadow: 0 6px 22px rgba(71, 193, 232, 0.35), 0 0 12px rgba(71, 193, 232, 0.3) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.4), 0 0 14px rgba(56, 189, 248, 0.35) !important;
 }
 
-/* Button SVGs (Arrows / Icons inside CTAs) */
+/* Button SVGs (Sky Blue arrow/icon) */
 html[data-theme="aivora"] button[type="submit"] svg,
 html[data-theme="aivora"] [data-enquire-trigger] svg,
-html[data-theme="aivora"] .bg-amber-400 svg {
-  color: #47c1e8 !important;
+html[data-theme="aivora"] .bg-amber-400 svg,
+html[data-theme="aivora"] [data-course-modal-trigger] svg {
+  color: #38bdf8 !important;
 }
 
-/* Segmented Options ("My employer", "I will", "Not sure") -> Dark Navy when checked */
-html[data-theme="aivora"] .peer-checked\:bg-\[\#45318A\],
-html[data-theme="aivora"] .peer-checked\:bg-purple-700,
-html[data-theme="aivora"] .peer-checked\:bg-\[\#1E1B4B\] {
-  background-color: #0b1e3b !important;
+/* Secondary Ghost Action on Dark Heroes */
+html[data-theme="aivora"] section[aria-label*="Hero"] a.bg-white\/10,
+html[data-theme="aivora"] section[aria-label*="hero"] a.bg-white\/10,
+html[data-theme="aivora"] [aria-label*="Hero"] a.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
-  border-color: #0b1e3b !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
 }
 
-/* Contact Us Area of Interest Pills */
-html[data-theme="aivora"] [data-interest-pill].active,
-html[data-theme="aivora"] .contact-step-pill.active {
-  background-color: #0b1e3b !important;
+html[data-theme="aivora"] section[aria-label*="Hero"] a.bg-white\/10:hover,
+html[data-theme="aivora"] [aria-label*="Hero"] a.bg-white\/10:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
-  border-color: #47c1e8 !important;
+  border-color: #7dd3fc !important;
 }
 
 /* --------------------------------------------------------------------------
-   6. AIVORA X SKY BLUE ACCENTS & BORDERS
+   FUNDING & SEGMENTED RADIO CONTROLS (AIVORA THEME ONLY)
+   Applies to: Shared Course Pages, Homepage Form, Catalogue & Offers Forms
    -------------------------------------------------------------------------- */
-html[data-theme="aivora"] .text-amber-400,
-html[data-theme="aivora"] .text-amber-300,
-html[data-theme="aivora"] .text-amber-500,
-html[data-theme="aivora"] .text-yellow-200,
-html[data-theme="aivora"] .text-yellow-300,
-html[data-theme="aivora"] .text-yellow-400 {
-  color: #47c1e8 !important;
+
+/* Prevent outer label wrapper from rendering background, border, or extra height in peer radio patterns */
+html[data-theme="aivora"] label:has(> input.peer),
+html[data-theme="aivora"] label:has(> input[type="radio"].peer) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
 }
 
-html[data-theme="aivora"] .text-amber-600,
-html[data-theme="aivora"] .text-amber-700,
-html[data-theme="aivora"] .text-amber-800,
-html[data-theme="aivora"] .text-amber-900 {
+/* 1. PEER RADIO PATTERN (Course Pages, courses.html, offers.html) */
+
+/* Unselected State: Clean White / Light Icy-Blue with Dark Navy Text & Equal Height */
+html[data-theme="aivora"] .peer:not(:checked) ~ div,
+html[data-theme="aivora"] input[type="radio"].peer:not(:checked) ~ div,
+html[data-theme="aivora"] input[name^="funding"].peer:not(:checked) ~ div,
+html[data-theme="aivora"] .peer:not(:checked) ~ .peer-checked\:bg-\[\#45318A\],
+html[data-theme="aivora"] .peer:not(:checked) ~ .peer-checked\:bg-purple-700 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 150ms ease !important;
+}
+
+/* Unselected Hover State: Light Sky-Blue Tint with Dark Navy Text */
+html[data-theme="aivora"] label:hover .peer:not(:checked) ~ div,
+html[data-theme="aivora"] label:hover input[type="radio"].peer:not(:checked) ~ div,
+html[data-theme="aivora"] label:hover input[name^="funding"].peer:not(:checked) ~ div,
+html[data-theme="aivora"] label:hover .peer:not(:checked) ~ .peer-checked\:bg-\[\#45318A\] {
+  background-color: #f0f9ff !important;
+  color: #0c234c !important;
+  border-color: #7dd3fc !important;
+}
+
+/* Selected State (:checked): Solid Dark Navy (#0c234c), Crisp White Text (#ffffff) - Contained 100% Inside Rounded Box */
+html[data-theme="aivora"] .peer:checked ~ div,
+html[data-theme="aivora"] input[type="radio"].peer:checked ~ div,
+html[data-theme="aivora"] input[name^="funding"].peer:checked ~ div,
+html[data-theme="aivora"] .peer:checked ~ .peer-checked\:bg-\[\#45318A\],
+html[data-theme="aivora"] .peer:checked ~ .peer-checked\:bg-purple-700,
+html[data-theme="aivora"] .peer:checked ~ .peer-checked\:bg-\[\#1E1B4B\] {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  border: 1px solid #0c234c !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 0 1.5px rgba(56, 189, 248, 0.45) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Focus-Visible Ring */
+html[data-theme="aivora"] .peer:focus-visible ~ div,
+html[data-theme="aivora"] input[type="radio"].peer:focus-visible ~ div {
+  outline: 2px solid #38bdf8 !important;
+  outline-offset: 2px !important;
+}
+
+
+/* 2. HAS-CHECKED LABEL PATTERN (Homepage index.html Form) */
+
+/* Unselected State: Clean White / Light Icy-Blue with Dark Navy Text */
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:not(:has(input:checked)),
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:not(:checked)) {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+  transition: all 150ms ease !important;
+}
+
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:not(:has(input:checked)) span,
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:not(:checked)) span {
+  color: #0f172a !important;
+}
+
+/* Unselected Hover State: Light Sky-Blue Tint with Dark Navy Text */
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:not(:has(input:checked)):hover,
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:not(:checked)):hover {
+  background-color: #f0f9ff !important;
+  color: #0c234c !important;
+  border-color: #7dd3fc !important;
+}
+
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:not(:has(input:checked)):hover span,
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:not(:checked)):hover span {
+  color: #0c234c !important;
+}
+
+/* Selected State (:checked): Solid Dark Navy (#0c234c) with Crisp White Text (#ffffff) */
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:has(input:checked),
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:checked) {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  border: 1px solid #0c234c !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 0 1.5px rgba(56, 189, 248, 0.45) !important;
+  overflow: hidden !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+}
+
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:has(input:checked) span,
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:checked) span {
+  color: #ffffff !important;
+}
+
+/* Focus-Visible Ring */
+html[data-theme="aivora"] label.has-\[\:checked\]\:bg-\[\#002353\]:has(input:focus-visible),
+html[data-theme="aivora"] label:has(> input[name="fundingType"]:focus-visible) {
+  outline: 2px solid #38bdf8 !important;
+  outline-offset: 2px !important;
+}
+
+
+/* 3. ENQUIRE MODAL (DARK DIALOG SPECIFIC) */
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:checked) {
+  background-color: rgba(56, 189, 248, 0.2) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+}
+
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:checked) span {
+  color: #ffffff !important;
+}
+
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:not(:checked)) {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:not(:checked)) span {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:not(:checked)):hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+html[data-theme="aivora"] #enquire-modal label:has(input[name="fundingType"]:not(:checked)):hover span {
+  color: #ffffff !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. CONTACT US — AREA OF INTEREST TOPIC SELECTOR (AIVORA THEME ONLY)
+   -------------------------------------------------------------------------- */
+
+/* Unselected Topic Buttons: White Surface, Dark Navy Text, Royal Blue Icon, Soft Border */
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active),
+html[data-theme="aivora"] [data-interest-pill]:not(.active),
+html[data-theme="aivora"] .contact-step-pill:not(.active) {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active) span,
+html[data-theme="aivora"] [data-interest-pill]:not(.active) span,
+html[data-theme="aivora"] .contact-step-pill:not(.active) span {
+  color: #0f172a !important;
+}
+
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active) svg,
+html[data-theme="aivora"] [data-interest-pill]:not(.active) svg,
+html[data-theme="aivora"] .contact-step-pill:not(.active) svg {
+  color: #1d4ed8 !important; /* Royal blue icon on light surface */
+}
+
+/* Unselected Hover: Light Blue Tint, Dark Navy Text */
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active):hover,
+html[data-theme="aivora"] [data-interest-pill]:not(.active):hover,
+html[data-theme="aivora"] .contact-step-pill:not(.active):hover {
+  background-color: #f0f9ff !important;
+  color: #0c234c !important;
+  border-color: #7dd3fc !important;
+}
+
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active):hover span {
+  color: #0c234c !important;
+}
+
+html[data-theme="aivora"] .enquiry-nav-btn:not(.active):hover svg {
   color: #0284c7 !important;
 }
 
-html[data-theme="aivora"] .border-amber-400,
-html[data-theme="aivora"] .border-amber-300,
-html[data-theme="aivora"] .border-amber-500,
-html[data-theme="aivora"] .border-amber-200 {
-  border-color: #47c1e8 !important;
+/* Selected Topic Button: Solid Dark Navy, Pure White Text, Light Sky-Blue Icon, Sky-Blue Border */
+html[data-theme="aivora"] .enquiry-nav-btn.active,
+html[data-theme="aivora"] [data-interest-pill].active,
+html[data-theme="aivora"] .contact-step-pill.active {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  border: 1.5px solid #38bdf8 !important;
+  box-shadow: 0 4px 14px rgba(12, 35, 76, 0.28), 0 0 0 1px rgba(56, 189, 248, 0.4) !important;
 }
 
-html[data-theme="aivora"] .bg-amber-50,
-html[data-theme="aivora"] .bg-amber-100 {
+html[data-theme="aivora"] .enquiry-nav-btn.active span,
+html[data-theme="aivora"] [data-interest-pill].active span,
+html[data-theme="aivora"] .contact-step-pill.active span {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="aivora"] .enquiry-nav-btn.active svg,
+html[data-theme="aivora"] [data-interest-pill].active svg,
+html[data-theme="aivora"] .contact-step-pill.active svg {
+  color: #7dd3fc !important; /* Luminous sky-blue/cyan icon on dark navy */
+}
+
+/* Focus State */
+html[data-theme="aivora"] .enquiry-nav-btn:focus-visible,
+html[data-theme="aivora"] [data-interest-pill]:focus-visible,
+html[data-theme="aivora"] .contact-step-pill:focus-visible {
+  outline: 2px solid #38bdf8 !important;
+  outline-offset: 2px !important;
+}
+
+/* Category Filter Tabs & Sub-Navigation Pills */
+html[data-theme="aivora"] .category-tab-btn.active,
+html[data-theme="aivora"] .filter-btn.active,
+html[data-theme="aivora"] [data-category-tab].active {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  border-color: #0c234c !important;
+  box-shadow: 0 4px 14px rgba(12, 35, 76, 0.25) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. COURSES CATALOGUE PAGE UI (AIVORA THEME ONLY)
+   Applies to: courses.html, courses/index.html & courses-page.js
+   -------------------------------------------------------------------------- */
+
+/* 1. Course Card Top Header (Royal Blue Theme Gradient) */
+html[data-theme="aivora"] .course-card .bg-gradient-to-br[class*="from-[#2D1B5E]"],
+html[data-theme="aivora"] .course-card .bg-gradient-to-br[class*="from-[#2d1b5e]"],
+html[data-theme="aivora"] .course-card > div:first-child {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #2563eb 100%) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+}
+
+/* Course Card Category Eyebrow in Header (Light Sky Blue / Pale Cyan) */
+html[data-theme="aivora"] .course-card .text-amber-400\/95,
+html[data-theme="aivora"] .course-card .text-amber-400,
+html[data-theme="aivora"] .course-card .text-amber-300 {
+  color: #7dd3fc !important;
+}
+
+/* Course Card Title in Header */
+html[data-theme="aivora"] .course-card h3,
+html[data-theme="aivora"] .course-card h3 a {
+  color: #ffffff !important;
+}
+
+html[data-theme="aivora"] .course-card:hover h3 a,
+html[data-theme="aivora"] .course-card h3 a:hover {
+  color: #d6f4ff !important;
+}
+
+/* Course Card Icon Box in Header */
+html[data-theme="aivora"] .course-card a.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Course Card Hover Border */
+html[data-theme="aivora"] .course-card:hover {
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 14px 30px -8px rgba(30, 58, 138, 0.2) !important;
+}
+
+/* 2. Course Card Body */
+html[data-theme="aivora"] .course-card .bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Meta Category Text on Card Body */
+html[data-theme="aivora"] .course-card .border-t .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* "View Course" Action Link on Card Body */
+html[data-theme="aivora"] .course-card a.text-\[\#45318A\],
+html[data-theme="aivora"] .course-card a[aria-label*="course details"] {
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="aivora"] .course-card:hover a.text-\[\#45318A\],
+html[data-theme="aivora"] .course-card a[aria-label*="course details"]:hover {
+  color: #1e40af !important;
+}
+
+html[data-theme="aivora"] .course-card a.text-\[\#45318A\] svg,
+html[data-theme="aivora"] .course-card a[aria-label*="course details"] svg {
+  color: #38bdf8 !important;
+}
+
+/* Popular Badge in Aivora Mode */
+html[data-theme="aivora"] .course-card .bg-amber-50 {
   background-color: #f0f9ff !important;
-}
-
-html[data-theme="aivora"] .border-amber-200\/80,
-html[data-theme="aivora"] .border-amber-200\/60,
-html[data-theme="aivora"] .border-amber-200 {
+  color: #0369a1 !important;
   border-color: #bae6fd !important;
 }
 
-html[data-theme="aivora"] .ring-amber-400 {
-  --tw-ring-color: #47c1e8 !important;
+html[data-theme="aivora"] .course-card .fill-amber-500 {
+  fill: #0284c7 !important;
 }
 
-html[data-theme="aivora"] .focus\:ring-amber-400:focus,
-html[data-theme="aivora"] .focus-visible\:ring-amber-400:focus-visible,
-html[data-theme="aivora"] .focus\:border-amber-400:focus,
-html[data-theme="aivora"] .focus\:ring-\[\#45318A\]:focus,
-html[data-theme="aivora"] .focus-within\:ring-\[\#45318A\] {
-  --tw-ring-color: #47c1e8 !important;
-  border-color: #47c1e8 !important;
+/* Masters Badge in Aivora Mode */
+html[data-theme="aivora"] .course-card .bg-purple-50 {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border-color: #bfdbfe !important;
 }
 
-/* Gradients with amber/purple */
-html[data-theme="aivora"] .from-amber-400,
-html[data-theme="aivora"] .from-amber-300 {
-  --tw-gradient-from: #47c1e8 var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(71, 193, 232, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+html[data-theme="aivora"] .course-card .bg-purple-50 svg {
+  fill: #1d4ed8 !important;
 }
 
-html[data-theme="aivora"] .via-amber-400 {
-  --tw-gradient-to: rgba(71, 193, 232, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), #47c1e8 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+
+/* 3. LEFT COURSE CATEGORY SIDEBAR (Desktop) */
+
+/* Active Sidebar Category Item */
+html[data-theme="aivora"] .cat-nav-btn.bg-\[\#45318A\],
+html[data-theme="aivora"] .cat-nav-btn[class*="bg-[#45318A]"],
+html[data-theme="aivora"] #desktop-category-sidebar .cat-nav-btn.bg-\[\#45318A\] {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(12, 35, 76, 0.25) !important;
 }
 
-html[data-theme="aivora"] .to-amber-500,
-html[data-theme="aivora"] .to-amber-400,
-html[data-theme="aivora"] .to-yellow-200 {
-  --tw-gradient-to: #32aed6 var(--tw-gradient-to-position) !important;
+html[data-theme="aivora"] .cat-nav-btn.bg-\[\#45318A\] svg {
+  color: #38bdf8 !important; /* Sky Blue Arrow */
 }
 
-/* Eliminate All Purples -> Deep Navy or Royal Blue */
+html[data-theme="aivora"] .cat-nav-btn.bg-\[\#45318A\] .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Inactive Sidebar Category Item */
+html[data-theme="aivora"] .cat-nav-btn:not([class*="bg-[#45318A]"]) {
+  color: #0f172a !important;
+}
+
+html[data-theme="aivora"] .cat-nav-btn:not([class*="bg-[#45318A]"]):hover {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="aivora"] .cat-nav-btn:not([class*="bg-[#45318A]"]):hover svg {
+  color: #1d4ed8 !important;
+}
+
+html[data-theme="aivora"] .cat-nav-btn:not([class*="bg-[#45318A]"]):hover .group-hover\:bg-purple-100 {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+
+/* 4. MOBILE CATEGORY FILTER CHIPS */
+html[data-theme="aivora"] .mobile-chip-btn.bg-\[\#45318A\],
+html[data-theme="aivora"] .mobile-chip-btn[class*="bg-[#45318A]"] {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(12, 35, 76, 0.25) !important;
+}
+
+html[data-theme="aivora"] .mobile-chip-btn:not([class*="bg-[#45318A]"]) {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="aivora"] .mobile-chip-btn:not([class*="bg-[#45318A]"]):hover {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border-color: #93c5fd !important;
+}
+
+
+/* 5. SEARCH BAR & RESULTS COUNT */
+html[data-theme="aivora"] #all-courses-search {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="aivora"] #all-courses-search:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+}
+
+html[data-theme="aivora"] #courses-count-display .text-\[\#45318A\] {
+  color: #1d4ed8 !important;
+}
+
+
+/* 6. BOTTOM ADVISORY CTA BANNER */
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] .bg-gradient-to-r,
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#3E267D]"],
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#3e267d]"] {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 75%, #0284c7 100%) !important;
+  box-shadow: 0 16px 36px -10px rgba(30, 58, 138, 0.35) !important;
+}
+
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] h2 {
+  color: #ffffff !important;
+}
+
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] p {
+  color: #e0f2fe !important;
+}
+
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] [data-courses-modal-trigger] {
+  background-color: #0c234c !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 4px 18px rgba(12, 35, 76, 0.4) !important;
+}
+
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] [data-courses-modal-trigger]:hover {
+  background-color: #163f7d !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.4) !important;
+}
+
+html[data-theme="aivora"] section[aria-label="Course Advisory CTA"] [data-courses-modal-trigger] svg {
+  color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO GRADIENT & GLOW (ENERGY MATCHING TECHACADEMY PURPLE)
+   -------------------------------------------------------------------------- */
+html[data-theme="aivora"] section[aria-label*="Hero"],
+html[data-theme="aivora"] section[aria-label*="hero"],
+html[data-theme="aivora"] section[aria-label*="Course Header"],
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#4B3294]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0c0a27]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0e0a25]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#1b1442]"],
+html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#120e2e]"] {
+  background: radial-gradient(ellipse at 82% 42%, rgba(56, 189, 248, 0.35) 0%, transparent 65%), linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 35%, #2563eb 65%, #0284c7 85%, #0ea5e9 100%) !important;
+}
+
+/* Hero Background Lighting Bubbles in Aivora */
+html[data-theme="aivora"] .bg-purple-400\/15,
+html[data-theme="aivora"] .bg-purple-500\/20,
+html[data-theme="aivora"] .bg-purple-500\/25,
+html[data-theme="aivora"] .bg-purple-500\/10,
+html[data-theme="aivora"] .bg-purple-400\/20 {
+  background-color: rgba(56, 189, 248, 0.35) !important;
+}
+
+html[data-theme="aivora"] .bg-indigo-900\/25,
+html[data-theme="aivora"] .bg-indigo-950\/30,
+html[data-theme="aivora"] .bg-indigo-950\/40 {
+  background-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+html[data-theme="aivora"] .bg-amber-400\/15,
+html[data-theme="aivora"] .bg-amber-400\/20,
+html[data-theme="aivora"] .bg-amber-400\/10 {
+  background-color: rgba(125, 211, 252, 0.3) !important;
+}
+
+/* Bottom CTA Strip Banners */
+html[data-theme="aivora"] section[aria-label*="Final Enrolment"],
+html[data-theme="aivora"] section[aria-label*="Bottom"],
+html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#18113c]"] {
+  background-image: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 75%, #0284c7 100%) !important;
+}
+
+/* Popular Course Chips (Glassy Luminous Style) */
+html[data-theme="aivora"] .popular-topic-chip {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+html[data-theme="aivora"] .popular-topic-chip:hover {
+  background: rgba(56, 189, 248, 0.35) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Right Side Behind-People Glow */
+html[data-theme="aivora"] .hero-art__glow {
+  background: radial-gradient(ellipse at 52% 48%, rgba(56, 189, 248, 0.4), rgba(37, 99, 235, 0.18) 52%, transparent 72%) !important;
+}
+
+/* Floating Glass Cards */
+html[data-theme="aivora"] .hero-float {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(186, 230, 253, 0.12)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18), inset 0 1px rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(16px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) !important;
+}
+
+html[data-theme="aivora"] .hero-float__icon--violet {
+  background: rgba(186, 230, 253, 0.3) !important;
+  color: #e0f2fe !important;
+}
+
+html[data-theme="aivora"] .hero-float__icon--gold {
+  background: rgba(56, 189, 248, 0.25) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="aivora"] .hero-code-lines b:nth-child(2) {
+  background: rgba(56, 189, 248, 0.9) !important;
+}
+
+html[data-theme="aivora"] .hero-badge-mark,
+html[data-theme="aivora"] .hero-play-mark {
+  background: rgba(56, 189, 248, 0.25) !important;
+  color: #38bdf8 !important;
+}
+
+html[data-theme="aivora"] .hero-progress-ring {
+  background: radial-gradient(circle closest-side, rgba(30, 58, 138, 0.95) 73%, transparent 75% 99%), conic-gradient(#38bdf8 95%, rgba(255, 255, 255, 0.25) 0) !important;
+}
+
+html[data-theme="aivora"] .hero-progress-copy i b {
+  background: linear-gradient(90deg, #7dd3fc, #38bdf8) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. SURFACE-AWARE TYPOGRAPHY & CONTRAST PASS (AIVORA BLUE THEME)
+   -------------------------------------------------------------------------- */
+
+/* A. HERO SECTIONS & DARK BLUE SURFACES */
+/* Main hero headings are crisp white */
+html[data-theme="aivora"] section[aria-label*="Hero"] h1,
+html[data-theme="aivora"] section[aria-label*="hero"] h1,
+html[data-theme="aivora"] [aria-label*="Hero"] h1,
+html[data-theme="aivora"] section[aria-label*="Course Header"] h1 {
+  color: #ffffff !important;
+}
+
+/* Highlighted Accent Text in Hero Headings: PALE ICE BLUE (#D6F4FF / #FFFFFF) - Maximum Luminance Contrast */
+html[data-theme="aivora"] section[aria-label*="Hero"] .bg-clip-text,
+html[data-theme="aivora"] section[aria-label*="hero"] .bg-clip-text,
+html[data-theme="aivora"] [aria-label*="Hero"] .bg-clip-text,
+html[data-theme="aivora"] section[aria-label*="Course Header"] .bg-clip-text,
+html[data-theme="aivora"] h1 .bg-clip-text,
+html[data-theme="aivora"] .hero-heading-accent {
+  background-image: linear-gradient(90deg, #ffffff 0%, #e0f7fe 45%, #d6f4ff 75%, #bae6fd 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.25));
+}
+
+/* Hero Eyebrows, Badges and Chips on Dark Hero Backgrounds */
+html[data-theme="aivora"] section[aria-label*="Hero"] .text-amber-300,
+html[data-theme="aivora"] section[aria-label*="Hero"] .text-amber-400,
+html[data-theme="aivora"] section[aria-label*="Hero"] .text-yellow-200,
+html[data-theme="aivora"] [aria-label*="Hero"] .text-amber-300,
+html[data-theme="aivora"] [aria-label*="Hero"] .text-amber-400,
+html[data-theme="aivora"] [aria-label*="Hero"] .text-yellow-200 {
+  color: #d6f4ff !important;
+}
+
+/* Hero Subtitle Paragraphs & Breadcrumbs */
+html[data-theme="aivora"] section[aria-label*="Hero"] p,
+html[data-theme="aivora"] section[aria-label*="hero"] p,
+html[data-theme="aivora"] [aria-label*="Hero"] p,
+html[data-theme="aivora"] section[aria-label*="Course Header"] p,
+html[data-theme="aivora"] .text-purple-100,
+html[data-theme="aivora"] .text-purple-100\/90,
+html[data-theme="aivora"] .text-purple-200,
+html[data-theme="aivora"] .text-purple-200\/50,
+html[data-theme="aivora"] .text-purple-200\/70,
+html[data-theme="aivora"] .text-purple-200\/80,
+html[data-theme="aivora"] .text-purple-200\/90,
+html[data-theme="aivora"] .text-purple-300 {
+  color: #e0f2fe !important;
+}
+
+/* Dark Hero Feature Badges Strip (e.g. 100% Written Guarantee) */
+html[data-theme="aivora"] section[aria-label*="Hero"] .border-white\/10,
+html[data-theme="aivora"] [aria-label*="Hero"] .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Dark Card Panels inside Hero (e.g. 'Career Launchpad' on Job Placements) */
+html[data-theme="aivora"] .bg-slate-950\/80,
+html[data-theme="aivora"] .bg-slate-950 {
+  background-color: rgba(11, 23, 46, 0.88) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+}
+
+html[data-theme="aivora"] .bg-slate-950\/80 h3,
+html[data-theme="aivora"] .bg-slate-950\/80 strong,
+html[data-theme="aivora"] .bg-slate-950 h3,
+html[data-theme="aivora"] .bg-slate-950 strong {
+  color: #ffffff !important;
+}
+
+html[data-theme="aivora"] .bg-slate-950\/80 p,
+html[data-theme="aivora"] .bg-slate-950 p {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="aivora"] .bg-slate-950\/80 .text-purple-200,
+html[data-theme="aivora"] .bg-slate-950 .text-purple-200 {
+  color: #dbeafe !important;
+}
+
+html[data-theme="aivora"] .bg-slate-950\/80 .text-amber-400,
+html[data-theme="aivora"] .bg-slate-950 .text-amber-400,
+html[data-theme="aivora"] .bg-slate-950\/80 .text-amber-300,
+html[data-theme="aivora"] .bg-slate-950 .text-amber-300 {
+  color: #7dd3fc !important;
+}
+
+/* B. LIGHT SURFACES & CARDS (WHITE / ICY BLUE / SLATE) */
+
+/* Headings on light surfaces: Bold & Sharp Deep Navy (#0F172A) */
+html[data-theme="aivora"] h1:not([class*="text-white"]):not([class*="text-transparent"]),
+html[data-theme="aivora"] h2:not([class*="text-white"]):not([class*="text-transparent"]),
+html[data-theme="aivora"] h3:not([class*="text-white"]):not([class*="text-transparent"]),
+html[data-theme="aivora"] h4:not([class*="text-white"]):not([class*="text-transparent"]),
+html[data-theme="aivora"] .text-\[\#0b142c\],
+html[data-theme="aivora"] .text-\[\#002e5b\],
+html[data-theme="aivora"] .text-\[\#002353\],
+html[data-theme="aivora"] .text-\[\#002C6C\],
+html[data-theme="aivora"] .text-\[\#004A36\],
+html[data-theme="aivora"] .text-slate-900,
+html[data-theme="aivora"] .text-slate-950:not([class*="bg-amber"]):not([class*="bg-gradient"]) {
+  color: #0f172a !important;
+}
+
+/* Paragraphs & Descriptions on light surfaces: High-Contrast Slate (#475569 / #334155) */
+html[data-theme="aivora"] .text-slate-600,
+html[data-theme="aivora"] .text-slate-500,
+html[data-theme="aivora"] .text-slate-700 {
+  color: #475569 !important;
+}
+
+/* Accent text, Category tags, Numbers and Links on light surfaces: Strong Royal Blue (#1D4ED8) */
 html[data-theme="aivora"] .text-\[\#45318A\],
 html[data-theme="aivora"] .text-\[\#45318a\],
 html[data-theme="aivora"] .text-\[\#2D1B69\],
@@ -387,163 +1026,92 @@ html[data-theme="aivora"] .text-purple-700,
 html[data-theme="aivora"] .text-purple-600,
 html[data-theme="aivora"] .text-purple-800,
 html[data-theme="aivora"] .text-indigo-600,
-html[data-theme="aivora"] .text-indigo-700 {
-  color: #2558f2 !important;
+html[data-theme="aivora"] .text-indigo-700,
+html[data-theme="aivora"] .text-amber-700,
+html[data-theme="aivora"] .text-amber-800,
+html[data-theme="aivora"] .text-amber-900 {
+  color: #1d4ed8 !important;
 }
 
-html[data-theme="aivora"] .bg-\[\#1E1B4B\],
-html[data-theme="aivora"] .bg-\[\#1e1b4b\],
-html[data-theme="aivora"] .bg-\[\#45318A\],
-html[data-theme="aivora"] .bg-\[\#45318a\],
-html[data-theme="aivora"] .bg-\[\#2D1B69\],
-html[data-theme="aivora"] .bg-\[\#2d1b69\],
-html[data-theme="aivora"] .bg-\[\#341F69\],
-html[data-theme="aivora"] .bg-\[\#341f69\],
-html[data-theme="aivora"] .bg-\[\#3E267D\],
-html[data-theme="aivora"] .bg-purple-900,
-html[data-theme="aivora"] .bg-purple-800,
-html[data-theme="aivora"] .bg-indigo-900,
-html[data-theme="aivora"] .bg-indigo-950 {
-  background-color: #0c234c !important;
-  color: #ffffff !important;
+/* Hover States on light surfaces */
+html[data-theme="aivora"] .hover\:text-\[\#45318A\]:hover,
+html[data-theme="aivora"] .hover\:text-\[\#2d1b69\]:hover,
+html[data-theme="aivora"] .hover\:text-\[\#321c6e\]:hover,
+html[data-theme="aivora"] .hover\:text-\[\#4B3294\]:hover,
+html[data-theme="aivora"] .group:hover .group-hover\:text-\[\#45318A\],
+html[data-theme="aivora"] .group:hover .group-hover\:text-\[\#4B3294\],
+html[data-theme="aivora"] .group:hover .group-hover\:text-amber-700,
+html[data-theme="aivora"] .group:hover .group-hover\:text-blue-700 {
+  color: #1d4ed8 !important;
 }
 
-html[data-theme="aivora"] .hover\:bg-\[\#2D1B69\]:hover,
-html[data-theme="aivora"] .hover\:bg-\[\#2d1b69\]:hover,
-html[data-theme="aivora"] .hover\:bg-\[\#1E1B4B\]:hover,
-html[data-theme="aivora"] .hover\:bg-purple-800:hover,
-html[data-theme="aivora"] .hover\:bg-purple-900:hover {
-  background-color: #163f7d !important;
-}
-
+/* Light Badges and Subtle Pill Surfaces */
 html[data-theme="aivora"] .bg-purple-50,
 html[data-theme="aivora"] .bg-purple-100,
 html[data-theme="aivora"] .bg-\[\#ede9f8\],
-html[data-theme="aivora"] .bg-\[\#f3f0fb\] {
-  background-color: #ecf0ff !important;
+html[data-theme="aivora"] .bg-\[\#f3f0fb\],
+html[data-theme="aivora"] .bg-amber-50,
+html[data-theme="aivora"] .bg-amber-100 {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
 }
 
 html[data-theme="aivora"] .border-purple-200,
 html[data-theme="aivora"] .border-purple-300,
 html[data-theme="aivora"] .border-purple-100,
 html[data-theme="aivora"] .border-purple-200\/80,
-html[data-theme="aivora"] .border-purple-200\/60 {
-  border-color: #c7d8fe !important;
+html[data-theme="aivora"] .border-purple-200\/60,
+html[data-theme="aivora"] .border-amber-200,
+html[data-theme="aivora"] .border-amber-200\/80,
+html[data-theme="aivora"] .border-amber-200\/60 {
+  border-color: #bfdbfe !important;
 }
 
 html[data-theme="aivora"] .border-\[\#45318A\],
 html[data-theme="aivora"] .border-\[\#45318a\] {
-  border-color: #2558f2 !important;
+  border-color: #2563eb !important;
 }
 
-html[data-theme="aivora"] .text-purple-100,
-html[data-theme="aivora"] .text-purple-200,
-html[data-theme="aivora"] .text-purple-300 {
-  color: #dbeafe !important;
+/* Form Inputs & Focus Rings */
+html[data-theme="aivora"] .ring-amber-400 {
+  --tw-ring-color: #38bdf8 !important;
 }
 
-html[data-theme="aivora"] .bg-purple-500\/20,
-html[data-theme="aivora"] .bg-purple-500\/25,
-html[data-theme="aivora"] .bg-purple-500\/10,
-html[data-theme="aivora"] .bg-purple-400\/20,
-html[data-theme="aivora"] .bg-purple-400\/15 {
-  background-color: rgba(37, 88, 242, 0.22) !important;
+html[data-theme="aivora"] .focus\:ring-amber-400:focus,
+html[data-theme="aivora"] .focus-visible\:ring-amber-400:focus-visible,
+html[data-theme="aivora"] .focus\:border-amber-400:focus,
+html[data-theme="aivora"] .focus\:ring-\[\#45318A\]:focus,
+html[data-theme="aivora"] .focus-within\:ring-\[\#45318A\] {
+  --tw-ring-color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
 }
 
-html[data-theme="aivora"] .bg-amber-400\/15,
-html[data-theme="aivora"] .bg-amber-400\/20,
-html[data-theme="aivora"] .bg-amber-400\/10 {
-  background-color: rgba(71, 193, 232, 0.2) !important;
-}
-
-/* Hero Background Gradients in Aivora (Deep Navy Left -> Dark Blue Center -> Sky Blue Glow Right) */
-html[data-theme="aivora"] section[aria-label*="Hero"],
-html[data-theme="aivora"] .hero-art-slot,
-html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#4B3294]"],
-html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0c0a27]"],
-html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#0e0a25]"],
-html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#1b1442]"],
-html[data-theme="aivora"] .bg-gradient-to-br[class*="from-[#120e2e]"] {
-  background: radial-gradient(ellipse at 85% 40%, rgba(71, 193, 232, 0.28) 0%, transparent 60%), linear-gradient(135deg, #061226 0%, #0a1e3f 30%, #123368 65%, #18488e 100%) !important;
-}
-
-html[data-theme="aivora"] section[aria-label*="Final Enrolment"],
-html[data-theme="aivora"] section[aria-label*="Bottom"],
-html[data-theme="aivora"] .bg-gradient-to-r[class*="from-[#18113c]"] {
-  background-image: linear-gradient(135deg, #061226 0%, #0c234c 50%, #163f7d 100%) !important;
-}
-
-/* Popular Course Chips in Aivora Mode */
-html[data-theme="aivora"] .popular-topic-chip {
-  background: rgba(12, 35, 76, 0.65) !important;
-  border: 1px solid rgba(71, 193, 232, 0.35) !important;
-  color: #f0f9ff !important;
-}
-
-html[data-theme="aivora"] .popular-topic-chip:hover {
-  background: rgba(22, 63, 125, 0.85) !important;
-  border-color: #47c1e8 !important;
+/* Countdown Display Boxes (e.g. Offers page) */
+html[data-theme="aivora"] .countdown-box,
+html[data-theme="aivora"] [data-countdown-box] {
+  background-color: #0c234c !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
   color: #ffffff !important;
-  box-shadow: 0 0 15px rgba(71, 193, 232, 0.35) !important;
 }
 
-/* Hero Art Floats & Animations */
-html[data-theme="aivora"] .hero-art__glow {
-  background: radial-gradient(ellipse at 52% 48%, rgba(71, 193, 232, 0.35), rgba(37, 88, 242, 0.15) 48%, transparent 72%) !important;
-}
-
-html[data-theme="aivora"] .hero-float {
-  background: linear-gradient(135deg, rgba(7, 21, 48, 0.88), rgba(12, 35, 76, 0.78)) !important;
-  border: 1px solid rgba(71, 193, 232, 0.45) !important;
-  box-shadow: 0 14px 34px rgba(7, 21, 48, 0.5), inset 0 1px rgba(255, 255, 255, 0.25) !important;
-}
-
-html[data-theme="aivora"] .hero-float__icon--violet {
-  background: rgba(199, 216, 254, 0.25) !important;
-  color: #bae6fd !important;
-}
-
-html[data-theme="aivora"] .hero-float__icon--gold {
-  background: rgba(71, 193, 232, 0.25) !important;
-  color: #47c1e8 !important;
-}
-
-html[data-theme="aivora"] .hero-code-lines b:nth-child(2) {
-  background: rgba(71, 193, 232, 0.9) !important;
-}
-
-html[data-theme="aivora"] .hero-badge-mark,
-html[data-theme="aivora"] .hero-play-mark {
-  background: rgba(71, 193, 232, 0.22) !important;
-  color: #47c1e8 !important;
-}
-
-html[data-theme="aivora"] .hero-progress-ring {
-  background: radial-gradient(circle closest-side, rgba(12, 35, 76, 0.95) 73%, transparent 75% 99%), conic-gradient(#47c1e8 95%, rgba(255, 255, 255, 0.18) 0) !important;
-}
-
-html[data-theme="aivora"] .hero-progress-copy i b {
-  background: linear-gradient(90deg, #70d3f0, #47c1e8) !important;
-}
-
-/* Headings in Aivora */
-html[data-theme="aivora"] .text-\[\#0b142c\] {
-  color: #111827 !important;
+html[data-theme="aivora"] .countdown-box span,
+html[data-theme="aivora"] [data-countdown-box] span {
+  color: #7dd3fc !important;
 }
 
 /* Footer in Aivora Mode */
 html[data-theme="aivora"] footer,
 html[data-theme="aivora"] .bg-\[\#071329\] {
-  background-color: #050e1f !important;
-  border-top-color: rgba(71, 193, 232, 0.25) !important;
+  background-color: #0b172e !important;
+  border-top-color: rgba(56, 189, 248, 0.25) !important;
 }
 
 html[data-theme="aivora"] footer a:hover {
-  color: #47c1e8 !important;
+  color: #38bdf8 !important;
 }
 
 /* --------------------------------------------------------------------------
-   7. STRICT EXCLUSIONS (OFFICIAL LOGOS & STATUS INDICATORS NEVER THEMED)
+   9. STRICT EXCLUSIONS (OFFICIAL LOGOS & STATUS INDICATORS NEVER THEMED)
    -------------------------------------------------------------------------- */
 html[data-theme="aivora"] img,
 html[data-theme="aivora"] picture,
@@ -560,6 +1128,8 @@ html[data-theme="aivora"] .course-icon {
 html[data-theme="aivora"] .bg-emerald-100 { background-color: #d1fae5 !important; }
 html[data-theme="aivora"] .bg-emerald-500 { background-color: #10b981 !important; }
 html[data-theme="aivora"] .bg-emerald-600 { background-color: #059669 !important; }
+html[data-theme="aivora"] .text-emerald-400 { color: #34d399 !important; }
+html[data-theme="aivora"] .text-emerald-300 { color: #6ee7b7 !important; }
 html[data-theme="aivora"] .text-emerald-500 { color: #10b981 !important; }
 html[data-theme="aivora"] .text-emerald-600 { color: #059669 !important; }
 html[data-theme="aivora"] .text-emerald-700 { color: #047857 !important; }
@@ -570,7 +1140,7 @@ html[data-theme="aivora"] .text-red-500 { color: #ef4444 !important; }
 html[data-theme="aivora"] .mic-active { background-color: #ef4444 !important; color: white !important; }
 
 /* --------------------------------------------------------------------------
-   8. FLOATING THEME SWITCHER COMPONENT STYLES
+   10. FLOATING THEME SWITCHER COMPONENT STYLES
    -------------------------------------------------------------------------- */
 #techacademy-theme-switcher {
   position: fixed;

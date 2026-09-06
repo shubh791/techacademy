@@ -1096,21 +1096,21 @@ function renderCourseEnquiryForm(data, options = {}) {
             WHO WILL BE FUNDING THE COURSE?
           </label>
           <div class="grid grid-cols-3 gap-2">
-            <label class="cursor-pointer">
+            <label class="cursor-pointer flex h-full">
               <input type="radio" name="funding_${prefix}" value="employer" checked class="peer sr-only">
-              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] transition-all flex items-center justify-center min-h-[42px] h-full w-full overflow-hidden">
                 My employer
               </div>
             </label>
-            <label class="cursor-pointer">
+            <label class="cursor-pointer flex h-full">
               <input type="radio" name="funding_${prefix}" value="self" class="peer sr-only">
-              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] transition-all flex items-center justify-center min-h-[42px] h-full w-full overflow-hidden">
                 I will
               </div>
             </label>
-            <label class="cursor-pointer">
+            <label class="cursor-pointer flex h-full">
               <input type="radio" name="funding_${prefix}" value="not_sure" class="peer sr-only">
-              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] peer-checked:shadow-xs transition-all">
+              <div class="px-2.5 py-2 text-center text-xs font-medium rounded-lg border border-slate-200 text-slate-700 bg-slate-50 peer-checked:bg-[#45318A] peer-checked:text-white peer-checked:border-[#45318A] transition-all flex items-center justify-center min-h-[42px] h-full w-full overflow-hidden">
                 Not sure
               </div>
             </label>
