@@ -236,11 +236,45 @@ function setupSingleSelector(container) {
   });
 }
 
+function resetCountrySelector(container) {
+  if (!container) return;
+  const defaultCode = container.dataset.default || "gb";
+  const defaultCountry = COUNTRIES_DATA.find(c => c.code === defaultCode) || COUNTRIES_DATA[0];
+  const isDark = container.dataset.theme === "dark";
+  
+  const hiddenInput = container.querySelector("input[type=hidden]");
+  const dialText = container.querySelector(".country-dial-text");
+  const flagImg = container.querySelector(".country-flag-img");
+  const list = container.querySelector(".country-list");
+  
+  if (hiddenInput) hiddenInput.value = defaultCountry.dial;
+  if (dialText) dialText.innerText = defaultCountry.dial;
+  if (flagImg) {
+    flagImg.src = `https://flagcdn.com/w40/${defaultCountry.code}.png`;
+    flagImg.srcset = `https://flagcdn.com/w80/${defaultCountry.code}.png 2x`;
+    flagImg.alt = `${defaultCountry.name} flag`;
+  }
+  if (list) {
+    list.querySelectorAll(".country-option").forEach(opt => {
+      opt.className = `country-option flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors ${opt.dataset.code === defaultCountry.code ? (isDark ? 'bg-amber-400/15 text-amber-300 font-semibold' : 'bg-purple-50 text-[#4B3294] font-semibold') : (isDark ? 'hover:bg-slate-800 text-slate-200' : 'hover:bg-slate-100 text-slate-700')}`;
+    });
+  }
+}
+
+function resetAllCountrySelectors(scope) {
+  const root = scope || document;
+  const selectors = root.querySelectorAll("[data-country-selector]");
+  selectors.forEach(s => resetCountrySelector(s));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initCountrySelectors();
 });
 
 if (typeof window !== "undefined") {
   window.initCountrySelectors = initCountrySelectors;
+  window.resetCountrySelector = resetCountrySelector;
+  window.resetAllCountrySelectors = resetAllCountrySelectors;
   window.COUNTRIES_DATA = COUNTRIES_DATA;
 }
+

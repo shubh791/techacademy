@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Placements & 100% Written Job Guarantee | TechAcademy</title>
-  <meta name="description" content="Get your dream job with TechAcademy's written 100% Job Guarantee Program. Tie-ups with global multinationals, personalized interview preparation, and placement support.">
+  <title>100% Written Job Guarantee & Placements | TechAcademy</title>
+  <meta name="description" content="Secure your dream career with TechAcademy's written Job Guarantee Program. Master-level IT training in Cyber Security, AI, Cloud, Digital Marketing & Networking with multinational corporate tie-ups.">
   
   <!-- Favicon & Touch Icons -->
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
@@ -28,11 +28,22 @@
           colors: {
             brand: {
               purple: '#1e1b4b',
+              deepPurple: '#2d1b69',
+              royalPurple: '#45318a',
               navy: '#0b142c',
               dark: '#040814',
               surface: '#0d1a38',
               accent: '#f59e0b',
+              accentLight: '#fbbf24',
+              lavender: '#f5f3ff',
             }
+          },
+          boxShadow: {
+            'glow-purple': '0 0 50px -10px rgba(69, 49, 138, 0.40)',
+            'glow-amber': '0 0 35px -5px rgba(245, 158, 11, 0.30)',
+            'card-subtle': '0 4px 24px -2px rgba(15, 23, 42, 0.05)',
+            'card-hover': '0 20px 40px -12px rgba(30, 27, 75, 0.12)',
+            'placement': '0 20px 50px -10px rgba(0, 46, 91, 0.18)',
           }
         }
       }
@@ -43,141 +54,411 @@
   <link rel="stylesheet" href="./css/styles.css">
 
   <style>
-    @keyframes giftFloat {
-      0%, 100% {
-        transform: translateY(0px);
+    /* Keyframe Animations */
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .animate-float-card {
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-ring {
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+
+    /* Connecting Journey Nodes for 8-step pipeline */
+    @media (min-width: 1024px) {
+      .journey-step-line::after {
+        content: '';
+        position: absolute;
+        top: 28px;
+        right: -16px;
+        width: 32px;
+        height: 2px;
+        background: #cbd5e1;
+        z-index: 10;
       }
-      50% {
-        transform: translateY(-8px);
+      .journey-step-line:nth-child(4n)::after {
+        display: none;
+      }
+      .journey-step-line:last-child::after {
+        display: none;
       }
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .animate-gift-float {
-        animation: giftFloat 4.5s ease-in-out infinite;
+    /* FAQ Accordion Transition */
+    .faq-answer {
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.25s ease;
+    }
+
+    .faq-answer.collapsed {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    .faq-answer.expanded {
+      max-height: 400px;
+      opacity: 1;
+      overflow: visible;
+      margin-top: 0.75rem;
+    }
+
+    .faq-toggle-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float-card,
+      .animate-pulse-ring {
+        animation: none !important;
       }
     }
   </style>
 </head>
-<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 font-sans">
+<body class="bg-[#F8FAFD] text-slate-800 min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 font-sans">
 
   <!-- Shared Responsive Header with Courses Mega Menu -->
   <header id="site-header" class="w-full z-50 sticky top-0"></header>
 
-  <!-- Main Job Placements Content -->
+  <!-- Main Placement Page Content -->
   <main class="flex-grow">
     
     <!-- =========================================================================
-         SECTION 1: JOB PLACEMENTS HERO WITH RIGHT-SIDE GIFT VISUAL
+         SECTION 1: HERO (CAREER ACCELERATION & RESUME DROPZONE)
          ========================================================================= -->
-    <section class="relative bg-gradient-to-r from-[#4B3294] via-[#52369E] to-[#5B3EA9] text-white py-16 sm:py-20 lg:py-24 overflow-hidden" aria-label="Job Placements Hero">
-      <!-- Atmospheric Lighting & Subtle Geometric Accents -->
+    <section class="relative bg-gradient-to-br from-[#0e0a25] via-[#1b1248] to-[#361a7a] text-white py-16 sm:py-20 lg:py-24 overflow-hidden" aria-label="Job Placements Hero">
+      
+      <!-- Ambient Lighting & Hexagonal Mesh Grids -->
       <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-400/20 blur-3xl rounded-full"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-950/40 blur-3xl rounded-full"></div>
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/25 blur-[120px] rounded-full"></div>
+        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-amber-400/15 blur-[120px] rounded-full"></div>
         <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px]"></div>
-        
-        <!-- Subtle Floating Geometry -->
-        <div class="absolute top-1/4 left-[8%] w-24 h-24 rounded-full bg-blue-500/10 border border-blue-400/20 blur-sm animate-hero-subtle-float"></div>
-        <div class="absolute top-1/3 right-[12%] w-16 h-16 rounded-full bg-indigo-500/15 border border-indigo-300/20"></div>
-        <div class="absolute bottom-6 right-[18%] w-24 h-24 rounded-full border-2 border-amber-400/25 border-dashed animate-hero-orbit"></div>
       </div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          <!-- LEFT ~60% (lg:col-span-7): Heading, Copy & CTA (Order 1 on Desktop & Mobile) -->
-          <div class="lg:col-span-7 text-center lg:text-left space-y-6 order-1">
+          <!-- LEFT ~58% (lg:col-span-7): Heading, Eyebrow, Approved Copy & CTA -->
+          <div class="lg:col-span-7 text-center lg:text-left space-y-6">
             
             <!-- Eyebrow Tag -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wide text-white shadow-sm">
-              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-              <span>Job Placements</span>
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wide text-white shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="tracking-wider uppercase font-bold text-amber-300 text-[11px]">CAREER ACCELERATION CELL</span>
+              <span class="text-white/30">•</span>
+              <span class="text-white/90">MNC Hiring Drives</span>
             </div>
 
-            <!-- Main Heading -->
-            <h1 class="text-3xl sm:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold tracking-tight text-white leading-[1.18] uppercase drop-shadow-sm">
-              GET YOUR <span class="text-amber-400">FAVOURITE JOB</span> WITH US
+            <!-- Large Editorial Heading -->
+            <h1 class="text-3xl sm:text-5xl lg:text-[44px] xl:text-[50px] font-extrabold tracking-tight text-white leading-[1.15]">
+              Accelerate into High-Growth <br class="hidden sm:inline" />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200">
+                Tech Careers with Written Assurance
+              </span>
             </h1>
 
-            <!-- Descriptive Paragraph -->
-            <p class="text-sm sm:text-base lg:text-lg text-purple-100 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Aivora X has tie ups with global multinationals and we make sure that our students get the job they deserve. Submit your resume now and we will find the right job for you!
+            <!-- Descriptive Paragraph (Exact Approved Copy) -->
+            <p class="text-sm sm:text-base lg:text-lg text-purple-100/90 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Get your dream job with our written Job Guarantee Program. We provide master-level training in high-demand domains with direct interview pipelines into leading multinational corporations.
             </p>
 
-            <!-- Submit Resume CTA Button (Opens Job Application Modal) -->
-            <div class="pt-2 flex justify-center lg:justify-start">
+            <!-- Action CTAs Strip -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button 
                 type="button" 
-                id="hero-submit-resume-btn"
                 onclick="openJobAppModal()"
-                class="inline-flex items-center gap-2.5 px-8 py-4 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-amber-500/20 hover:scale-[1.02] transition-all cursor-pointer uppercase tracking-wider"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer group"
               >
-                <span>SUBMIT RESUME</span>
-                <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                <span>APPLY FOR JOB GUARANTEE</span>
+                <svg class="w-4 h-4 text-slate-950 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
+              </button>
+
+              <a 
+                href="#job-guarantee-section" 
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all"
+              >
+                <span>Explore Guarantee Policy</span>
+                <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Key Feature Badges Strip -->
+            <div class="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+              <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span class="text-xs font-medium text-purple-100">100% Written Guarantee</span>
+              </div>
+              <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                <div class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line></svg>
+                </div>
+                <span class="text-xs font-medium text-purple-100">Global MNC Tie-Ups</span>
+              </div>
+              <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                <div class="w-6 h-6 rounded-lg bg-purple-400/20 text-purple-300 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <span class="text-xs font-medium text-purple-100">Free Retraining Policy</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT ~42% (lg:col-span-5): Interactive Career Blueprint & Resume Drop Card -->
+          <div class="lg:col-span-5 relative flex justify-center items-center">
+            
+            <div class="w-full max-w-md bg-slate-950/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5 animate-float-card relative">
+              
+              <!-- Top Header Pill in Card -->
+              <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 to-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm shadow-md">
+                    TA
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-white leading-tight">Career Launchpad</h3>
+                    <p class="text-[11px] text-purple-200">Admissions & Placement Desk</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] uppercase tracking-wide border border-emerald-400/30">
+                  Active Drives
+                </span>
+              </div>
+
+              <!-- Pipeline Progression Visual -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between text-xs text-purple-200">
+                  <span class="font-semibold text-white">Master Candidate Pipeline</span>
+                  <span class="text-amber-400 font-mono">4-Stage Process</span>
+                </div>
+
+                <!-- 4 Step Mini Progression Bars -->
+                <div class="grid grid-cols-4 gap-1.5 h-2">
+                  <div class="bg-amber-400 rounded-full"></div>
+                  <div class="bg-amber-400 rounded-full"></div>
+                  <div class="bg-amber-400 rounded-full"></div>
+                  <div class="bg-emerald-400 rounded-full animate-pulse"></div>
+                </div>
+
+                <!-- Active Step Snippets -->
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-start gap-3">
+                  <span class="w-5 h-5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">✓</span>
+                  <div class="text-xs">
+                    <strong class="text-white">Written Guarantee Agreement</strong>
+                    <p class="text-[11px] text-purple-200/80">Formal placement backing provided in writing upon enrollment.</p>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-start gap-3">
+                  <span class="w-5 h-5 rounded-full bg-purple-400/20 text-purple-300 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">✓</span>
+                  <div class="text-xs">
+                    <strong class="text-white">Multinational Interview Drives</strong>
+                    <p class="text-[11px] text-purple-200/80">Direct connections with HCL, TCS, Accenture, Oracle, and more.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Quick Launch Dropzone Button -->
+              <div 
+                onclick="openJobAppModal()" 
+                class="group bg-gradient-to-r from-purple-900/60 to-indigo-900/60 hover:from-purple-800/80 hover:to-indigo-800/80 border border-purple-400/30 rounded-xl p-3.5 flex items-center justify-between cursor-pointer transition-all hover:scale-[1.01]"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">Submit Resume For Review</div>
+                    <div class="text-[10px] text-purple-200/70">PDF / DOC / DOCX accepted</div>
+                  </div>
+                </div>
+                <span class="text-xs font-extrabold text-amber-400 group-hover:translate-x-1 transition-transform">Apply &rarr;</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: CAREER PROGRESSION STRIP (EDITORIAL PIPELINE FLOW)
+         ========================================================================= -->
+    <section class="bg-[#120e2e] border-y border-purple-900/40 py-5 text-white" aria-label="Placement Process Strip">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
+            <span class="text-xs sm:text-sm font-semibold text-purple-100">Profile & Skill Intake</span>
+          </div>
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="w-6 h-6 rounded-full bg-purple-500 text-white font-bold text-xs flex items-center justify-center">2</span>
+            <span class="text-xs sm:text-sm font-semibold text-purple-100">Master Lab Training</span>
+          </div>
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="w-6 h-6 rounded-full bg-indigo-500 text-white font-bold text-xs flex items-center justify-center">3</span>
+            <span class="text-xs sm:text-sm font-semibold text-purple-100">Interview Grooming</span>
+          </div>
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-white font-bold text-xs flex items-center justify-center">4</span>
+            <span class="text-xs sm:text-sm font-semibold text-emerald-300">MNC Job Placement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: JOB GUARANTEE PROGRAM & MULTINATIONAL TIE-UPS
+         ========================================================================= -->
+    <section id="job-guarantee-section" class="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden" aria-label="Job Guarantee Program Introduction">
+      
+      <!-- Subtle Background Accents -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          
+          <!-- LEFT: Editorial Content (lg:col-span-7) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-[#002e5b] text-white font-bold text-xs uppercase tracking-wider mb-3 shadow-xs">
+                Job Solutions
+              </span>
+              <h2 class="text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-slate-900 leading-tight">
+                Get your dream job with our written <br />
+                <span class="text-[#45318A]">Job Guarantee Program.</span>
+              </h2>
+              <div class="w-16 h-1.5 bg-amber-400 mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Descriptive Paragraph -->
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal text-justify sm:text-left">
+              We have master-level programs for trending technologies like cyber security, digital marketing, network security, artificial intelligence and cloud computing. These are some of the most demanded training courses in today’s time. We provide written job guarantee to those who pursue those master-level programs and make sure that our students are able to fetch jobs as mid to senior level delegates in the best of multinational companies around the world. We have tie-ups with companies like HCL, Oracle, Apple, TCS, Accenture, Ericsson, Aricent, Tech Mahindra, Wipro, Infosys, among others. There is no doubt in the fact that these companies pay the highest of salary packages.
+            </p>
+
+            <!-- 5 Trending Master-Level Technology Badges -->
+            <div class="pt-2 space-y-2.5">
+              <div class="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                Trending Technologies Covered in Master Programs:
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-purple-50 text-[#45318A] border border-purple-200/80 text-xs font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#45318A]"></span>
+                  Cyber Security
+                </span>
+                <span class="px-3 py-1.5 rounded-lg bg-purple-50 text-[#45318A] border border-purple-200/80 text-xs font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#45318A]"></span>
+                  Digital Marketing
+                </span>
+                <span class="px-3 py-1.5 rounded-lg bg-purple-50 text-[#45318A] border border-purple-200/80 text-xs font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#45318A]"></span>
+                  Network Security
+                </span>
+                <span class="px-3 py-1.5 rounded-lg bg-purple-50 text-[#45318A] border border-purple-200/80 text-xs font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#45318A]"></span>
+                  Artificial Intelligence
+                </span>
+                <span class="px-3 py-1.5 rounded-lg bg-purple-50 text-[#45318A] border border-purple-200/80 text-xs font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#45318A]"></span>
+                  Cloud Computing
+                </span>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-3">
+              <button 
+                type="button" 
+                onclick="openJobAppModal()"
+                class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#45318A] hover:bg-[#341F69] text-white font-bold text-sm shadow-md shadow-purple-900/20 hover:scale-[1.02] transition-all cursor-pointer uppercase tracking-wider"
+              >
+                <span>Apply for Job Guarantee Program</span>
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
               </button>
             </div>
 
           </div>
 
-          <!-- RIGHT ~40% (lg:col-span-5): 3D Gift Box Visual (Order 2) -->
-          <div class="lg:col-span-5 flex justify-center items-center relative order-2 pt-4 lg:pt-0">
-            <div class="relative w-60 sm:w-72 lg:w-full max-w-[380px] flex items-center justify-center animate-gift-float">
-              <!-- Soft warm ambient glow behind the gift -->
-              <div class="absolute inset-4 bg-amber-400/20 blur-3xl rounded-full pointer-events-none" aria-hidden="true"></div>
-              
-              <img 
-                src="./images/placement-gift-box.png" 
-                alt="TechAcademy Career Opportunity Gift Visual" 
-                class="w-full h-auto object-contain relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] select-none pointer-events-none"
-                width="400"
-                height="400"
-              />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION 2: JOB GUARANTEE INTRO
-         ========================================================================= -->
-    <section class="py-16 sm:py-20 bg-white" aria-label="Job Guarantee Program Introduction">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          <!-- Content Left -->
-          <div class="lg:col-span-7 space-y-5">
-            <div>
-              <span class="inline-flex items-center px-3 py-1 rounded bg-[#002e5b] text-white font-bold text-xs uppercase tracking-wider mb-3">
-                Job Solutions
-              </span>
-              <h2 class="text-2xl sm:text-3xl lg:text-[34px] font-bold text-slate-900 leading-tight">
-                Get your dream job with our written <br />
-                <span class="text-[#002e5b]">Job Guarantee Program.</span>
-              </h2>
-              <div class="w-14 h-1 bg-amber-400 mt-3 rounded-full"></div>
-            </div>
-
-            <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal text-justify">
-              We have master-level programs for trending technologies like cyber security, digital marketing, network security, artificial intelligence and cloud computing. These are some of the most demanded training courses in today’s time. We provide written job guarantee to those who pursue those master-level programs and make sure that our students are able to fetch jobs as mid to senior level delegates in the best of multinational companies around the world. We have tie-ups with companies like HCL, Oracle, Apple, TCS, Accenture, Ericsson, Aricent, Tech Mahindra, Wipro, Infosys, among others. There is no doubt in the fact that these companies pay the highest of salary packages.
-            </p>
-          </div>
-
-          <!-- Image Right on Desktop, Stacked on Mobile -->
+          <!-- RIGHT: Simulated Written Guarantee Agreement & Corporate Ties Card (lg:col-span-5) -->
           <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-md rounded-2xl overflow-hidden shadow-2xl border border-slate-200 group">
-              <img 
-                src="./images/training-instructor.jpg" 
-                alt="Job Guarantee Career Placement" 
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                width="480"
-                height="360"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none"></div>
+            <div class="w-full max-w-md bg-gradient-to-b from-[#1b1442] to-[#2d1b69] text-white rounded-2xl p-6 sm:p-7 shadow-2xl border border-purple-400/20 relative overflow-hidden">
+              
+              <!-- Ambient Glow & Watermark Seal -->
+              <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-bold text-white tracking-wide">Job Guarantee Framework</h3>
+                    <p class="text-[10px] text-purple-200">Written Commitment Policy</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-amber-400/20 border border-amber-400/40 text-amber-300 font-extrabold text-[10px] uppercase">In Writing</span>
+              </div>
+
+              <div class="space-y-3.5 mb-5 text-xs text-purple-100/90 leading-relaxed">
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-start gap-3">
+                  <span class="text-amber-400 font-bold text-base mt-0.5">✓</span>
+                  <div>
+                    <strong class="text-white">Mid to Senior Level Placement:</strong>
+                    <div class="text-[11px] text-purple-200">Designed to position candidates for high-responsibility delegates in premier multinational firms.</div>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 flex items-start gap-3">
+                  <span class="text-amber-400 font-bold text-base mt-0.5">✓</span>
+                  <div>
+                    <strong class="text-white">Global Multinational Tie-Ups:</strong>
+                    <div class="text-[11px] text-purple-200">Direct interview pipelines with global tech leaders.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Partner Companies Cloud Mentioned in Paragraph -->
+              <div class="pt-3 border-t border-white/10">
+                <div class="text-[11px] font-bold text-purple-200 uppercase tracking-wider mb-2.5">
+                  Associated Global Multinationals:
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">HCL</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Oracle</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Apple</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">TCS</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Accenture</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Ericsson</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Aricent</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Tech Mahindra</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Wipro</span>
+                  <span class="px-2.5 py-1 rounded-md bg-white/10 text-white text-[11px] font-medium">Infosys</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -186,132 +467,200 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 3: THIS IS HOW WE MAKE THE DIFFERENCE
+         SECTION 4: THIS IS HOW WE MAKE THE DIFFERENCE (REBALANCED EDITORIAL BENTO)
          ========================================================================= -->
-    <section class="py-16 sm:py-20 bg-[#F4F6F9] border-t border-slate-200/80" aria-label="How We Make the Difference">
+    <section class="py-16 sm:py-20 lg:py-24 bg-[#F4F6F9] border-t border-slate-200/80 relative" aria-label="How We Make the Difference">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <h2 class="text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#002e5b]">
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-[#45318A] text-xs font-bold uppercase tracking-wider mb-2">
+            Why Choose Our Placements
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold tracking-tight text-[#002e5b]">
             This is How we make the Difference
           </h2>
           <div class="w-14 h-1 bg-amber-400 mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <!-- 6 Benefit Items in 2-Column Grid on Desktop, 1 Column on Mobile -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <!-- 6 Benefit Items in Perfect Seamless Bento Matrix -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
           
-          <!-- Benefit 1: Best-in-business trainings -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
-                We provide Best-in-business trainings for the Most demanded technologies
+          <!-- Benefit 6 (Row 1 - Span 2 cols on Desktop): 100% Job guarantee in Writing -->
+          <div class="lg:col-span-2 md:col-span-2 bg-gradient-to-br from-[#1b1442] via-[#2d1b69] to-[#45318a] rounded-2xl p-7 sm:p-9 text-white shadow-xl relative overflow-hidden flex flex-col justify-between group">
+            
+            <div class="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shadow-md shrink-0">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 font-extrabold text-xs tracking-wider uppercase">
+                  Flagship Guarantee
+                </span>
+              </div>
+
+              <!-- Benefit 6 Heading -->
+              <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight">
+                100% Job guarantee in Writing
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
-                Starting from cyber security,network security, artificial intelligence, digital marketing, and cloud computing,Aivora X offers trainings for most sought-after technologies.. We have hired certified industry experts who make sure that our students grasp the concepts right and are able to enhance their problem-solving abilities.
+
+              <!-- Benefit 6 Paragraph (TechAcademy updated) -->
+              <p class="text-sm sm:text-base text-purple-100/90 leading-relaxed font-normal">
+                Everything said, we provide a 100% job guarantee in writing to our students. We work with multinational companies and have an unmatched track record of placing our students in renowned workplaces. Our Human Resource team works day and night to build links with the major IT companies. As of now, TechAcademy arranges personalized interviews with companies like HCL, TCS, Accenture, Ericsson, Aricent, Tech Mahindra, Wipro, Infosys, among others.
               </p>
             </div>
+
+            <!-- Corporate Link Chips -->
+            <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center gap-2">
+              <span class="text-xs font-semibold text-amber-300">Personalized interviews arranged with:</span>
+              <span class="text-xs text-purple-200">HCL · TCS · Accenture · Ericsson · Aricent · Tech Mahindra · Wipro · Infosys</span>
+            </div>
+
           </div>
 
-          <!-- Benefit 2: Dedicated team for Job placements -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
+          <!-- Benefit 2 (Row 1 - Span 1 col): A Dedicated team for Job placements -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 text-[#45318A] flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+
+              <!-- Benefit 2 Heading -->
+              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b] mb-3">
                 A Dedicated team for Job placements
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
+
+              <!-- Benefit 2 Paragraph -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 We have a special team dedicated only for job placements. This team keeps in regular touch with multinationals in different domains and make sure that our students get the right fit job for them at the highest salary packages.
               </p>
             </div>
+            
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#45318A]">
+              <span>Active Placement Cell Support</span> &rarr;
+            </div>
           </div>
 
-          <!-- Benefit 3: Global Certificate preparation and scheduling -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
-                Global Certificate preparation and scheduling
+          <!-- Benefit 1 (Row 2 - Col 1): Best-in-business trainings for the Most demanded technologies -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 text-[#45318A] flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+
+              <!-- Benefit 1 Heading -->
+              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b] mb-3">
+                We provide Best-in-business trainings for the Most demanded technologies
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
-                Aivora X provides digital certificates after the successful completion of course training. All you need to do is to complete the course as well as an assessment with at least 80% score. These certifications are recognized worldwide and will give you an edge over other candidates when applying for a job.Our team helps you with global certification exams as well.
+
+              <!-- Benefit 1 Paragraph (TechAcademy updated) -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                Starting from cyber security, network security, artificial intelligence, digital marketing, and cloud computing, TechAcademy offers trainings for most sought-after technologies. We have hired certified industry experts who make sure that our students grasp the concepts right and are able to enhance their problem-solving abilities.
               </p>
             </div>
-          </div>
 
-          <!-- Benefit 4: English speaking and Personal development Training -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                <line x1="9" y1="10" x2="15" y2="10"></line>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
-                English speaking and Personal development Training
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
-                Not only aptitude, an employer looks for the right attitude as well! And hence we make sure that our students are well-groomed before they apply for jobs in the multinationals. We provide English speaking and personal development classes besides the normal trainings, all free of cost.
-              </p>
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#45318A]">
+              <span>Certified Industry Expert Trainers</span> &rarr;
             </div>
           </div>
 
-          <!-- Benefit 5: Provision for retraining -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <polyline points="1 20 1 14 7 14"></polyline>
-                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
+          <!-- Benefit 5 (Row 2 - Col 2): Provision for retraining -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 text-[#45318A] flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+              </div>
+
+              <!-- Benefit 5 Heading -->
+              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b] mb-3">
                 Provision for retraining
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
+
+              <!-- Benefit 5 Paragraph -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 We provide this amazing benefit of getting retrained to our students that no other company has ever provided. Our first priority is to get our students qualify the certification exams and place you in some of the best jobs. However, if they are unable to pass the certification for the first time or not able to get a good job placement, we provide retraining for those students. This retraining is done for free of cost and we make sure our students placed in the best companies in the industry.
               </p>
             </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-emerald-600">
+              <span>Free Retraining Policy Assured</span> &rarr;
+            </div>
           </div>
 
-          <!-- Benefit 6: 100% Job guarantee in Writing -->
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-[#45318A] shrink-0 shadow-sm">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <polyline points="9 12 11 14 15 10"></polyline>
-              </svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
-                100% Job guarantee in Writing
+          <!-- Benefit 3 (Row 2 - Col 3): Global Certificate preparation and scheduling -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200/80 text-[#45318A] flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+
+              <!-- Benefit 3 Heading -->
+              <h3 class="text-lg sm:text-xl font-bold text-[#002e5b] mb-3">
+                Global Certificate preparation and scheduling
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed font-normal">
-                Everything said, we provide a 100% job guarantee in writing to our students. We work with multinational companies and have an unmatched track record of placing our students in renowned workplaces. Our Human Resource team works day and night to build links with the major IT companies. As of now, Aivora X arranges personalized interviews with companies like HCL, TCS, Accenture, Ericsson, Aricent, Tech Mahindra, Wipro, Infosys, among others.
+
+              <!-- Benefit 3 Paragraph (TechAcademy updated) -->
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                TechAcademy provides digital certificates after the successful completion of course training. All you need to do is to complete the course as well as an assessment with at least 80% score. These certifications are recognized worldwide and will give you an edge over other candidates when applying for a job. Our team helps you with global certification exams as well.
               </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#45318A]">
+              <span>80% Score Assessment Criterion</span> &rarr;
+            </div>
+          </div>
+
+          <!-- Benefit 4 (Row 3 - Spans full 3 columns on Desktop & 2 columns on Tablet): English speaking and Personal development Training -->
+          <div class="lg:col-span-3 md:col-span-2 bg-gradient-to-r from-purple-50/90 via-white to-amber-50/40 rounded-2xl p-7 sm:p-8 border border-purple-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div class="w-12 h-12 rounded-xl bg-purple-100 text-[#45318A] flex items-center justify-center shrink-0 shadow-xs">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  <line x1="9" y1="10" x2="15" y2="10"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5 max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-purple-100/80 text-[#45318A] text-[10px] font-extrabold uppercase tracking-wider">
+                  Soft Skills & Communication Mastery
+                </div>
+                <!-- Benefit 4 Heading -->
+                <h3 class="text-lg sm:text-xl font-bold text-[#002e5b]">
+                  English speaking and Personal development Training
+                </h3>
+                <!-- Benefit 4 Paragraph -->
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Not only aptitude, an employer looks for the right attitude as well! And hence we make sure that our students are well-groomed before they apply for jobs in the multinationals. We provide English speaking and personal development classes besides the normal trainings, all free of cost.
+                </p>
+              </div>
+            </div>
+            
+            <div class="shrink-0 w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 border-slate-200/60">
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-purple-200 text-xs font-bold text-[#45318A] shadow-xs">
+                <span>Complimentary Personality Grooming</span>
+                <span class="text-amber-500 font-bold">&check;</span>
+              </div>
             </div>
           </div>
 
@@ -321,146 +670,231 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 4: BRIDGING THE GAP + THIS IS HOW WE WORK
+         SECTION 5: BRIDGING THE GAP + THIS IS HOW WE WORK (8-STEP PIPELINE)
          ========================================================================= -->
-    <!-- 4A: Top Blue Heading Strip -->
-    <div class="bg-gradient-to-r from-[#0066cc] to-[#0081ff] py-8 sm:py-10 text-white text-center shadow-inner" aria-label="Bridging the Gap">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold uppercase tracking-wide leading-tight">
+    <!-- 5A: Bridging the Gap Banner Strip -->
+    <div class="bg-gradient-to-r from-[#0066cc] via-[#0077dd] to-[#0081ff] py-10 sm:py-12 text-white text-center shadow-lg relative overflow-hidden" aria-label="Bridging the Gap">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <span class="inline-block px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+          Career Acceleration
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-wide leading-tight drop-shadow-sm">
           BRIDGING THE GAP BETWEEN YOU AND <br class="hidden sm:inline" /> YOUR DREAM JOB
         </h2>
       </div>
     </div>
 
-    <!-- 4B: This Is How We Work 8-Step Process Flow -->
-    <section class="py-16 sm:py-20 bg-white" aria-label="Our Placement Workflow">
+    <!-- 5B: This Is How We Work 8-Step Connected Process Flow -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden" aria-label="Our Placement Workflow">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <h2 class="text-2xl sm:text-3xl lg:text-[32px] font-extrabold uppercase tracking-tight text-[#002e5b]">
+        <!-- Heading -->
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-[#45318A] text-xs font-bold uppercase tracking-wider mb-2">
+            Step-by-Step Candidate Journey
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold uppercase tracking-tight text-[#002e5b]">
             This is how we work
           </h2>
           <div class="w-14 h-1 bg-amber-400 mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <!-- 8-Step Process Grid (2 Rows of 4 on Desktop, 2 Columns on Tablet, 1 on Mobile) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Connected 8-Step Journey Pipeline -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           
-          <!-- Step 1: Orange -->
-          <div class="relative bg-white border-2 border-orange-500 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-orange-500 text-white text-[11px] font-extrabold rounded-full">01</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
+          <!-- Step 01 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  01
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 1</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Identify course and provide your contact details
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Identify course and provide your contact details
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Online submission / consultation
+            </div>
           </div>
 
-          <!-- Step 2: Purple -->
-          <div class="relative bg-white border-2 border-purple-600 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-purple-600 text-white text-[11px] font-extrabold rounded-full">02</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-purple-50 text-[#45318A] flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
+          <!-- Step 02 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  02
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 1</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Counselor evaluates your background and guides your learning journey
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Get a Call from one of our counsellors and clarify all your technical/non-tech doubts
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Roadmap & domain matching
+            </div>
           </div>
 
-          <!-- Step 3: Teal -->
-          <div class="relative bg-white border-2 border-teal-500 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-teal-500 text-white text-[11px] font-extrabold rounded-full">03</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
+          <!-- Step 03 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  03
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 2</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Enroll for the Job Guarantee Program and receive written confirmation
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Register for our upcoming batch as per your preferred time
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Formal job guarantee in writing
+            </div>
           </div>
 
-          <!-- Step 4: Violet -->
-          <div class="relative bg-white border-2 border-indigo-600 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-indigo-600 text-white text-[11px] font-extrabold rounded-full">04</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
+          <!-- Step 04 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  04
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 2</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Undergo rigorous master training and comprehensive assessments
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Get your student Id and login details
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Hands-on lab training
+            </div>
           </div>
 
-          <!-- Step 5: Orange -->
-          <div class="relative bg-white border-2 border-orange-500 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-orange-500 text-white text-[11px] font-extrabold rounded-full">05</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-              </svg>
+          <!-- Step 05 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  05
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 3</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Resume building, soft skills & interview preparation sessions
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Get Quality course training along with complete lab solution
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              English & personality grooming
+            </div>
           </div>
 
-          <!-- Step 6: Purple -->
-          <div class="relative bg-white border-2 border-purple-600 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-purple-600 text-white text-[11px] font-extrabold rounded-full">06</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-purple-50 text-[#45318A] flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="8" r="7"></circle>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-              </svg>
+          <!-- Step 06 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  06
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 3</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Mock technical interviews to build your confidence
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Enroll for online Exam and get the Certificate
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Industry expert panel
+            </div>
           </div>
 
-          <!-- Step 7: Teal -->
-          <div class="relative bg-white border-2 border-teal-500 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-teal-500 text-white text-[11px] font-extrabold rounded-full">07</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                <line x1="9" y1="10" x2="15" y2="10"></line>
-              </svg>
+          <!-- Step 07 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-orange-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-orange-500/20">
+                  07
+                </span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Phase 4</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Personalized interviews arranged with multinational IT leaders
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Get English speaking and interview handling classes
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-500">
+              Dedicated placement cell
+            </div>
           </div>
 
-          <!-- Step 8: Violet -->
-          <div class="relative bg-white border-2 border-indigo-600 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center min-h-[220px]">
-            <span class="absolute -top-3 left-4 px-2.5 py-0.5 bg-indigo-600 text-white text-[11px] font-extrabold rounded-full">08</span>
-            <div class="w-14 h-14 mb-4 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
+          <!-- Step 08 -->
+          <div class="journey-step-line relative bg-white border border-slate-200/90 hover:border-orange-500 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-extrabold text-sm flex items-center justify-center shadow-md shadow-emerald-600/20">
+                  08
+                </span>
+                <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">Outcome</span>
+              </div>
+              <div class="w-12 h-12 mb-4 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <p class="text-sm font-semibold text-slate-800 leading-snug">
+                Successful job placement in top multinational company
+              </p>
             </div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">
-              Get placed in a multinational company with a handsome salary
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-emerald-700 font-bold">
+              Offer letter secured
+            </div>
           </div>
 
         </div>
@@ -469,40 +903,158 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 5: OUR PLACEMENT COMPANIES
+         SECTION 6: FAQ ACCORDION SECTION (PROGRAM POLICIES & CLAIMS)
          ========================================================================= -->
-    <section class="py-14 sm:py-16 bg-[#F4F6F9] border-t border-slate-200/80" aria-label="Placement Companies">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 sm:py-20 lg:py-24 bg-[#F8FAFD] border-t border-slate-200/80" aria-label="Job Placement FAQ">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <h2 class="text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-[#002e5b]">
-            Our Placement Companies
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-[#45318A] text-xs font-bold uppercase tracking-wider mb-2">
+            Frequently Asked Questions
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            Frequently Asked Questions about our Job Guarantee
           </h2>
-          <div class="w-12 h-1 bg-amber-400 mx-auto mt-2 rounded-full"></div>
+          <div class="w-14 h-1 bg-amber-400 mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <!-- Clean Company Logo/Wordmark Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 items-center">
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-lg sm:text-xl text-[#007cc3] tracking-tight">Infosys</span>
+        <!-- Accordion Items -->
+        <div class="space-y-4">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <button 
+              type="button" 
+              onclick="toggleFaq(this)"
+              class="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-slate-900 cursor-pointer focus:outline-none"
+              aria-expanded="false"
+            >
+              <span>What is the 100% Written Job Guarantee program?</span>
+              <span class="faq-toggle-icon w-8 h-8 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer collapsed text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              TechAcademy provides a written job guarantee to students who enroll in our Master-Level programs in trending technologies like Cyber Security, Digital Marketing, Network Security, Artificial Intelligence, and Cloud Computing. This ensures dedicated placement efforts and personalized interview drives with top multinational corporations until you are placed.
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-base sm:text-lg text-[#e31837] tracking-tight">Tech Mahindra</span>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <button 
+              type="button" 
+              onclick="toggleFaq(this)"
+              class="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-slate-900 cursor-pointer focus:outline-none"
+              aria-expanded="false"
+            >
+              <span>Which multinational companies partner with TechAcademy for placements?</span>
+              <span class="faq-toggle-icon w-8 h-8 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer collapsed text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              TechAcademy has tie-ups with leading global employers including HCL, Oracle, Apple, TCS, Accenture, Ericsson, Aricent, Tech Mahindra, Wipro, and Infosys. Our dedicated HR team works continuously to arrange personalized interviews for our graduates.
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">accenture</span>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <button 
+              type="button" 
+              onclick="toggleFaq(this)"
+              class="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-slate-900 cursor-pointer focus:outline-none"
+              aria-expanded="false"
+            >
+              <span>What happens if I do not pass the certification or get placed immediately?</span>
+              <span class="faq-toggle-icon w-8 h-8 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer collapsed text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              We offer a provision for retraining completely free of cost. If you are unable to pass the certification assessment on the first attempt or require further preparation, you can re-attend live training sessions and access online labs until you secure your desired job placement.
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-lg sm:text-xl text-[#ff7900] tracking-tight">orange<span class="text-xs align-top">™</span></span>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <button 
+              type="button" 
+              onclick="toggleFaq(this)"
+              class="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-slate-900 cursor-pointer focus:outline-none"
+              aria-expanded="false"
+            >
+              <span>Are English speaking and personality development classes included?</span>
+              <span class="faq-toggle-icon w-8 h-8 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer collapsed text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              Yes. We provide English speaking and personal development classes alongside technical training, completely free of charge. This ensures our students are well-groomed with both strong technical aptitude and the right professional attitude.
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-lg sm:text-xl text-[#124191] tracking-wider">NOKIA</span>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+            <button 
+              type="button" 
+              onclick="toggleFaq(this)"
+              class="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-slate-900 cursor-pointer focus:outline-none"
+              aria-expanded="false"
+            >
+              <span>What assessment score is required to receive the TechAcademy certification?</span>
+              <span class="faq-toggle-icon w-8 h-8 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer collapsed text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              To earn the globally recognized TechAcademy digital certification, students must complete the training modules and achieve at least an 80% score on the comprehensive final assessment. Our faculty supports you throughout the preparation process.
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center justify-center text-center h-20">
-            <span class="font-extrabold text-base sm:text-lg text-[#004b87] tracking-tight">CONVERGYS</span>
-          </div>
+
         </div>
 
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: BOTTOM FINAL CALL TO ACTION STRIP
+         ========================================================================= -->
+    <section class="py-16 sm:py-20 bg-gradient-to-r from-[#18113c] via-[#2a175e] to-[#45318a] text-white relative overflow-hidden" aria-label="Placement CTA Banner">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-400/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div class="space-y-3 text-center lg:text-left max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-bold uppercase tracking-wider">
+              <span>Career Assurance Guaranteed</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Ready to Secure Your Next Role at a Global Multinational?
+            </h2>
+            <p class="text-sm sm:text-base text-purple-100/90 font-normal">
+              Submit your CV for advisory review or schedule a 1-on-1 discussion with our senior placement counselor.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+            <button 
+              type="button" 
+              onclick="openJobAppModal()"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-amber-500/30 transition-all cursor-pointer text-center uppercase tracking-wider"
+            >
+              Apply for Placement Program
+            </button>
+            <a 
+              href="./courses.html" 
+              class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-all text-center"
+            >
+              Explore Master Courses
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -511,259 +1063,77 @@
   <!-- Shared Responsive Footer -->
   <div id="site-footer"></div>
 
-  <!-- =========================================================================
-       REUSABLE JOB APPLICATION MODAL (720–850px, 18–22px radius, compact 2-col)
-       ========================================================================= -->
-  <div 
-    id="job-app-modal" 
-    class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3.5 sm:p-6 overflow-y-auto"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="job-modal-title"
-  >
-    <!-- Modal Card (720–850px, max-height 90vh, 18–22px radius) -->
-    <div class="bg-white rounded-2xl sm:rounded-[22px] shadow-2xl max-w-2xl sm:max-w-3xl lg:max-w-4xl w-full p-6 sm:p-8 lg:p-9 relative border border-slate-200/90 max-h-[90vh] flex flex-col justify-between overflow-y-auto my-auto animate-dropdownFade">
+  <!-- Dedicated Job Application Modal -->
+  <div id="job-app-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-sm hidden" role="dialog" aria-modal="true">
+    <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-dropdownFade max-h-[92vh] flex flex-col">
       
-      <!-- Accessible Close Button -->
-      <button 
-        type="button" 
-        id="job-modal-close-btn"
-        onclick="closeJobAppModal()" 
-        class="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#45318A] cursor-pointer"
-        aria-label="Close modal"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-
-      <!-- Header Section -->
-      <div class="mb-5 sm:mb-6 pr-8">
-        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-50 border border-purple-200/60 text-[11px] font-bold uppercase tracking-wider text-[#45318A] mb-2">
-          JOB APPLICATION
+      <!-- Modal Header -->
+      <div class="px-6 py-5 bg-[#1E1B4B] text-white flex items-center justify-between border-b border-purple-900/40 shrink-0">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 block mb-0.5">Career Placement Application</span>
+          <h3 class="text-lg font-bold text-white">Apply for Job Guarantee Program</h3>
         </div>
-        <h3 id="job-modal-title" class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 leading-tight">
-          Submit Your Resume
-        </h3>
-        <div class="w-10 h-1 bg-amber-400 mt-1.5 mb-2 rounded-full"></div>
-        <p class="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
-          Please provide your professional credentials and resume for candidate screening & job placement opportunities.
-        </p>
+        <button type="button" onclick="closeJobAppModal()" class="p-2 rounded-lg text-purple-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Close modal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
       </div>
 
-      <!-- Job Application Form -->
-      <form id="job-placement-form" class="space-y-4">
-        
-        <!-- 2-Column Fields Grid on Desktop -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Modal Body Form -->
+      <div class="p-6 sm:p-7 overflow-y-auto space-y-4">
+        <form id="job-placement-form" class="space-y-4">
+          <input type="hidden" name="sourceContext" value="Job Placements Page">
           
-          <!-- Field 1: Full Name -->
           <div>
-            <label for="job-name" class="block text-xs font-semibold text-slate-700 mb-1">
-              Name <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-name"
-              name="name" 
-              required 
-              placeholder="Enter full name" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
+            <label for="job-user-name" class="block text-xs font-semibold text-slate-700 mb-1">Full Name*</label>
+            <input type="text" id="job-user-name" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
           </div>
 
-          <!-- Field 2: Contact Number (with Reusable Country Selector) -->
-          <div class="relative z-20">
-            <label for="job-phone" class="block text-xs font-semibold text-slate-700 mb-1">
-              Contact Number <span class="text-amber-500">*</span>
-            </label>
-            <div class="relative flex items-center border border-slate-300 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#45318A] focus-within:border-transparent transition-all h-12">
-              <div data-country-selector data-default="in" data-input-name="country_code" class="h-full shrink-0"></div>
-              <div class="w-px h-5 bg-slate-200 shrink-0"></div>
-              <input 
-                type="tel" 
-                id="job-phone" 
-                name="phone" 
-                required 
-                placeholder="Enter contact number" 
-                class="w-full h-full px-3 bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
-              >
+          <div>
+            <label for="job-user-email" class="block text-xs font-semibold text-slate-700 mb-1">Email Address*</label>
+            <input type="email" id="job-user-email" name="email" required placeholder="name@domain.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
+          </div>
+
+          <div>
+            <label for="job-user-phone" class="block text-xs font-semibold text-slate-700 mb-1">Contact Number*</label>
+            <div class="flex items-stretch rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-[#45318A]">
+              <div data-country-selector data-default="in" data-input-name="country_code" class="shrink-0 border-r border-slate-200"></div>
+              <input type="tel" id="job-user-phone" name="phone" required placeholder="Mobile Number*" class="w-full px-3 py-2.5 bg-transparent border-0 text-sm text-slate-900 focus:outline-none">
             </div>
           </div>
 
-          <!-- Field 3: Email Address -->
           <div>
-            <label for="job-email" class="block text-xs font-semibold text-slate-700 mb-1">
-              Email <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="email" 
-              id="job-email"
-              name="email" 
-              required 
-              placeholder="name@company.com" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
+            <label for="job-user-domain" class="block text-xs font-semibold text-slate-700 mb-1">Preferred Master Track*</label>
+            <select id="job-user-domain" name="domain" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#45318A]">
+              <option value="Cyber Security">Cyber Security Master Program</option>
+              <option value="Digital Marketing">Digital Marketing Master Program</option>
+              <option value="Artificial Intelligence">Artificial Intelligence Master Program</option>
+              <option value="Cloud Computing">Cloud Computing Master Program</option>
+              <option value="Network Security">Network Security Master Program</option>
+            </select>
           </div>
 
-          <!-- Field 4: Skills -->
+          <!-- Resume Attachment Input -->
           <div>
-            <label for="job-skills" class="block text-xs font-semibold text-slate-700 mb-1">
-              Skills <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-skills"
-              name="skills" 
-              required 
-              placeholder="e.g. Cyber Security, Python, AWS" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
-          </div>
-
-          <!-- Field 5: Preferred Location -->
-          <div>
-            <label for="job-location" class="block text-xs font-semibold text-slate-700 mb-1">
-              Preferred Location <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-location"
-              name="location" 
-              required 
-              placeholder="e.g. Remote, Bangalore, London" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
-          </div>
-
-          <!-- Field 6: Expected Salary -->
-          <div>
-            <label for="job-salary" class="block text-xs font-semibold text-slate-700 mb-1">
-              Expected Salary <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-salary"
-              name="salary" 
-              required 
-              placeholder="e.g. $80,000 / ₹12 LPA" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
-          </div>
-
-          <!-- Field 7: Job Profile -->
-          <div>
-            <label for="job-profile" class="block text-xs font-semibold text-slate-700 mb-1">
-              Job Profile <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-profile"
-              name="profile" 
-              required 
-              placeholder="e.g. Security Analyst, Cloud Engineer" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
-          </div>
-
-          <!-- Field 8: Total Experience -->
-          <div>
-            <label for="job-experience" class="block text-xs font-semibold text-slate-700 mb-1">
-              Total Experience <span class="text-amber-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="job-experience"
-              name="experience" 
-              required 
-              placeholder="e.g. 2 Years / Fresher" 
-              class="w-full h-12 px-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all"
-            >
-          </div>
-
-        </div>
-
-        <!-- Field 9: Message (Full Width) -->
-        <div>
-          <label for="job-message" class="block text-xs font-semibold text-slate-700 mb-1">
-            Message <span class="text-amber-500">*</span>
-          </label>
-          <textarea 
-            id="job-message"
-            name="message" 
-            rows="3" 
-            required 
-            placeholder="Your cover letter / message to the employer..." 
-            class="w-full h-[100px] sm:h-[110px] p-3.5 bg-white border border-slate-300 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#45318A] focus:border-transparent transition-all resize-none"
-          ></textarea>
-        </div>
-
-        <!-- Field 10: Upload Resume (Full Width Modern File Upload) -->
-        <div>
-          <label for="job-resume" class="block text-xs font-semibold text-slate-700 mb-1">
-            Upload Resume <span class="text-amber-500">*</span>
-          </label>
-          <div class="relative border-2 border-dashed border-slate-300 rounded-lg p-3 bg-slate-50/70 hover:bg-slate-50 transition-colors flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3 truncate">
-              <div class="w-10 h-10 rounded-lg bg-purple-50 text-[#45318A] flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                </svg>
-              </div>
-              <div class="truncate">
-                <p id="resume-file-name" class="text-xs font-medium text-slate-800 truncate">Choose PDF, DOC, or DOCX</p>
-                <p class="text-[11px] text-slate-500">Max file size: 12 MB</p>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Resume / CV (Optional)</label>
+            <div class="relative border-2 border-dashed border-slate-300 hover:border-[#45318A] rounded-xl p-3.5 text-center bg-slate-50/60 transition-colors cursor-pointer group">
+              <input type="file" id="job-user-resume" name="resume" accept=".pdf,.doc,.docx" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleResumeFileSelected(this)">
+              <div class="flex items-center justify-center gap-2 text-xs text-slate-600 group-hover:text-[#45318A]">
+                <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                <span id="resume-file-name">Choose PDF, DOC, or DOCX</span>
               </div>
             </div>
-            <label for="job-resume" class="px-3.5 py-2 rounded-md bg-white border border-slate-300 text-xs font-bold text-slate-700 hover:text-slate-950 hover:border-slate-400 shadow-2xs transition-all cursor-pointer shrink-0">
-              Browse
-            </label>
-            <input 
-              type="file" 
-              id="job-resume" 
-              name="resume" 
-              accept=".pdf,.doc,.docx" 
-              required 
-              class="sr-only"
-              onchange="handleResumeFileSelected(this)"
-            >
           </div>
-        </div>
 
-        <!-- Agreement Checkbox -->
-        <div class="flex items-start gap-2.5 pt-1">
-          <input 
-            type="checkbox" 
-            id="job-term" 
-            name="term" 
-            required 
-            class="mt-0.5 w-4 h-4 rounded text-[#45318A] focus:ring-[#45318A] border-slate-300 cursor-pointer"
-          >
-          <label for="job-term" class="text-xs text-slate-600 leading-relaxed font-normal">
-            I agree to the <span class="text-[#45318A] font-semibold underline">Terms and Conditions</span> and <span class="text-[#45318A] font-semibold underline">Privacy Policy</span> governing placement services.
-          </label>
-        </div>
+          <div id="placement-success-notification" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium">
+            ✓ Thank you! Your application for the 100% Written Job Guarantee Program has been received. Our HR placement cell will reach out to evaluate your profile.
+          </div>
 
-        <!-- Submission Feedback Notification -->
-        <div id="placement-success-notification" class="hidden p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-medium">
-          ✓ Thank you! Your job application and resume have been submitted successfully. Our placement team will contact you shortly.
-        </div>
-
-        <!-- Apply Now Submit Button -->
-        <div class="pt-1">
-          <button 
-            type="submit" 
-            id="job-submit-btn"
-            class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-lg bg-[#45318A] hover:bg-[#341F69] text-white font-bold text-sm sm:text-base shadow-sm hover:shadow-md transition-all cursor-pointer uppercase tracking-wider"
-          >
-            <span>Apply Now</span>
-            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
-            </svg>
+          <button type="submit" id="job-submit-btn" class="w-full py-3.5 bg-[#45318A] hover:bg-[#341F69] text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-2">
+            <span>Submit Application</span>
+            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
           </button>
-        </div>
-
-      </form>
+        </form>
+      </div>
 
     </div>
   </div>
@@ -773,61 +1143,74 @@
   <script src="./js/components/country-selector.js"></script>
   <script src="./js/components/header.js"></script>
   <script src="./js/components/footer.js"></script>
+  <script src="./js/components/form-success.js"></script>
 
-  <!-- Job Application Modal & Form Scripts -->
+  <!-- Interactive Controllers -->
   <script>
-    var lastActiveElement = null;
-
     /**
-     * Opens the Job Application Modal
+     * Accordion toggle handler
      */
-    function openJobAppModal() {
-      var modal = document.getElementById("job-app-modal");
-      if (!modal) return;
+    function toggleFaq(btn) {
+      var item = btn.closest(".faq-item");
+      var answer = item.querySelector(".faq-answer");
+      var isExpanded = btn.getAttribute("aria-expanded") === "true";
 
-      lastActiveElement = document.activeElement;
+      // Close all other items
+      var allItems = document.querySelectorAll(".faq-item");
+      allItems.forEach(function(otherItem) {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+          var otherBtn = otherItem.querySelector("button");
+          var otherAns = otherItem.querySelector(".faq-answer");
+          if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+          if (otherAns) {
+            otherAns.classList.remove("expanded");
+            otherAns.classList.add("collapsed");
+          }
+        }
+      });
 
-      // Reset success notification and button state
-      var notif = document.getElementById("placement-success-notification");
-      if (notif) notif.classList.add("hidden");
-
-      var submitBtn = document.getElementById("job-submit-btn");
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Apply Now</span><svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>';
-        submitBtn.classList.remove("bg-emerald-600");
-        submitBtn.classList.add("bg-[#45318A]");
+      // Toggle current item
+      if (isExpanded) {
+        btn.setAttribute("aria-expanded", "false");
+        item.classList.remove("active");
+        answer.classList.remove("expanded");
+        answer.classList.add("collapsed");
+      } else {
+        btn.setAttribute("aria-expanded", "true");
+        item.classList.add("active");
+        answer.classList.remove("collapsed");
+        answer.classList.add("expanded");
       }
-
-      // Show modal & prevent body scroll
-      modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-
-      // Focus first input
-      setTimeout(function() {
-        var firstInput = modal.querySelector("#job-name");
-        if (firstInput) firstInput.focus();
-      }, 60);
     }
 
     /**
-     * Closes the Job Application Modal and restores focus
+     * Modal Controllers
      */
+    var lastActiveTrigger = null;
+
+    function openJobAppModal() {
+      lastActiveTrigger = document.activeElement;
+      var modal = document.getElementById("job-app-modal");
+      if (modal) {
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
     function closeJobAppModal() {
       var modal = document.getElementById("job-app-modal");
       if (modal) {
         modal.classList.add("hidden");
         document.body.style.overflow = "";
 
-        // Close active country dropdown
         var dropdowns = modal.querySelectorAll(".country-dropdown");
         dropdowns.forEach(function(d) { d.classList.add("hidden"); });
         var countryBtns = modal.querySelectorAll(".country-btn");
         countryBtns.forEach(function(b) { b.setAttribute("aria-expanded", "false"); });
 
-        // Restore focus to triggering CTA
-        if (lastActiveElement && typeof lastActiveElement.focus === "function") {
-          lastActiveElement.focus();
+        if (lastActiveTrigger && typeof lastActiveTrigger.focus === "function") {
+          lastActiveTrigger.focus();
         }
       }
     }
@@ -855,6 +1238,7 @@
     window.openJobAppModal = openJobAppModal;
     window.closeJobAppModal = closeJobAppModal;
     window.handleResumeFileSelected = handleResumeFileSelected;
+    window.toggleFaq = toggleFaq;
 
     document.addEventListener("DOMContentLoaded", function() {
       // 1. Render Shared Header
@@ -890,45 +1274,6 @@
           }
         }
       });
-
-      // 5. Form Submission Handling
-      var form = document.getElementById("job-placement-form");
-      var successNotif = document.getElementById("placement-success-notification");
-
-      if (form) {
-        form.addEventListener("submit", function(e) {
-          e.preventDefault();
-
-          var submitBtn = document.getElementById("job-submit-btn");
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = "Application Submitted ✓";
-            submitBtn.classList.remove("bg-[#45318A]", "hover:bg-[#341F69]");
-            submitBtn.classList.add("bg-emerald-600");
-          }
-
-          if (successNotif) {
-            successNotif.classList.remove("hidden");
-          }
-
-          setTimeout(function() {
-            closeJobAppModal();
-            form.reset();
-            var label = document.getElementById("resume-file-name");
-            if (label) {
-              label.textContent = "Choose PDF, DOC, or DOCX";
-              label.classList.remove("text-[#45318A]", "font-semibold");
-            }
-            if (successNotif) successNotif.classList.add("hidden");
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = '<span>Apply Now</span><svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>';
-              submitBtn.classList.remove("bg-emerald-600");
-              submitBtn.classList.add("bg-[#45318A]");
-            }
-          }, 2600);
-        });
-      }
     });
   </script>
 </body>
